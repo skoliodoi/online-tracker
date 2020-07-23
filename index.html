@@ -73,7 +73,71 @@
         </tr>
       </tbody>
       </table>
-      <button>Add new</button>
+      
+        <div class="container">
+          <button>Add new</button>
+          <div class='add'>
+            <section>
+              <div>
+                <label>Client name:</label>
+                <input type="text">
+              </div>
+
+              <div>
+                <label for="confirmed">Confirmed?</label>
+                <select name="confirmed" id="confirmed">
+                  <option value="blank"></option>
+                  <option value="yes">Yes</option>
+                  <option value="no">No</option>
+                </select>
+              </div>
+
+              <div>
+                <label for="briefSelection">Brief type:</label>
+                <select name="briefSelection" id="briefSelection">
+                  <option value="blank"></option>
+                  <option value="client">Client</option>
+                  <option value="carrier">Carrier</option>
+                </select>
+              </div>
+
+              <div>
+                <label for="setStatus">Set status:</label>
+                <select name="setStatus" id="setStatus">
+                  <option value="blank"></option>
+                  <option value="inProgress">In progress</option>
+                  <option value="pending">Pending</option>
+                </select>
+              </div>
+
+              <div>
+                <label for="whoFor">For:</label>
+                <input type="text" id="whoFor">
+              </div>
+
+              <div>
+                <label for="whoWith">Who is the meeting with:</label>
+                <input type="text" id="whoWith">
+              </div>
+            </section>
+           
+            <section>
+              <div>
+                <label>Start date:</label>
+                <input type="date" name="deadline">
+              </div> 
+                <label>OpCo deadline:</label>
+                <input type="date" name="deadline">
+                <label>Meeting date:</label>
+                <input type="date" name="meetDate">
+                <label>Delivery date:</label>
+                <input type="date" name="delDate">
+              
+
+            </section>
+          </div>
+        </div>
+ 
   </div>
 </body>
 <script src="app.js"></script>
