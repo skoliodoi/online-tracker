@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="styles.css">
-  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="vue.js"></script>
   <title>MoC tracker</title>
 </head>
 <body>
@@ -12,129 +12,198 @@
     <table>
       <thead class="border">
         <tr>
-          <th class="border">Name</th>
-          <th class="border">Confirmed?</th>
-          <th>Type</th>
-          <th>Status</th>
-          <th>For:</th>
-          <th>Who is the meeting with:</th>
-          <th>Start</th>
-          <th>Days till meeting</th>
-          <th>Meeting date</th>
-          <th>Delivery Date</th>
-          <th>OpCo Deadline</th>
-          <th>Rem 1</th>
-          <th>Rem 2</th>
-          <th>Warsaw Status</th>
-          <th>Marsh CL</th>
-          <th>Marsh CA</th>
-          <th>Mercer CL</th>
-          <th>Mercer CA</th>
-          <th>Mercer Wealth (Lindsey)</th>
-          <th>MMB (Jeffrey)</th>
-          <th>GC CL</th>
-          <th>GC CA/RE</th>
-          <th>OW CL</th>
-          <th>OW CA</th>
-          <th>B2B</th>
-          <th>MMC</th>
-          <th>BIO</th>
+          <th class="intro">Name</th>
+          <th class="intro">Confirmed?</th>
+          <th class="intro">Type</th>
+          <th class="intro">Status</th>
+          <th class="intro">For:</th>
+          <th class="intro">Who is the meeting with:</th>
+          <th class="time-related">Start</th>
+          <th class="time-related">Meeting date</th>
+          <th class="time-related">Days till meeting</th>
+          <th class="time-related">OpCo Deadline</th>
+          <th class="time-related">Delivery Date</th>
+          <th class="time-related">Rem 1</th>
+          <th class="time-related">Rem 2</th>
+          <th class="rest">Warsaw Status</th>
+          <th class="cl">Marsh CL</th>
+          <th class="ca">Marsh CA</th>
+          <th class="cl">Mercer CL</th>
+          <th class="ca">Mercer CA</th>
+          <th class="ca">Mercer Wealth (Lindsey)</th>
+          <th class="ca">MMB (Jeffrey)</th>
+          <th class="cl">GC CL</th>
+          <th class="ca">GC CA/RE</th>
+          <th class="cl">OW CL</th>
+          <th class="ca">OW CA</th>
+          <th class="cl">B2B</th>
+          <th class="ca">MMC</th>
+          <th class="rest">BIO</th>
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
+        <tr v-for="each in tableContents">
+          <td id="client-name">
+            {{ each.clientName }}
+          </td>
+          <td id="confirmation">
+            {{ each.confirmed }}
+          </td>
+          <td id="brief-type">
+            {{ each.briefType }}
+          </td>
+          <td id="set-status">
+            {{ each.setStatus }}
+          </td>
+          <td id="who-for">
+            {{ each.whoFor }}
+          </td>
+          <td id="who-with">
+            {{ each.whoWith }}
+          </td>
+          <td id="start-date">
+            {{ each.startDate }}
+          </td>
+          <td id="meet-date">
+            {{ each.meetDate }}
+          </td>
+          <td id="days-till-meet">
+            
+          </td>
+          <td id="opco-deadline">
+            {{ each.deadline }}
+          </td>
+          <td id="delivery-date">
+            {{ each.delDate }}
+          </td>
+          <td id="rem-1">
+
+          </td>
+          <td id="rem-2">
+
+          </td>
+          <td id="waw-status">
+
+          </td>
+          <td id="marsh-cl">
+
+          </td>
+          <td id="marsh-ca">
+
+          </td>
+          <td id="mercer-cl">
+
+          </td>
+          <td id="mercer-ca">
+
+          </td>
+          <td id="lindsey">
+
+          </td>
+          <td id="mmb">
+
+          </td>
+          <td id="gc-cl">
+
+          </td>
+          <td id="gc-ca">
+
+          </td>
+          <td id="ow-cl">
+
+          </td>
+          <td id="ow-ca">
+
+          </td>
+          <td id="b2b">
+
+          </td>
+          <td id="mmc">
+
+          </td>
+          <td id="bio">
+
+          </td>
         </tr>
       </tbody>
       </table>
       
         <div class="container">
           <button>Add new</button>
-          <div class='add'>
-            <section>
-              <div>
-                <label>Client name:</label>
-                <input type="text">
-              </div>
+          <div class="control">
+            <div class='add-fields'>
+              <section>
+                <div>
+                  <label for="confirmed">Confirmed?</label>
+                  <select v-model="confirmed" name="confirmed" id="confirmed">
+                    <option value="blank"></option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                  </select>
+                </div>
 
-              <div>
-                <label for="confirmed">Confirmed?</label>
-                <select name="confirmed" id="confirmed">
-                  <option value="blank"></option>
-                  <option value="yes">Yes</option>
-                  <option value="no">No</option>
-                </select>
-              </div>
+                <div>
+                  <label for="briefSelection">Brief type:</label>
+                  <select v-model="briefType" 
+                  name="briefSelection" 
+                  id="briefSelection">
+                    <option value=""></option>
+                    <option value="Client">Client</option>
+                    <option value="Carrier">Carrier</option>
+                  </select>
+                </div>
 
-              <div>
-                <label for="briefSelection">Brief type:</label>
-                <select name="briefSelection" id="briefSelection">
-                  <option value="blank"></option>
-                  <option value="client">Client</option>
-                  <option value="carrier">Carrier</option>
-                </select>
-              </div>
+                <div>
+                  <label>Client name:</label>
+                  <input v-model="clientName" type="text">
+                </div>
 
-              <div>
-                <label for="setStatus">Set status:</label>
-                <select name="setStatus" id="setStatus">
-                  <option value="blank"></option>
-                  <option value="inProgress">In progress</option>
-                  <option value="pending">Pending</option>
-                </select>
-              </div>
+                <div>
+                  <label for="whoFor">For:</label>
+                  <input v-model="whoFor" type="text" id="whoFor">
+                </div>
 
-              <div>
-                <label for="whoFor">For:</label>
-                <input type="text" id="whoFor">
-              </div>
+                <div>
+                  <label for="whoWith">Who is the meeting with:</label>
+                  <input v-model="whoWith" type="text" id="whoWith">
+                </div>
+              </section>
+            
+              <section>
+                <div>
+                  <label>Start date:</label>
+                  <input v-model="startDate" id="startDate"  type="date" name="startDate">
+                </div> 
 
-              <div>
-                <label for="whoWith">Who is the meeting with:</label>
-                <input type="text" id="whoWith">
-              </div>
-            </section>
-           
-            <section>
-              <div>
-                <label>Start date:</label>
-                <input type="date" name="deadline">
-              </div> 
-                <label>OpCo deadline:</label>
-                <input type="date" name="deadline">
-                <label>Meeting date:</label>
-                <input type="date" name="meetDate">
-                <label>Delivery date:</label>
-                <input type="date" name="delDate">
-              
+                <div>
+                  <label>Meeting date:</label>
+                  <input v-model="meetDate" id="meetDate" type="date" name="meetDate">
+                </div>
 
-            </section>
+                <div>
+                  <label>OpCo deadline:</label>
+                  <input v-model="deadline" id="deadline" type="date" name="deadline">
+                </div>
+
+                <div>
+                  <label>Delivery date:</label>
+                  <input v-model="delDate" id="delDate" type="date" name="delDate">
+                </div>
+
+                <div>
+                  <label for="setStatus">Set status:</label>
+                  <select v-model="setStatus" name="setStatus" id="setStatus">
+                    <option value=""></option>
+                    <option value="In progress">In progress</option>
+                    <option value="Pending">Pending</option>
+                  </select>
+                </div>
+              </section>
+            </div>
+            <div>
+              <button @click="addRow">Submit</button>
+              <button>Cancel</button>
+            </div>
           </div>
         </div>
  
