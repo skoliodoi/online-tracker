@@ -41,8 +41,8 @@
           <th class="rest">BIO</th>
         </tr>
       </thead>
-      <tbody>
-        <tr v-for="each in tableContents">
+      <tbody >
+        <tr class="select-row" v-for="each in tableContents">
           <td id="client-name">
             {{ each.clientName }}
           </td>
@@ -83,43 +83,51 @@
 
           </td>
           <td id="waw-status">
-
+            <select name="status" id="status">
+              <option></option>
+              <option value="Pending">Pending</option>
+              <option value="WIP">WIP</option>
+              <option value="PR1">PR1</option>
+              <option value="PR2">PR2</option>
+              <option value="Sent">Sent</option>
+              <option value="On Hold">On Hold</option>
+            </select>
           </td>
           <td id="marsh-cl">
-
+            <input class="input" type="text" name="" id="">
           </td>
           <td id="marsh-ca">
-
+            <input class="input" type="text" name="" id="">
           </td>
           <td id="mercer-cl">
-
+            <input class="input" type="text" name="" id="">
           </td>
           <td id="mercer-ca">
-
+            <input class="input" type="text" name="" id="">
           </td>
           <td id="lindsey">
-
+            <input class="input" type="text" name="" id="">
           </td>
           <td id="mmb">
-
+            <input class="input" type="text" name="" id="">
           </td>
           <td id="gc-cl">
-
+            <input class="input" type="text" name="" id="">
           </td>
           <td id="gc-ca">
-
+            <input class="input" type="text" name="" id="">
           </td>
           <td id="ow-cl">
-
+            <input class="input" type="text" name="" id="">
           </td>
           <td id="ow-ca">
-
+            <input class="input" type="text" name="" id="">
           </td>
           <td id="b2b">
-
+            <input class="input" type="text" name="" id="">
           </td>
           <td id="mmc">
-
+            <input class="input" type="text" name="" id="">
           </td>
           <td id="bio">
 
