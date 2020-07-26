@@ -94,7 +94,14 @@
             </select>
           </td>
           <td id="marsh-cl">
-            <input class="input" type="text" name="" id="">
+            <div v-if="inputShow">
+            <input v-model="each.inputEntry" 
+            @keyup.enter="editRow"
+            class="input" type="text" name="" id="">
+            </div>
+            <div v-else>
+              <p>{{ each.inputEntry }}</p>
+            </div>
           </td>
           <td id="marsh-ca">
             <input class="input" type="text" name="" id="">

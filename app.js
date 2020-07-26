@@ -1,7 +1,6 @@
 new Vue ({
   el: "#app",
   data: {
-    text: "Test",
     clientName: '',
     confirmed: '',
     briefType: '',
@@ -12,6 +11,8 @@ new Vue ({
     meetDate: '',
     deadline: '',
     delDate: '',
+    inputShow: true,
+    inputEntry: '',
     tableContents: []
   },
   methods: {
@@ -26,9 +27,15 @@ new Vue ({
         startDate: this.startDate,
         meetDate: this.meetDate,
         deadline: this.deadline,
-        delDate: this.delDate
+        delDate: this.delDate,
+        inputShow: this.inputShow,
+        inputEntry: this.inputEntry
       })
-      this.clientName = ""
+      this.clientName = "";
+      this.inputShow = true;
+    },
+    editRow() {
+      this.inputShow = false;
     }
   }
 })
