@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="styles.css">
   <script src="vue.js"></script>
+  <script src="luxon.js"></script>
   <title>MoC tracker</title>
 </head>
 <body>
@@ -68,7 +69,7 @@
             {{ each.meetDate }}
           </td>
           <td id="days-till-meet">
-            
+            {{ today-each.meetDate }}
           </td>
           <td id="opco-deadline">
             {{ each.deadline }}
@@ -137,7 +138,7 @@
             <input class="input" type="text" name="" id="">
           </td>
           <td id="bio">
-
+            {{ today }}
           </td>
         </tr>
       </tbody>

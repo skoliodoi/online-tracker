@@ -1,3 +1,6 @@
+var DateTime = luxon.DateTime;
+dt = DateTime.local();
+
 new Vue ({
   el: "#app",
   data: {
@@ -11,6 +14,7 @@ new Vue ({
     meetDate: '',
     deadline: '',
     delDate: '',
+    today: dt.toLocaleString(DateTime.DATE_MED),
     inputShow: true,
     inputEntry: '',
     tableContents: []
@@ -24,7 +28,7 @@ new Vue ({
         setStatus: this.setStatus,
         whoFor: this.whoFor,
         whoWith: this.whoWith,
-        startDate: this.startDate,
+        startDate: this.startDate.toLocaleString(DateTime.DATE_MED),
         meetDate: this.meetDate,
         deadline: this.deadline,
         delDate: this.delDate,
