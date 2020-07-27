@@ -229,8 +229,8 @@
       </table>
       
         <div class="container">
-          <button>Add new</button>
-          <div class="control">
+          <button @click="showForm = true">Add new</button>
+          <div v-show="showForm" class="control">
             <div class='add-fields'>
               <section>
                 <div>
@@ -302,7 +302,7 @@
             </div>
             <div>
               <button @click="addRow">Submit</button>
-              <button>Cancel</button>
+              <button @click="cancel">Cancel</button>
             </div>
           </div>
         </div>

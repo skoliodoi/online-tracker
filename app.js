@@ -4,6 +4,7 @@ dt = DateTime.local();
 new Vue ({
   el: "#app",
   data: {
+    showForm: false,
     clientName: '',
     confirmed: '',
     briefType: '',
@@ -19,7 +20,6 @@ new Vue ({
   },
   methods: {
     addRow() {
-      console.dir(this.startDate)
       this.tableRows.push({
         data: {
           clientName: this.clientName,
@@ -79,10 +79,9 @@ new Vue ({
           'bio': ""
         }
       })
-      this.clientName = '';
+      this.restart()
     },
     saveCell(row, column) {
-      console.log(123)
       row.isEditable = row.isEditable.filter(it => it !== column)
       row.data[column] = row.editValue[column]
     },
@@ -95,6 +94,23 @@ new Vue ({
     },
     dateTill(date) {
       return date.toRelative()
-    }
+    },
+    restart() {
+      this.clientName = '';
+      this.confirmed = '';
+      this.briefType = '';
+      this.setStatus = '';
+      this.whoFor = '';
+      this.whoWith = '';
+      this.startDate = '';
+      this.meetDate = '';
+      this.deadline = '';
+      this.delDate = '';
+      this.inputEntry = '';
+    },
+    cancel() {
+      this.restart();
+      this.showForm = false;
+    },
   }
 })
