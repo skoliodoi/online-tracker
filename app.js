@@ -90,7 +90,11 @@ new Vue ({
       row.editValue[column] = row.data[column]
     },
     formatDate(date) {
-      return date.toLocaleString(DateTime.DATE_MED)
+      if (date.isValid) {
+        return date.toLocaleString(DateTime.DATE_MED)
+      } else {
+        return "N/A"
+      }
     },
     dateTill(date) {
       return date.toRelative()
@@ -110,7 +114,7 @@ new Vue ({
     },
     cancel() {
       this.restart();
-      this.showForm = false;
+      showForm = false;
     },
   }
 })
