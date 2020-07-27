@@ -14,32 +14,87 @@ new Vue ({
     meetDate: '',
     deadline: '',
     delDate: '',
-    today: dt.toLocaleString(DateTime.DATE_MED),
-    inputShow: true,
     inputEntry: '',
-    tableContents: []
+    tableRows: []
   },
   methods: {
     addRow() {
-      this.tableContents.push({
-        clientName: this.clientName,
-        confirmed: this.confirmed,
-        briefType: this.briefType,
-        setStatus: this.setStatus,
-        whoFor: this.whoFor,
-        whoWith: this.whoWith,
-        startDate: this.startDate.toLocaleString(DateTime.DATE_MED),
-        meetDate: this.meetDate,
-        deadline: this.deadline,
-        delDate: this.delDate,
-        inputShow: this.inputShow,
-        inputEntry: this.inputEntry
+      console.dir(this.startDate)
+      this.tableRows.push({
+        data: {
+          clientName: this.clientName,
+          confirmed: this.confirmed,
+          briefType: this.briefType,
+          setStatus: this.setStatus,
+          whoFor: this.whoFor,
+          whoWith: this.whoWith,
+          startDate: DateTime.fromISO(this.startDate),
+          meetDate: DateTime.fromISO(this.meetDate),
+          deadline: DateTime.fromISO(this.deadline),
+          delDate: DateTime.fromISO(this.delDate),
+          inputShow: this.inputShow,
+          inputEntry: this.inputEntry,
+          'marsh-cl': '',
+          'marsh-ca': '',
+          'mercer-cl': '',
+          'mercer-ca': '',
+          'lindsey': '',
+          'mmb': '',
+          'gc-cl': "",
+          'gc-ca': "",
+          'ow-cl': "",
+          'ow-ca': "",
+          'b2b': "",
+          'mmc': "",
+          'bio': ""
+        },
+        isEditable: [
+          'marsh-cl',
+          'marsh-ca',
+          'mercer-cl',
+          'mercer-ca',
+          'lindsey',
+          'mmb',
+          'gc-cl',
+          'gc-ca',
+          'ow-cl',
+          'ow-ca',
+          'b2b',
+          'mmc',
+          'bio'
+        ],
+        editValue: {
+          'marsh-cl': '',
+          'marsh-ca': '',
+          'mercer-cl': '',
+          'mercer-ca': '',
+          'lindsey': '',
+          'mmb': '',
+          'gc-cl': "",
+          'gc-ca': "",
+          'ow-cl': "",
+          'ow-ca': "",
+          'b2b': "",
+          'mmc': "",
+          'bio': ""
+        }
       })
-      this.clientName = "";
-      this.inputShow = true;
+      this.clientName = '';
     },
-    editRow() {
-      this.inputShow = false;
+    saveCell(row, column) {
+      console.log(123)
+      row.isEditable = row.isEditable.filter(it => it !== column)
+      row.data[column] = row.editValue[column]
+    },
+    editCell(row, column) {
+      row.isEditable.push(column)
+      row.editValue[column] = row.data[column]
+    },
+    formatDate(date) {
+      return date.toLocaleString(DateTime.DATE_MED)
+    },
+    dateTill(date) {
+      return date.toRelative()
     }
   }
 })
