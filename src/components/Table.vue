@@ -31,7 +31,7 @@
           <th class="rest">BIO</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody v-for="each in tableRows">
           <app-row></app-row>
       </tbody>
 </div>
@@ -42,17 +42,7 @@ import Row from './Row.vue'
 export default {
   data() {
     return {
-      clientName: '',
-      confirmed: '',
-      briefType: '',
-      setStatus: '',
-      whoFor: '',
-      whoWith: '',
-      startDate: '',
-      meetDate: '',
-      deadline: '',
-      delDate: '',
-      inputEntry: '',
+     tableRows: []
     }
   },
   components: {
