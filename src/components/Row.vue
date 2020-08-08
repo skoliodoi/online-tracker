@@ -32,31 +32,9 @@
 </template>
 
 <script>
-import Cell from './Cell.vue'
-export default {
-  components: {
-    appCell: Cell,
-  },
-  data() {
-    return {
-      clientName: 'Bob',
-      confirmed: 'Yes',
-      briefType: 'Client',
-      setStatus: '',
-      whoFor: '',
-      whoWith: '',
-      startDate: '',
-      meetDate: '',
-      deadline: '',
-      delDate: '',
-      inputEntry: '',
-    }
-  },
-  methods: {
-    clickEvent() {
-      console.log("Clisk")
-    }
-  }
+  import { tableBus } from '../main.js'
+  import Cell from './Cell.vue'
+  export default {
 }
 </script>
 

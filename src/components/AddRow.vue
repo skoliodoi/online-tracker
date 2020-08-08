@@ -74,15 +74,26 @@
 
         <div>
           <button @click="addRow">Submit</button>
-          <button @click="cancel">Cancel</button>
+          <button>Cancel</button>
         </div>
       </div>
   </div>
 </template>
 
 <script>
+import { tableBus } from '../main.js'
 export default {
-  
+  data() {
+    return {
+      clientName: ''
+    }
+  },
+  methods: {
+    addRow() {
+      tableBus.$emit("rowAdded", this.clientName)
+      this.clientName = "";
+    }
+  }
 }
 </script>
 

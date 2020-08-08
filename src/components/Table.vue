@@ -31,24 +31,19 @@
           <th class="rest">BIO</th>
         </tr>
       </thead>
-      <tbody v-for="each in tableRows">
+      <tbody v-for="row in tableRows">
           <app-row></app-row>
       </tbody>
+      <button @click="addRow">Click</button>
 </div>
 </template>
 
 <script>
-import Row from './Row.vue'
-export default {
-  data() {
-    return {
-     tableRows: []
-    }
-  },
-  components: {
-    appRow: Row,
+  import Row from './Row.vue'
+  import { tableBus } from '../main'
+  export default {
+
   }
-}
 </script>
 
 <style scoped>
