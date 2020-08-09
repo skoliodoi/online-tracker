@@ -9,21 +9,6 @@
   import AddRow from './components/AddRow.vue'
   import Table from './components/Table.vue'
   export default {
-    data() {
-      return {
-        clientName: '',
-        confirmed: '',
-        briefType: '',
-        setStatus: '',
-        whoFor: '',
-        whoWith: '',
-        startDate: '',
-        meetDate: '',
-        deadline: '',
-        delDate: '',
-        inputEntry: '',
-      }
-    },
     components: {
       myTable: Table,
       addRow: AddRow,

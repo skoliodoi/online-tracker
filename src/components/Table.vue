@@ -31,10 +31,10 @@
           <th class="rest">BIO</th>
         </tr>
       </thead>
-      <tbody v-for="row in tableRows">
+      <tbody>
           <app-row></app-row>
       </tbody>
-      <button @click="addRow">Click</button>
+      <button>Click</button>
 </div>
 </template>
 
