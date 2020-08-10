@@ -25,8 +25,10 @@
             </div>
 
             <div>
-              <label>Client name:</label>
-              <input v-model="clientName" type="text">
+              <form>
+                <label>Client name:</label>
+                <input v-model="clientName" type="text">
+              </form>
             </div>
 
             <div>
@@ -85,12 +87,12 @@ import { tableBus } from '../main.js'
 export default {
   data() {
     return {
-      clientName: ''
+      clientName: '',
     }
   },
   methods: {
     addRow() {
-      tableBus.$emit("rowAdded", this.clientName)
+      this.$emit("rowAdded", this.clientName)
       this.clientName = "";
     }
   }

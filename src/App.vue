@@ -1,7 +1,9 @@
 <template>
   <div id="app">
-    <my-table></my-table>
-    <add-row></add-row>
+    <my-table
+    :name="clientName" 
+    :cells="tableRows"></my-table>
+    <add-row @rowAdded="newRow"></add-row>
   </div>
 </template>
 
@@ -9,9 +11,22 @@
   import AddRow from './components/AddRow.vue'
   import Table from './components/Table.vue'
   export default {
+      data() {
+      return {
+        clientName: '',
+        tableRows: []
+      }
+    },
     components: {
       myTable: Table,
       addRow: AddRow,
+    },
+    methods: {
+      newRow(data) {
+        this.tableRows.push({
+          clientName: data,
+        })
+      }
     }
   }
 </script>

@@ -32,17 +32,24 @@
         </tr>
       </thead>
       <tbody>
-          <app-row></app-row>
+          <app-row 
+          :name="name"
+          :cells="cells"></app-row>
       </tbody>
-      <button>Click</button>
+
 </div>
 </template>
 
 <script>
+  import AddRow from './AddRow.vue'
   import Row from './Row.vue'
   import { tableBus } from '../main'
   export default {
-
+    props: ['cells', 'name'],
+    components: {
+      appRow: Row,
+      appNewRow: AddRow
+    }
   }
 </script>
 
