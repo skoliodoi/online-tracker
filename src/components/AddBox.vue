@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <button @click="showForm = true">Add new</button>
+    <button class="btn btn-outline-dark">Add new</button>
       <div class="control">
         <div class='add-fields'>
           <section>
@@ -75,8 +75,8 @@
         </div>
 
         <div>
-          <button @click="addRow">Submit</button>
-          <button>Cancel</button>
+          <button class="btn btn-outline-dark">Submit</button>
+          <button class="btn btn-outline-dark">Cancel</button>
         </div>
       </div>
   </div>
@@ -106,7 +106,6 @@ export default {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
 }
  
 .add-fields {
