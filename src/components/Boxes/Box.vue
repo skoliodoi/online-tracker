@@ -12,7 +12,6 @@ export default {
 
 <style  scoped>
 .control{
-  border: 1px solid black;
   margin-top: 0.5em;
   cursor: pointer;
 }

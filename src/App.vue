@@ -11,7 +11,7 @@
 
 <script>
   import { tableBus } from './main.js'
-  import BoxGrid from './components/BoxGrid.vue'
+  import BoxGrid from './components/Boxes/BoxGrid.vue'
   import AddBox from './components/AddBox.vue'
   export default {
       data() {

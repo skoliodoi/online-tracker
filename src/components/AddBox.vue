@@ -104,7 +104,7 @@ export default {
         tableBus.$emit('addBox',this.clientName, this.whoFor)
         this.clientName = ''
       }
-    }
+    },
 }
 
 </script>
