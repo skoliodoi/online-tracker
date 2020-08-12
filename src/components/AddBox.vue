@@ -1,6 +1,11 @@
 <template>
   <div class="container">
-    <button class="btn btn-outline-dark">Add new</button>
+  <p>
+    <button class="btn btn-outline-dark" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+      Add new
+    </button>
+  </p>
+    <div class="collapse" id="collapseExample">
       <div class="control">
         <div class='add-fields'>
           <section>
@@ -32,8 +37,10 @@
             </div>
 
             <div>
-              <label for="whoFor">For:</label>
-              <input v-model="whoFor" type="text" id="whoFor">
+              <form>
+                <label for="whoFor">For:</label>
+                <input v-model="whoFor" type="text" id="whoFor">
+              </form>
             </div>
 
             <div>
@@ -76,9 +83,10 @@
 
         <div>
           <button class="btn btn-outline-dark">Submit</button>
-          <button class="btn btn-outline-dark">Cancel</button>
+          <button class="btn btn-outline-dark" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">Cancel</button>
         </div>
       </div>
+    </div>
   </div>
 </template>
 
@@ -137,4 +145,5 @@ export default {
   justify-content: center;
   align-items: center;
 }
+
 </style>
