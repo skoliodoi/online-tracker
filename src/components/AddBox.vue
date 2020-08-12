@@ -82,7 +82,7 @@
         </div>
 
         <div>
-          <button class="btn btn-outline-dark">Submit</button>
+          <button class="btn btn-outline-dark" @click="addBox">Submit</button>
           <button class="btn btn-outline-dark" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">Cancel</button>
         </div>
       </div>
@@ -99,12 +99,13 @@ export default {
     }
   },
   methods: {
-    addRow() {
-      this.$emit("rowAdded", this.clientName)
-      this.clientName = "";
+      addBox() {
+        tableBus.$emit('addBox', this.clientName)
+        this.clientName = ''
+      }
     }
-  }
 }
+
 </script>
 
 <style scoped>
