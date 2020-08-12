@@ -3,10 +3,8 @@
   <app-box v-for="(box, index) in boxes" @click.native="removeBox(index)">
     <div>
       {{ box.clientName }}
+      {{ box.whoFor }}
     </div>
-    <div>For:</div>
-    <p>With</p>
-
   </app-box>
 </div>
 </template>

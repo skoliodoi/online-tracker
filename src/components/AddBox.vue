@@ -96,11 +96,12 @@ export default {
   data() {
     return {
       clientName: '',
+      whoFor: ''
     }
   },
   methods: {
       addBox() {
-        tableBus.$emit('addBox', this.clientName)
+        tableBus.$emit('addBox',this.clientName, this.whoFor)
         this.clientName = ''
       }
     }

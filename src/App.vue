@@ -1,6 +1,7 @@
 <template>
 <div>
   <box-grid 
+  v-if="boxesVisible"
   :boxes="boxContents"
   @boxRemoved="removeBox"
   ></box-grid>
@@ -15,9 +16,8 @@
   export default {
       data() {
       return {
-        boxContents: [{
-          clientName: 'asd',
-        }]
+        boxesVisible: false,
+        boxContents: []
       }
     },
     components: {
@@ -30,9 +30,11 @@
       }
     },
     created(){
-      tableBus.$on("addBox",(name)=>{
+      tableBus.$on("addBox",(name, who)=>{
+        this.boxesVisible = true;
         this.boxContents.push({
-          clientName: name
+          clientName: name,
+          whoFor: who
         })
       })
     }
