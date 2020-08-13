@@ -96,13 +96,38 @@ export default {
   data() {
     return {
       clientName: '',
-      whoFor: ''
+      clientName: '',
+      confirmed: '',
+      briefType: '',
+      setStatus: '',
+      whoFor: '',
+      whoWith: '',
+      startDate: '',
+      meetDate: '',
+      deadline: '',
+      delDate: '',
     }
   },
   methods: {
       addBox() {
-        tableBus.$emit('addBox',this.clientName, this.whoFor)
-        this.clientName = ''
+        tableBus.$emit('addBox',
+        this.clientName, this.confirmed, this.briefType, this.setStatus, 
+        this.whoFor, this.whoWith, this.startDate, this.meetDate, this.deadline,
+        this.delDate, this.inputEntry)
+        this.restart()
+      },
+      restart() {
+          this.clientName = '';
+          this.confirmed = '';
+          this.briefType = '';
+          this.setStatus = '';
+          this.whoFor = '';
+          this.whoWith = '';
+          this.startDate = '';
+          this.meetDate = '';
+          this.deadline = '';
+          this.delDate = '';
+          this.inputEntry = '';
       }
     },
 }
