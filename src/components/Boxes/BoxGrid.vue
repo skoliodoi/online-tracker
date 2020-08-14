@@ -36,7 +36,5 @@ export default {
 </script>
 
 <style  scoped>
-  .header {
-    border: 1px solid red
-  }
+
 </style>

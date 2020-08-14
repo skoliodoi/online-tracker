@@ -11,8 +11,5 @@ export default {
 </script>
 
 <style  scoped>
-.control{
-  margin-top: 0.5em;
-  cursor: pointer;
-}
+
 </style>

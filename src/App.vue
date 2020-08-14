@@ -4,13 +4,18 @@
   v-if="boxesVisible"
   :boxes="boxContents"
   @boxRemoved="removeBox"
-  ></box-grid>
+  >
+  
+  
+  
+  </box-grid>
   <add-box></add-box>
 </div>
 </template>
 
 <script>
   import { tableBus } from './main.js'
+  
   import BoxGrid from './components/Boxes/BoxGrid.vue'
   import AddBox from './components/AddBox.vue'
   export default {
