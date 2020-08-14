@@ -1,10 +1,10 @@
 <template>
 <div>
-  <box-grid 
-  v-if="boxesVisible"
-  :boxes="boxContents"
-  @boxRemoved="removeBox"
-  >  
+  <box-grid>
+    <app-box 
+    :boxes="boxContents"
+    @boxRemoved="removeBox"
+    ></app-box>
   </box-grid>
   <add-box></add-box>
 </div>
@@ -12,7 +12,7 @@
 
 <script>
   import { tableBus } from './main.js'
-  
+  import Box from './components/Boxes/Box.vue'
   import BoxGrid from './components/Boxes/BoxGrid.vue'
   import AddBox from './components/AddBox.vue'
   export default {
@@ -23,6 +23,7 @@
       }
     },
     components: {
+      appBox: Box,
       boxGrid: BoxGrid,
       addBox: AddBox
     },

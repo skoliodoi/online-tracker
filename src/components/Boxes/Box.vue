@@ -13,6 +13,7 @@
         <div class="card-body">
           {{ box.whoFor }}
         </div>
+        <button @click="removeBox(index)">XXX</button>
     </div>
   </div>
 </div>
@@ -22,7 +23,12 @@
 
 <script>
 export default {
-  props: ['boxes']
+  props: ['boxes'],
+  methods: {
+  removeBox(index) {
+    this.$emit('boxRemoved', index)
+  }
+}
 }
 </script>
 
