@@ -4,10 +4,7 @@
   v-if="boxesVisible"
   :boxes="boxContents"
   @boxRemoved="removeBox"
-  >
-  
-  
-  
+  >  
   </box-grid>
   <add-box></add-box>
 </div>
