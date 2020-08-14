@@ -18,6 +18,7 @@
   export default {
       data() {
       return {
+        id: 0,
         boxesVisible: false,
         boxContents: []
       }
@@ -36,6 +37,7 @@
       tableBus.$on("addBox",(name, who)=>{
         this.boxesVisible = true;
         this.boxContents.push({
+          id: this.id += 1,
           clientName: name,
           whoFor: who
         })
