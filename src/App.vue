@@ -30,7 +30,9 @@
     },
     methods: {
       removeBox(index) {
-        this.boxContents.splice(index, 1)
+        if (confirm("Are you sure you want to remove this component?")) {
+          this.boxContents.splice(index, 1)
+        }
       }
     },
     created(){
