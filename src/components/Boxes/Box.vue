@@ -9,8 +9,6 @@
             {{ box.clientName }}
           </button>
           <button class="btn btn-link text-right" @click="removeBox(index)">X</button>
-
-          <button class="btn btn-link text-right" @click="removeBox(index)">XXX</button>
         </div>
       </div>
 
