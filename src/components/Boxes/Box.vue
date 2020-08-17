@@ -17,7 +17,15 @@
             <label>Confirmed?</label>
             {{ box.confirmed }}
           </div>
-          <display-field class="card-body"></display-field>
+          
+          <component :is="selectedField">
+            <display-field
+            :name="box.clientName"
+            style="cursor: pointer" 
+            @click.native="selectedField='InputField'">
+            </display-field>
+          </component>
+          
           <div class="card-body">{{ box.id }}</div> 
       </div>
     </div>
@@ -32,6 +40,11 @@ import DisplayField from './DisplayField.vue'
 import InputField from './InputField.vue'
 export default {
   props: ['boxes'],
+  data() {
+    return {
+      selectedField: DisplayField
+    }
+  },
   methods: {
     removeBox(index) {
       this.$emit('boxRemoved', index)

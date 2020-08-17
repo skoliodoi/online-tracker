@@ -1,6 +1,5 @@
 <template>
 <div>
-  <h3>INPUT</h3>
   <input type="text">
 </div>
 </template>
