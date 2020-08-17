@@ -4,9 +4,11 @@
     <app-box 
     :boxes="boxContents"
     @boxRemoved="removeBox"
-    ></app-box>
+    >
+    </app-box>
   </box-grid>
   <add-box></add-box>
+  
 </div>
 </template>
 
@@ -26,7 +28,7 @@
     components: {
       appBox: Box,
       boxGrid: BoxGrid,
-      addBox: AddBox
+      addBox: AddBox,
     },
     methods: {
       removeBox(index) {

@@ -1,6 +1,6 @@
 <template>
 <div>
-  <div class="container control" v-for="(box, index) in boxes" :key="box.id">
+  <div class="container" v-for="(box, index) in boxes" :key="box.id">
     <div class="accordion" :id="'accordion'+box.id">
     <div class="card">
       <div class="card-header" :id="'heading'+box.id">
@@ -11,29 +11,36 @@
           <button class="btn btn-link text-right" @click="removeBox(index)">X</button>
         </div>
       </div>
-
-    <div :id="'collapse-'+box.id" class="collapse" :aria-labelledby="'heading'+box.id" :data-parent="'#accordion'+box.id">
-        <div class="card-body">
-          <label>Confirmed?</label>
-          {{ box.confirmed }}
-        </div>
-        <div class="card-body">{{ box.id }}</div> 
-        
+      
+      <div :id="'collapse-'+box.id" class="collapse" :aria-labelledby="'heading'+box.id" :data-parent="'#accordion'+box.id">
+          <div class="card-body">
+            <label>Confirmed?</label>
+            {{ box.confirmed }}
+          </div>
+          <display-field class="card-body"></display-field>
+          <div class="card-body">{{ box.id }}</div> 
+      </div>
+    </div>
     </div>
   </div>
-</div>
-  </div>
+  
 </div>
 </template>
 
 <script>
+import DisplayField from './DisplayField.vue'
+import InputField from './InputField.vue'
 export default {
   props: ['boxes'],
   methods: {
-  removeBox(index) {
-    this.$emit('boxRemoved', index)
+    removeBox(index) {
+      this.$emit('boxRemoved', index)
+    },
+  },
+    components: {
+    DisplayField,
+    InputField
   }
-}
 }
 </script>
 
