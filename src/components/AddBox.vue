@@ -96,7 +96,6 @@ export default {
   data() {
     return {
       clientName: '',
-      clientName: '',
       confirmed: '',
       briefType: '',
       setStatus: '',
@@ -110,10 +109,11 @@ export default {
   },
   methods: {
       addBox() {
-        tableBus.$emit('addBox',
+        /*tableBus.$emit('addBox',
         this.clientName, this.confirmed, this.briefType, this.setStatus, 
         this.whoFor, this.whoWith, this.startDate, this.meetDate, this.deadline,
-        this.delDate, this.inputEntry)
+        this.delDate)*/
+        tableBus.addBox(this.clientName, this.confirmed)
         this.restart()
       },
       restart() {

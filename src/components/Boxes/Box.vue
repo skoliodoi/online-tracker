@@ -14,7 +14,8 @@
 
     <div :id="'collapse-'+box.id" class="collapse" :aria-labelledby="'heading'+box.id" :data-parent="'#accordion'+box.id">
         <div class="card-body">
-          {{ box.whoFor }}
+          <label>Confirmed?</label>
+          {{ box.confirmed }}
         </div>
         <div class="card-body">{{ box.id }}</div> 
         

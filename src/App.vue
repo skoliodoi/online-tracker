@@ -36,12 +36,12 @@
       }
     },
     created(){
-      tableBus.$on("addBox",(name, who)=>{
+      tableBus.$on("addBox",(name, confirmed)=>{
         this.boxesVisible = true;
         this.boxContents.push({
           id: this.id += 1,
           clientName: name,
-          whoFor: who
+          confirmed,
         })
       })
     }
