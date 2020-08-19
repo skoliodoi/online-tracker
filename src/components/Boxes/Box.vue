@@ -18,13 +18,14 @@
             {{ box.confirmed }}
           </div>
           
-          <component :is="selectedField">
-            <display-field
-            :name="box.clientName"
-            style="cursor: pointer" 
-            @click.native="selectedField='InputField'">
-            </display-field>
-          </component>
+          <display-field>
+            {{ box.confirmed }}
+          </display-field>
+
+          <display-field> 
+            {{ box.clientName }}
+          </display-field>
+        
           
           <div class="card-body">{{ box.id }}</div> 
       </div>
@@ -42,13 +43,16 @@ export default {
   props: ['boxes'],
   data() {
     return {
-      selectedField: DisplayField
+      isEditable: false
     }
   },
   methods: {
     removeBox(index) {
       this.$emit('boxRemoved', index)
     },
+    makeEditable(data) {
+      this.isEditable = data;
+    }
   },
     components: {
     DisplayField,
