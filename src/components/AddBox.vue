@@ -113,7 +113,7 @@ export default {
         this.clientName, this.confirmed, this.briefType, this.setStatus, 
         this.whoFor, this.whoWith, this.startDate, this.meetDate, this.deadline,
         this.delDate)*/
-        tableBus.addBox(this.clientName, this.confirmed)
+        tableBus.addBox(this.clientName, this.confirmed, this.whoFor)
         this.restart()
       },
       restart() {

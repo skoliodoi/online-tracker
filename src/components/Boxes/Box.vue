@@ -18,12 +18,19 @@
             {{ box.confirmed }}
           </div>
           
-          <display-field>
+          <display-field
+          :bool="true">
             {{ box.confirmed }}
           </display-field>
 
-          <display-field> 
-            {{ box.clientName }}
+          <display-field
+          :bool="false"
+          :displayValue="box.clientName"> 
+          </display-field>
+
+          <display-field
+          :bool="false"
+          :displayValue="box.whoFor"> 
           </display-field>
         
           
@@ -50,9 +57,6 @@ export default {
     removeBox(index) {
       this.$emit('boxRemoved', index)
     },
-    makeEditable(data) {
-      this.isEditable = data;
-    }
   },
     components: {
     DisplayField,

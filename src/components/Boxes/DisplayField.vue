@@ -3,26 +3,34 @@
   <div class="visible" 
   v-if="!isEditable"
   @click="makeEditable">
-    <slot> 
-    </slot>
+    <slot> {{ display }}</slot>
   </div>
   <div v-else>
-    <p>EDITABLE</p>
+    <button @click="makeEditable">click</button>
   </div>
 </div>
 </template>
 
 <script>
+import InputField from './InputField.vue'
 export default {
   data() {
     return {
-      isEditable: false
+      isEditable: this.bool,
+      display: this.displayValue
     }
   },
-  props: ["name"],
+  props: ["bool", "displayValue"],
+  components: {
+    inputField: InputField
+  },
   methods: {
     makeEditable() {
-      this.isEditable = true
+      this.isEditable = !this.isEditable
+      console.log(this.isEditable)
+    },
+    changeToEdited() {
+      this.$emit("fieldEdited", this.inputValue)
     }
   }
 }

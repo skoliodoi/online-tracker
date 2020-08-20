@@ -38,12 +38,13 @@
       }
     },
     created(){
-      tableBus.$on("addBox",(name, confirmed)=>{
+      tableBus.$on("addBox",(name, confirmed, whoFor)=>{
         this.boxesVisible = true;
         this.boxContents.push({
           id: this.id += 1,
           clientName: name,
           confirmed,
+          whoFor
         })
       })
     }
