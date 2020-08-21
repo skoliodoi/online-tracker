@@ -14,7 +14,6 @@
 </template>
 
 <script>
-import InputField from './InputField.vue'
 export default {
   data() {
     return {
@@ -24,9 +23,6 @@ export default {
     }
   },
   props: ["bool", "displayValue"],
-  components: {
-    inputField: InputField
-  },
   methods: {
     makeEditable() {
       this.isEditable = !this.isEditable

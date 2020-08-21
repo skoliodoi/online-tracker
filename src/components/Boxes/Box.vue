@@ -15,27 +15,31 @@
       <div :id="'collapse-'+box.id" class="collapse" :aria-labelledby="'heading'+box.id" :data-parent="'#accordion'+box.id">
           <div class="card-body">
             <label>Confirmed?</label>
-              <display-field
+              <display-input-field
               :bool="false"
               :displayValue="box.confirmed">
-              </display-field>
+              </display-input-field>
           </div>
           <div class="card-body">
-            <display-field
+            <display-input-field
             :bool="false"
             :displayValue="box.clientName"> 
-            </display-field>
+            </display-input-field>
+          </div>
+
+          <div class="card-body">
+            <display-input-field
+            :bool="false"
+            :displayValue="box.startDate"> 
+            </display-input-field>
           </div>
 
           <div class="card-body">
             <label>GC Client:</label>
-            <display-field
+            <display-input-field
             :bool="true">
-            </display-field>
+            </display-input-field>
           </div>
-          
-
-        
           
           <div class="card-body">{{ box.id }}</div> 
       </div>
@@ -47,8 +51,7 @@
 </template>
 
 <script>
-import DisplayField from './DisplayField.vue'
-import InputField from './InputField.vue'
+import DisplayInputField from './DisplayInputField.vue'
 export default {
   props: ['boxes'],
   data() {
@@ -62,8 +65,7 @@ export default {
     },
   },
     components: {
-    DisplayField,
-    InputField
+    DisplayInputField,
   }
 }
 </script>
