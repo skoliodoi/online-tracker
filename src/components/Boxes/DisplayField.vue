@@ -6,7 +6,9 @@
     <slot> {{ display }}</slot>
   </div>
   <div v-else>
-    <button @click="makeEditable">click</button>
+    <input 
+    v-model="newDisplay"
+    v-on:keyup.enter="changeDisplay">
   </div>
 </div>
 </template>
@@ -17,7 +19,8 @@ export default {
   data() {
     return {
       isEditable: this.bool,
-      display: this.displayValue
+      display: this.displayValue,
+      newDisplay: ''
     }
   },
   props: ["bool", "displayValue"],
@@ -27,10 +30,11 @@ export default {
   methods: {
     makeEditable() {
       this.isEditable = !this.isEditable
-      console.log(this.isEditable)
+      this.newDisplay = this.display
     },
-    changeToEdited() {
-      this.$emit("fieldEdited", this.inputValue)
+    changeDisplay() {
+      this.isEditable = !this.isEditable
+      this.display = this.newDisplay
     }
   }
 }

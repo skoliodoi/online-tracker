@@ -15,23 +15,26 @@
       <div :id="'collapse-'+box.id" class="collapse" :aria-labelledby="'heading'+box.id" :data-parent="'#accordion'+box.id">
           <div class="card-body">
             <label>Confirmed?</label>
-            {{ box.confirmed }}
+              <display-field
+              :bool="false"
+              :displayValue="box.confirmed">
+              </display-field>
+          </div>
+          <div class="card-body">
+            <display-field
+            :bool="false"
+            :displayValue="box.clientName"> 
+            </display-field>
+          </div>
+
+          <div class="card-body">
+            <label>GC Client:</label>
+            <display-field
+            :bool="true">
+            </display-field>
           </div>
           
-          <display-field
-          :bool="true">
-            {{ box.confirmed }}
-          </display-field>
 
-          <display-field
-          :bool="false"
-          :displayValue="box.clientName"> 
-          </display-field>
-
-          <display-field
-          :bool="false"
-          :displayValue="box.whoFor"> 
-          </display-field>
         
           
           <div class="card-body">{{ box.id }}</div> 

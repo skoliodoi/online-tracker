@@ -38,13 +38,18 @@
       }
     },
     created(){
-      tableBus.$on("addBox",(name, confirmed, whoFor)=>{
+      tableBus.$on("addBox",(clientName, confirmed, briefType, setStatus, whoFor, whoWith, startDate, meetDate, deadline, delDate)=>{
         this.boxesVisible = true;
         this.boxContents.push({
           id: this.id += 1,
-          clientName: name,
+          clientName,
           confirmed,
-          whoFor
+          whoFor,
+          whoWith,
+          startDate,
+          meetDate,
+          deadline,
+          delDate
         })
       })
     }

@@ -12,9 +12,7 @@
             <div>
               <label for="confirmed">Confirmed?</label>
               <select v-model="confirmed" name="confirmed" id="confirmed">
-                <option value="blank"></option>
-                <option value="Yes">Yes</option>
-                <option value="No">No</option>
+                <option v-for="each in confirmedList">{{ each }}</option>
               </select>
             </div>
 
@@ -23,9 +21,7 @@
               <select v-model="briefType" 
               name="briefSelection" 
               id="briefSelection">
-                <option value=""></option>
-                <option value="Client">Client</option>
-                <option value="Carrier">Carrier</option>
+                <option v-for="brief in briefList">{{ brief }}</option>
               </select>
             </div>
 
@@ -73,9 +69,7 @@
             <div>
               <label for="setStatus">Set status:</label>
               <select v-model="setStatus" name="setStatus" id="setStatus">
-                <option value=""></option>
-                <option value="In progress">In progress</option>
-                <option value="Pending">Pending</option>
+                <option v-for="(status, index) in statusList" :key=index>{{ status }}</option>
               </select>
             </div>
           </section>
@@ -95,6 +89,9 @@ import { tableBus } from '../main.js'
 export default {
   data() {
     return {
+      confirmedList: ["Yes", "No"],
+      briefList: ["Client", "Carrier"],
+      statusList: ["In Progress", "Pending"],
       clientName: '',
       confirmed: '',
       briefType: '',
@@ -113,7 +110,7 @@ export default {
         this.clientName, this.confirmed, this.briefType, this.setStatus, 
         this.whoFor, this.whoWith, this.startDate, this.meetDate, this.deadline,
         this.delDate)*/
-        tableBus.addBox(this.clientName, this.confirmed, this.whoFor)
+        tableBus.addBox(this.clientName, this.confirmed, this.briefType, this.setStatus, this.whoFor, this.whoWith, this.startDate, this.meetDate, this.deadline, this.delDate)
         this.restart()
       },
       restart() {
