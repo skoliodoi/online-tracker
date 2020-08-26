@@ -1,6 +1,7 @@
 <template>
 <div>
   <box-grid>
+    <input type="text">
     <app-box 
     :boxes="boxContents"
     @boxRemoved="removeBox"
@@ -22,7 +23,22 @@
       return {
         id: 0,
         boxesVisible: false,
-        boxContents: []
+        boxContents: [{
+          clientName: 'Godzilla',
+          id: 1,
+        },
+        {
+          clientName: 'Ghidora',
+          id: 2,
+        },
+        {
+          clientName: 'Mothra',
+          id: 3,  
+        },
+        {
+          clientName: 'Rodan',
+          id: 4,  
+        },]
       }
     },
     components: {
