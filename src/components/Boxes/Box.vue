@@ -6,7 +6,7 @@
       <div class="card-header" :id="'heading'+box.id">
         <div class="test-style">
           <button class="btn btn-link container text-left" type="button" data-toggle="collapse" :data-target="'#collapse-'+box.id" aria-expanded="false" :aria-controls="'collapse-'+box.id">
-            {{ box.clientName }} {{ index }}
+            {{ box.clientName }}
           </button>
           <button class="btn btn-link text-right" @click="removeBox(box.id)">X</button>
         </div>

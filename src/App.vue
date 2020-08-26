@@ -56,7 +56,7 @@
     },
     methods: {
       removeBox(idNumber) {
-        var deleteBox = this.boxContents.map(function(item) {
+        const deleteBox = this.boxContents.map((item) => {
           return item.id
         }).indexOf(idNumber)
         if (confirm("Are you sure you want to remove this component?")) {
