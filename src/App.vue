@@ -1,9 +1,9 @@
 <template>
 <div>
   <box-grid>
-    <input type="text">
+    <input v-model="searchForBox">
     <app-box 
-    :boxes="boxContents"
+    :boxes="filterBoxes"
     @boxRemoved="removeBox"
     >
     </app-box>
@@ -23,6 +23,7 @@
       return {
         id: 0,
         boxesVisible: false,
+        searchForBox: '',
         boxContents: [{
           clientName: 'Godzilla',
           id: 1,
@@ -39,6 +40,13 @@
           clientName: 'Rodan',
           id: 4,  
         },]
+      }
+    },
+    computed: {
+      filterBoxes() {
+        return this.boxContents.filter((element) => {
+          return element.clientName.match(this.searchForBox)
+        })
       }
     },
     components: {
