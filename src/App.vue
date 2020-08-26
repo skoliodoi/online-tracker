@@ -1,7 +1,15 @@
 <template>
 <div>
+  <div class="container">
+    <input 
+    placeholder="Search for the client"
+    v-model="searchForBox">
+    <select v-model="searchForBox">
+      <option value="" selected disabled hidden>Choose here</option>
+      <option v-for="each in boxContents">{{ each.clientName }}</option>
+    </select>
+  </div>
   <box-grid>
-    <input v-model="searchForBox">
     <app-box 
     :boxes="filterBoxes"
     @boxRemoved="removeBox"
