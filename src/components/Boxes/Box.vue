@@ -6,9 +6,9 @@
       <div class="card-header" :id="'heading'+box.id">
         <div class="test-style">
           <button class="btn btn-link container text-left" type="button" data-toggle="collapse" :data-target="'#collapse-'+box.id" aria-expanded="false" :aria-controls="'collapse-'+box.id">
-            {{ box.clientName }}
+            {{ box.clientName }} {{ index }}
           </button>
-          <button class="btn btn-link text-right" @click="removeBox(index)">X</button>
+          <button class="btn btn-link text-right" @click="removeBox(box.id)">X</button>
         </div>
       </div>
       
@@ -60,8 +60,8 @@ export default {
     }
   },
   methods: {
-    removeBox(index) {
-      this.$emit('boxRemoved', index)
+    removeBox(idNumber) {
+      this.$emit('boxRemoved', idNumber)
     },
   },
     components: {

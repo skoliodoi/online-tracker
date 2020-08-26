@@ -26,19 +26,19 @@
         searchForBox: '',
         boxContents: [{
           clientName: 'Godzilla',
-          id: 1,
+          id: 111,
         },
         {
           clientName: 'Ghidora',
-          id: 2,
+          id: 112,
         },
         {
           clientName: 'Mothra',
-          id: 3,  
+          id: 113,  
         },
         {
           clientName: 'Rodan',
-          id: 4,  
+          id: 114,  
         },]
       }
     },
@@ -55,9 +55,12 @@
       addBox: AddBox,
     },
     methods: {
-      removeBox(index) {
+      removeBox(idNumber) {
+        var deleteBox = this.boxContents.map(function(item) {
+          return item.id
+        }).indexOf(idNumber)
         if (confirm("Are you sure you want to remove this component?")) {
-          this.boxContents.splice(index, 1)
+          this.boxContents.splice(deleteBox, 1)
         }
       }
     },
