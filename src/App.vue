@@ -8,6 +8,7 @@
       <option value="" selected disabled hidden>Choose here</option>
       <option v-for="each in boxContents">{{ each.clientName }}</option>
     </select>
+    <add-box></add-box>
   </div>
   <box-grid>
     <app-box 
@@ -16,7 +17,7 @@
     >
     </app-box>
   </box-grid>
-  <add-box></add-box>
+  
   
 </div>
 </template>
