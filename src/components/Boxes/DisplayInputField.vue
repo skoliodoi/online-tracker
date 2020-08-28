@@ -6,7 +6,8 @@
     <slot> {{ display }}</slot>
   </div>
   <div v-else>
-    <input 
+    <input
+    class="small" 
     v-model="newDisplay"
     v-on:keyup.enter="changeDisplay">
   </div>
@@ -38,9 +39,10 @@ export default {
 
 <style scoped>
   .visible {
-    height: auto;
-    width: 450px;
     border: 1px solid red;
+  }
+  .small {
+    width: 75%;
   }
 
 </style>

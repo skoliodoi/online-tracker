@@ -1,5 +1,5 @@
 <template>
-<div class="container">
+<div class="visible">
   <slot></slot>
 </div>
 </template>
@@ -11,5 +11,8 @@ export default {
 </script>
 
 <style  scoped>
-
+  .visible {
+      border: 1px solid red;
+     
+    }
 </style>

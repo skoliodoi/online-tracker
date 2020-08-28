@@ -70,6 +70,7 @@
         if (confirm("Are you sure you want to remove this component?")) {
           this.boxContents.splice(deleteBox, 1)
         }
+        this.searchForBox = ''
       }
     },
     created(){
@@ -79,6 +80,8 @@
           id: this.id += 1,
           clientName,
           confirmed,
+          briefType,
+          setStatus,
           whoFor,
           whoWith,
           startDate,
