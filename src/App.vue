@@ -18,7 +18,9 @@
     >
     </app-box>
   </box-grid>
-  <add-box v-if="boxesVisible"></add-box>
+  <add-box 
+  v-if="boxesVisible"
+  @addingCanceled="cancelBox"></add-box>
   
 </div>
 </template>
@@ -101,6 +103,9 @@
           this.boxContents.splice(deleteBox, 1)
         }
         this.searchForBox = ''
+      },
+      cancelBox(value) {
+        this.boxesVisible = value;
       }
     },
     created(){

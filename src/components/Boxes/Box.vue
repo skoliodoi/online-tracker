@@ -14,7 +14,7 @@
                 :aria-controls="'collapse-'+box.id"
               >{{ box.clientName }}</button>
               <p>Days till meeting:</p>
-              <button class="btn btn-link text-right" @click="removeBox(box.id)">X</button>
+              <button class="btn btn-danger text-right" @click="removeBox(box.id)">X</button>
             </div>
           </div>
 
