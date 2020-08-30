@@ -1,32 +1,32 @@
 <template>
   <div class="container">
-  <p>
-    <button class="btn btn-outline-dark" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-      Add new
-    </button>
-  </p>
-    <div class="collapse" id="collapseExample">
       <div class="control">
         <div class='add-fields'>
           <section>
-            <div>
-              <label for="confirmed">Confirmed?</label>
+            <div class="visible"> 
+              <form class="">  
+              <label>Confirmed?</label>
               <select v-model="confirmed" name="confirmed" id="confirmed">
                 <option v-for="each in confirmedList">{{ each }}</option>
               </select>
+              </form> 
+            </div>
+
+            <div class="square-hammer"></div>
+
+            <div>
+              <form class="form-group">
+                <label for="briefSelection">Brief type:</label>
+                <select v-model="briefType" 
+                name="briefSelection" 
+                id="briefSelection">
+                  <option v-for="brief in briefList">{{ brief }}</option>
+                </select>
+              </form>
             </div>
 
             <div>
-              <label for="briefSelection">Brief type:</label>
-              <select v-model="briefType" 
-              name="briefSelection" 
-              id="briefSelection">
-                <option v-for="brief in briefList">{{ brief }}</option>
-              </select>
-            </div>
-
-            <div>
-              <form>
+              <form class="form-group">
                 <label>Client name:</label>
                 <input v-model="clientName" type="text">
               </form>
@@ -81,7 +81,6 @@
         </div>
       </div>
     </div>
-  </div>
 </template>
 
 <script>
@@ -168,6 +167,19 @@ export default {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+.square-hammer {
+  height: 100px;
+  width: 100px;
+  background-color:midnightblue;
+  z-index: 1;
+  position: absolute;
+}
+
+.visible {
+  border: 1px solid red;
+  z-index: 0;
+  position: relative;
 }
 
 </style>
