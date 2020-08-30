@@ -8,16 +8,17 @@
       <option value="" selected disabled hidden>Choose here</option>
       <option v-for="each in boxContents">{{ each.clientName }}</option>
     </select>
-    <add-box></add-box>
+    <button class="btn btn-success"
+    @click="boxesVisible=true">Add New Box</button>
   </div>
-  <box-grid>
+  <box-grid class="box-grid">
     <app-box 
     :boxes="filterBoxes"
     @boxRemoved="removeBox"
     >
     </app-box>
   </box-grid>
-  
+  <add-box v-if="boxesVisible"></add-box>
   
 </div>
 </template>
@@ -75,7 +76,7 @@
         },
         {
           clientName: 'Megatron',
-          id: 114,  
+          id: 121,  
         }]
       }
     },
@@ -123,6 +124,6 @@
   }
 </script>
 
-<style lang="scss">
+<style scoped>
 
 </style>
