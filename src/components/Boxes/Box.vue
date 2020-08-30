@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="container-fluid" v-for="(box, index) in boxes" :key="box.id">
+    <div v-for="(box, index) in boxes" :key="box.id">
       <div class="accordion" :id="'accordion'+box.id">
         <div class="card">
           <div class="card-header" :id="'heading'+box.id">

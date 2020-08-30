@@ -178,8 +178,7 @@ export default {
 
 .visible {
   border: 1px solid red;
-  z-index: 0;
-  position: relative;
+ 
 }
 
 </style>
