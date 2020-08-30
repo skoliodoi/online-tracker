@@ -107,7 +107,7 @@
               <label>Comments</label>
               <textarea style="width: 100%; height: 7em"></textarea>
             </div>
-            <div class="visible">#{{ box.id }}</div>
+            <div class="tiny">#{{ box.id }}</div>
           </div>
         </div>
       </div>
@@ -143,6 +143,7 @@ export default {
   border: 1px solid red;
 }
 .tiny {
-
+  text-align: center;
+  font-size: smaller;
 }
 </style>

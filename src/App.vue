@@ -48,7 +48,35 @@
         {
           clientName: 'Rodan',
           id: 114,  
-        },]
+        },
+        {
+          clientName: 'Gundam',
+          id: 115,  
+        },
+        {
+          clientName: 'EVA-01',
+          id: 116,  
+        },
+        {
+          clientName: 'Totoro',
+          id: 117,  
+        },
+        {
+          clientName: 'Mechagodzilla',
+          id: 118,  
+        },
+        {
+          clientName: 'Bumblebee',
+          id: 119,  
+        },
+        {
+          clientName: 'Optimus Prime',
+          id: 120,  
+        },
+        {
+          clientName: 'Megatron',
+          id: 114,  
+        }]
       }
     },
     computed: {
