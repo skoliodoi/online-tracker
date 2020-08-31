@@ -47,7 +47,7 @@ export default {
   data() {
     return {
       id: 0,
-      boxesVisible: false,
+      boxesVisible: true,
       searchForBox: "",
       boxContents: [
         {
