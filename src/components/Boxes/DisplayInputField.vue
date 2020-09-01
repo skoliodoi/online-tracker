@@ -7,7 +7,7 @@
   </div>
   <div v-else>
     <input
-    class="small" 
+    class="form-control" 
     v-model="newDisplay"
     v-on:keyup.enter="changeDisplay">
   </div>

@@ -1,7 +1,7 @@
 <template>
   <div>
-    <div style="padding-top: 54px">
-      <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+    <div style="padding-top: 100px">
+      <nav style="height: 100px" class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav">
             <li class="nav-item">
@@ -47,7 +47,7 @@ export default {
   data() {
     return {
       id: 0,
-      boxesVisible: true,
+      boxesVisible: false,
       searchForBox: "",
       boxContents: [
         {
