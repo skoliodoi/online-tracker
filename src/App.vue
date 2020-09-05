@@ -143,7 +143,7 @@ export default {
         delDate
       ) => {
         this.boxesVisible = true;
-        this.boxContents.push({
+        this.boxContents.unshift({
           id: (this.id += 1),
           clientName,
           confirmed,

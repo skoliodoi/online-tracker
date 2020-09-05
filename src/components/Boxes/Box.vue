@@ -1,6 +1,7 @@
 <template>
   <div>
-    <div v-for="(box, index) in boxes" :key="box.id">
+    <transition-group name="slide" mode="in-out">
+    <div v-for="box in boxes" :key="box.id">
       <div class="accordion" :id="'accordion'+box.id">
         <div class="card">
           <div class="card-header" :id="'heading'+box.id">
@@ -112,6 +113,7 @@
         </div>
       </div>
     </div>
+    </transition-group>
   </div>
 </template>
 
@@ -136,14 +138,42 @@ export default {
 </script>
 
 <style  scoped>
-.test-style {
-  display: flex;
-}
-.visible {
-  border: 1px solid red;
-}
-.tiny {
-  text-align: center;
-  font-size: smaller;
-}
+  .test-style {
+    display: flex;
+  }
+  .visible {
+    border: 1px solid red;
+  }
+  .tiny {
+    text-align: center;
+    font-size: smaller;
+  }
+  .slide-enter {
+
+  }
+  .slide-enter-active {
+    animation: slide-in 0.5s ease-out forwards;
+  }
+  .slide-leave {
+
+  }
+  .slide-leave-active {
+    animation: slide-out 0.5s ease-out forwards;
+  }
+
+  @keyframes slide-in {
+    from {
+      transform: translateY(90px);
+    } to {
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes slide-out {
+    from {
+      transform: translateX(0);
+    } to {
+      transform: translateX(100%);
+    }
+  }
 </style>
