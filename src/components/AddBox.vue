@@ -216,7 +216,7 @@ export default {
   top: 0;
   left: 0;
   z-index: 2;
-  opacity: 0.5;
+  opacity: 0.75;
 }
 
 .add-box {

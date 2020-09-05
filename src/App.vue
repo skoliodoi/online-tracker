@@ -1,11 +1,11 @@
 <template>
-  <div>
+  <div :class="{'greenBod': divBackground, 'redBod': !divBackground}">
     <div style="padding-top: 100px">
       <nav style="height: 100px" class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <button class="btn btn-success" @click="boxesVisible=true">Add New Box</button>
+              <button class="btn btn-success" @click="boxesVisible=true, divBackground=true">Add New Box</button>
             </li>
           </ul>
           <form class="form-inline mx-auto my-2 my-lg-0">
@@ -47,6 +47,7 @@ export default {
   data() {
     return {
       id: 0,
+      divBackground: true,
       boxesVisible: false,
       searchForBox: "",
       boxContents: [
@@ -119,6 +120,7 @@ export default {
         this.boxContents.splice(deleteBox, 1);
       }
       this.refreshInput();
+      this.divBackground = false;
     },
     cancelBox(value) {
       this.boxesVisible = value;
@@ -165,6 +167,14 @@ export default {
 <style scoped>
 .visible {
   border: 1px solid red;
- 
 }
+
+.greenBod {
+  background: green;
+}
+
+.redBod {
+  background: red;
+}
+
 </style>

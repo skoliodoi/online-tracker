@@ -1,6 +1,6 @@
 <template>
   <div>
-    <transition-group name="slide" mode="in-out">
+    <transition-group name="slide" mode="out-in">
     <div v-for="box in boxes" :key="box.id">
       <div class="accordion" :id="'accordion'+box.id">
         <div class="card">
@@ -152,20 +152,22 @@ export default {
 
   }
   .slide-enter-active {
-    animation: slide-in 0.5s ease-out forwards;
+    animation: slide-in 0.7s ease-out forwards;
   }
   .slide-leave {
 
   }
   .slide-leave-active {
-    animation: slide-out 0.5s ease-out forwards;
+    animation: slide-out 0.7s ease-out forwards;
   }
+
+
 
   @keyframes slide-in {
     from {
-      transform: translateY(90px);
+      transform: translateX(-100%);
     } to {
-      transform: translateY(0);
+      transform: translateX(0);
     }
   }
 
@@ -173,7 +175,7 @@ export default {
     from {
       transform: translateX(0);
     } to {
-      transform: translateX(100%);
+      transform: translateX(-100%);
     }
   }
 </style>
