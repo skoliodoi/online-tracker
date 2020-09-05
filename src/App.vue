@@ -170,11 +170,11 @@ export default {
 }
 
 .greenBod {
-  background: green;
+  background: #6A8D73;
 }
 
-.redBod {
-  background: red;
+.redBod { 
+  background: #F25F5C;
 }
 
 </style>
