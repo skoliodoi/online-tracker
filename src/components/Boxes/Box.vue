@@ -4,18 +4,25 @@
     <div v-for="box in boxes" :key="box.id">
       <div class="accordion" :id="'accordion'+box.id">
         <div class="card">
-          <div class="card-header" :id="'heading'+box.id">
-            <div class="test-style">
+          <div class="card-header bg-light" :id="'heading'+box.id">
+            <div style="display: flex">
+              <p class="triangle-bottom"></p>
               <button
-                class="btn btn-link container-fluid text-left"
+                class="btn btn-outline-dark container text-left"
+                style="border: none"
                 type="button"
                 data-toggle="collapse"
                 :data-target="'#collapse-'+box.id"
                 aria-expanded="false"
                 :aria-controls="'collapse-'+box.id"
               >{{ box.clientName }}</button>
-              <p>Days till meeting:</p>
-              <button class="btn btn-danger text-right" @click="removeBox(box.id)" v-html="'<strong>X</strong>'"></button>
+              <div class="container visible text-left my-auto">
+                <p class="my-auto">Days till meeting: 20</p>
+              </div>
+              <div class="container visible text-left my-auto">
+                <p class="my-auto">Progress:</p>
+              </div>
+              <button class="btn btn-danger text-right ml-5" @click="removeBox(box.id)" v-html="'<strong>X</strong>'"></button>
             </div>
           </div>
 
@@ -104,7 +111,7 @@
                 </div>
               </div>
             </div>
-            <div>
+            <div class="card-body">
               <label>Comments</label>
               <textarea style="width: 100%; height: 7em"></textarea>
             </div>
