@@ -5,8 +5,11 @@
       <div class="accordion" :id="'accordion'+box.id">
         <div class="card">
           <div class="card-header bg-light" :id="'heading'+box.id">
-            <div style="display: flex">
-              <p class="triangle-bottom"></p>
+            <div style="display: flex;">
+              <div class="my-auto">
+                <div class="arrow btn btn-outline-dark">
+                </div>
+              </div>
               <button
                 class="btn btn-outline-dark container text-left"
                 style="border: none"
@@ -145,6 +148,13 @@ export default {
 </script>
 
 <style  scoped>
+  .arrow {
+    height: 25px;
+    width: 25px;
+    border: 1px solid black;
+    transform: rotate(45deg);
+  }
+
   .test-style {
     display: flex;
   }
