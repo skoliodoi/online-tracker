@@ -26,7 +26,7 @@
               class="btn btn-outline-light my-2 my-sm-0"
               type="submit"
               @click.prevent="refreshInput"
-            >Refresh</button>
+            >Clear</button>
           </form>
           <button class="btn btn-danger">Log out</button>
         </div>

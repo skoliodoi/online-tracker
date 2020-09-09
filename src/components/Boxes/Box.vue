@@ -22,10 +22,10 @@
                   style="border: none"
                   type="button"
                 >{{ box.clientName }}</button>
-                <div class="container visible text-left my-auto">
+                <div class="container visible text-left col-2 my-auto">
                   <p class="my-auto">Days till meeting: 20</p>
                 </div>
-                <div class="container visible text-left my-auto">
+                <div class="container visible text-left my-auto col-3">
                   <p class="my-auto">Progress:</p>
                 </div>
                 <button
@@ -171,7 +171,7 @@ export default {
   transform: rotate(45deg) translate(-25%, -25%);
 }
 
-.arrow:hover {
+.quiver:hover .arrow {
   animation: arrow 0.3s ease-out forwards;
 }
 .test-style {
