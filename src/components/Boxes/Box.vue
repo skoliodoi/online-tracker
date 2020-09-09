@@ -4,27 +4,23 @@
       <div v-for="box in boxes" :key="box.id">
         <div class="accordion" :id="'accordion'+box.id">
           <div class="card">
-            <div class="card-header bg-light" :id="'heading'
+            <div class="card-header bg-light" style="display:inline-block" :id="'heading'
             +box.id">
-              <div
-                style="float: left"
-                class=" quiver visible"
-                data-toggle="collapse"
-                :data-target="'#collapse-'+box.id"
-                aria-expanded="false"
-                :aria-controls="'collapse-'+box.id"
-              >
-                <div class="arrow"></div>
-                </div>
               <div class="visible" style="display: flex">
-                <button
-                  class="btn btn-outline-dark container text-left"
-                  style="border: none"
-                  type="button"
+                <div class="col quiver visible"
                   data-toggle="collapse"
                   :data-target="'#collapse-'+box.id"
                   aria-expanded="false"
                   :aria-controls="'collapse-'+box.id"
+                >
+                <div
+                  class="arrow"
+                ></div>
+                </div>
+                <button
+                  class="btn btn-outline-dark container text-left"
+                  style="border: none"
+                  type="button"
                 >{{ box.clientName }}</button>
                 <div class="container visible text-left my-auto">
                   <p class="my-auto">Days till meeting: 20</p>
@@ -160,16 +156,19 @@ export default {
 
 <style  scoped>
 .quiver {
-  height: 100%
+  display: flex;
+  justify-content: center; 
+  align-items:center;
+  cursor: pointer;
 }
 .arrow {
   height: 15px;
   width: 15px;
+  background: transparent;
   border: 2px solid #343a40;
   border-left: transparent;
   border-top: transparent;
-  cursor: pointer;
-  transform: rotate(45deg) translate(0, -50%);
+  transform: rotate(45deg) translate(-25%, -25%);
 }
 
 .arrow:hover {
