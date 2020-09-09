@@ -1,6 +1,6 @@
 <template>
 <div>
-  <div class="visible" 
+  <div class="box-field" 
   v-if="!isEditable"
   @click="makeEditable">
     <slot> {{ display }}</slot>
@@ -38,6 +38,13 @@ export default {
 </script>
 
 <style scoped>
+  .box-field {
+    cursor: pointer;
+  }
+  .box-field:hover {
+    background: crimson;
+    cursor: pointer;
+  }
   .visible {
     border: 1px solid red;
   }

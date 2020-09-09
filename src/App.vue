@@ -1,5 +1,5 @@
 <template>
-  <div :class="{'greenBod': divBackground, 'redBod': !divBackground}">
+  <div :class="{'redBod': redBackground}">
     <div style="padding-top: 100px">
       <nav style="height: 100px" class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -47,7 +47,8 @@ export default {
   data() {
     return {
       id: 0,
-      divBackground: true,
+      greenBackground: false,
+      redBackground: false,
       boxesVisible: false,
       searchForBox: "",
       boxContents: [
@@ -117,10 +118,14 @@ export default {
         })
         .indexOf(idNumber);
       if (confirm("Are you sure you want to remove this component?")) {
-        this.boxContents.splice(deleteBox, 1);
+        this.redBackground = true;
+        this.boxContents.splice(deleteBox, 1)
+        setTimeout(() => {
+          this.redBackground = false;
+        },1000)
       }
       this.refreshInput();
-      this.divBackground = false;
+     
     },
     cancelBox(value) {
       this.boxesVisible = value;

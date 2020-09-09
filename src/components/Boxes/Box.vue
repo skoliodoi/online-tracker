@@ -47,7 +47,9 @@
                   <div id="col-one" class="col-sm">
                     <div class="card-body">
                       <label>Confirmed?</label>
-                      <display-input-field :bool="false" :displayValue="box.confirmed"></display-input-field>
+                      <display-input-field 
+                      
+                      :bool="false" :displayValue="box.confirmed"></display-input-field>
 
                       <label>Type:</label>
                       <display-input-field :bool="false" :displayValue="box.briefType"></display-input-field>
@@ -155,6 +157,7 @@ export default {
 </script>
 
 <style  scoped>
+
 .quiver {
   display: flex;
   justify-content: center; 
@@ -169,10 +172,11 @@ export default {
   border-left: transparent;
   border-top: transparent;
   transform: rotate(45deg) translate(-25%, -25%);
+  animation: arrow-out 0.3s ease-out forwards;
 }
 
 .quiver:hover .arrow {
-  animation: arrow 0.3s ease-out forwards;
+  animation: arrow-in 0.3s ease-out forwards;
 }
 .test-style {
   display: flex;
@@ -193,6 +197,11 @@ export default {
 }
 .slide-leave-active {
   animation: slide-out 0.7s ease-out forwards;
+  position: absolute;
+}
+
+.slide-move {
+  transition: transform 1s;
 }
 
 @keyframes slide-in {
@@ -213,7 +222,7 @@ export default {
   }
 }
 
-@keyframes arrow {
+@keyframes arrow-in {
   from {
     border: 1px solid black;
     border-left: transparent;
@@ -227,6 +236,22 @@ export default {
     border-top: transparent;
     height: 20px;
     width: 20px;
+  }
+}
+@keyframes arrow-out {
+  from {
+    border: 5px solid black;
+    border-left: transparent;
+    border-top: transparent;
+    height: 20px;
+    width: 20px;
+  }
+  to {
+    border: 1px solid black;
+    border-left: transparent;
+    border-top: transparent;
+    height: 15px;
+    width: 15px;
   }
 }
 </style>
