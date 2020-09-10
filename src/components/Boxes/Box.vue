@@ -17,11 +17,11 @@
                   class="arrow"
                 ></div>
                 </div>
-                <button
+                <display-input-field
                   class="btn btn-outline-dark container text-left"
                   style="border: none"
-                  type="button"
-                >{{ box.clientName }}</button>
+                  :displayValue="box.clientName"
+                ></display-input-field>
                 <div class="container visible text-left col-2 my-auto">
                   <p class="my-auto">Days till meeting: 20</p>
                 </div>
@@ -48,7 +48,6 @@
                     <div class="card-body">
                       <label>Confirmed?</label>
                       <display-input-field 
-                      
                       :bool="false" :displayValue="box.confirmed"></display-input-field>
 
                       <label>Type:</label>

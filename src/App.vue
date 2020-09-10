@@ -170,9 +170,9 @@ export default {
 </script>
 
 <style scoped>
-.visible {
+/* .visible {
   border: 1px solid red;
-}
+} */
 
 .greenBod {
   background: #6A8D73;
