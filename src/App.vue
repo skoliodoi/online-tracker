@@ -3,7 +3,7 @@
 </template>
 
 <script>
-  import BoxGridAll from './components/BoxGridAll.vue'
+  import BoxGridAll from './components/BoxGrids/BoxGridAll.vue'
   export default {
     components: {
       'box-grid-all': BoxGridAll
