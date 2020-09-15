@@ -10,7 +10,7 @@
             >Add New Box</button>
           </li>
         </ul>
-        <form class="form-inline mx-auto my-2 my-lg-0">
+        <form class="form-inline mx-auto my-2 my-lg-0 visible">
           <select class="form-control" v-model="searchForBox">
             <option value selected disabled hidden>Choose a client from a dropdown list:</option>
             <option v-for="each in boxes">{{ each.clientName }}</option>
@@ -24,10 +24,30 @@
             v-model="searchForBox"
           />
           <button
-            class="btn btn-outline-light my-2 my-sm-0"
+            class="btn btn-outline-danger my-2 my-sm-0"
             type="submit"
             @click.prevent="refreshInput"
           >Clear</button>
+          <ul class="navbar-nav ml-5">
+             <router-link tag="li" 
+             to="/wip"
+             class="nav-item"><button class="btn btn-outline-light">
+               In Progress
+               </button>
+             </router-link>
+             <router-link tag="li" 
+             to="/complete"
+             class="nav-item"><button class="btn btn-outline-light">
+               Completed
+               </button>
+             </router-link>
+             <router-link tag="li" 
+             to="/"
+             class="nav-item"><button class="btn btn-outline-light">
+               All
+               </button>
+             </router-link>
+          </ul>
         </form>
         <button class="btn btn-danger">Log out</button>
       </div>
@@ -37,6 +57,12 @@
 
 <script>
 export default {
-  props: ['boxes']
-}
+  props: ["boxes"],
+};
 </script>
+
+<style scoped>
+.visible {
+  border: 1px solid red;
+}
+</style>
