@@ -42,9 +42,9 @@
 </template>
 
 <script>
-import { tableBus } from "../main.js";
-import Box from "./Boxes/Box.vue";
-import AddBox from "./AddBox.vue";
+import { tableBus } from "../../main.js";
+import Box from "../Boxes/Box.vue";
+import AddBox from "../AddBox.vue";
 export default {
   data() {
     return {
