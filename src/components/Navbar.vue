@@ -10,26 +10,35 @@
             >Add New Box</button>
           </li>
         </ul>
-
         <form class="form-inline mx-auto my-2 my-lg-0 col-5">
           <ul class="nav nav-pills mr-2">
             <li class="nav-item">
-              <router-link to="/completed" class="nav-link"
-              style="color: white;"
-              active-class="active" exact>Completed</router-link>
+              <router-link
+                to="/completed"
+                class="nav-link"
+                style="color: white;"
+                active-class="active"
+                exact
+              >Completed</router-link>
             </li>
             <li class="nav-item">
-              <router-link to="/wip" class="nav-link"
-              style="color: white;"
-              active-class="active" exact>In Progress</router-link>
+              <router-link
+                to="/wip"
+                class="nav-link"
+                style="color: white;"
+                active-class="active"
+                exact
+              >In Progress</router-link>
             </li>
             <li class="nav-item">
-              <router-link to="/" class="nav-link"
-              style="color: white;"
-              active-class="active" exact>All</router-link>
+              <router-link
+                to="/"
+                class="nav-link"
+                style="color: white;"
+                active-class="active"
+                exact
+              >All</router-link>
             </li>
-
-
           </ul>
           <select class="form-control" v-model="searchForBox">
             <option value selected disabled hidden>Choose a client from a dropdown list:</option>
@@ -52,6 +61,17 @@
         <button class="btn btn-danger">Log out</button>
       </div>
     </nav>
+    <div>
+    <ul class="nav nav-pills">
+      <router-link to="/" tag="li" active-class="active" exact>
+        <a class="nav-link">All</a>
+      </router-link>
+      <router-link to="/wip" tag="li" active-class="active">
+        <a class="nav-link">WIP</a>
+      </router-link>
+      <li class="nav-link" style="color: red">THIS WILL GET DELETED LATER</li>
+    </ul>
+    </div>
   </div>
 </template>
 
@@ -65,6 +85,4 @@ export default {
 .visible {
   border: 1px solid red;
 }
-
-
 </style>
