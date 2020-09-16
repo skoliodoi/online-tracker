@@ -4,6 +4,6 @@ import BoxGridInProgress from './components/BoxGrids/BoxGridInProgress.vue'
 
 export const routes = [
   { path: '', component: BoxGridAll },
-  { path: '/complete', component: BoxGridComplete },
+  { path: '/completed', component: BoxGridComplete },
   { path: '/wip', component: BoxGridInProgress }
 ];
