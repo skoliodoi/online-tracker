@@ -14,7 +14,7 @@
           <ul class="nav nav-pills mr-2">
             <li class="nav-item">
               <router-link
-                to="/completed"
+                :to="{ name: 'complete' }"
                 class="nav-link"
                 style="color: white;"
                 active-class="active"
@@ -23,7 +23,7 @@
             </li>
             <li class="nav-item">
               <router-link
-                to="/wip"
+                :to="{ name: 'wip' }"
                 class="nav-link"
                 style="color: white;"
                 active-class="active"
@@ -32,7 +32,7 @@
             </li>
             <li class="nav-item">
               <router-link
-                to="/"
+                :to="{ name: 'all' }"
                 class="nav-link"
                 style="color: white;"
                 active-class="active"
