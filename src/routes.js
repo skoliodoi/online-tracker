@@ -7,4 +7,5 @@ export const routes = [
   { path: '/all', component: BoxGridAll, name:'all' },
   { path: '/completed', component: BoxGridComplete, name: 'complete' },
   { path: '/wip', component: BoxGridInProgress, name:'wip' },
+  { path: '*', redirect: '/all' }
 ];
