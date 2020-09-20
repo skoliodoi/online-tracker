@@ -12,16 +12,7 @@
         </ul>
         <form class="form-inline mx-auto my-2 my-lg-0 col-5">
           <ul class="nav nav-pills mr-2">
-            <li class="nav-item">
-              <router-link
-                :to="{ name: 'complete' }"
-                class="nav-link"
-                style="color: white;"
-                active-class="active"
-                exact
-              >Completed</router-link>
-            </li>
-            <li class="nav-item">
+               <li class="nav-item">
               <router-link
                 :to="{ name: 'wip' }"
                 class="nav-link"
@@ -30,6 +21,25 @@
                 exact
               >In Progress</router-link>
             </li>
+            <li class="nav-item">
+              <router-link
+                :to="{ name: 'pending' }"
+                class="nav-link"
+                style="color: white;"
+                active-class="active"
+                exact
+              >Pending</router-link>
+            </li>
+            <li class="nav-item">
+              <router-link
+                :to="{ name: 'done' }"
+                class="nav-link"
+                style="color: white;"
+                active-class="active"
+                exact
+              >Done</router-link>
+            </li>
+         
             <li class="nav-item">
               <router-link
                 :to="{ name: 'all' }"

@@ -1,11 +1,12 @@
-import BoxGridAll from './components/BoxGrids/BoxGridAll.vue'
-import BoxGridComplete from './components/BoxGrids/BoxGridComplete.vue'
-import BoxGridInProgress from './components/BoxGrids/BoxGridInProgress.vue'
-
+import BoxesAll from './components/BoxGrids/BoxesAll.vue'
+import BoxesCompleted from './components/BoxGrids/BoxesCompleted.vue'
+import BoxesInProgress from './components/BoxGrids/BoxesInProgress.vue'
+import BoxesPending from './components/BoxGrids/BoxesPending.vue'
 
 export const routes = [
-  { path: '/all', component: BoxGridAll, name:'all' },
-  { path: '/completed', component: BoxGridComplete, name: 'complete' },
-  { path: '/wip', component: BoxGridInProgress, name:'wip' },
+  { path: '/all', component: BoxesAll, name:'all' },
+  { path: '/done', component: BoxesCompleted, name: 'done' },
+  { path: '/wip', component: BoxesInProgress, name:'wip' },
+  { path: '/pending', component: BoxesPending, name:'pending' },
   { path: '*', redirect: '/all' }
 ];
