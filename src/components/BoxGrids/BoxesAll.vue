@@ -10,6 +10,7 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 import { tableBus } from "../../main.js";
 import Box from "../Boxes/Box.vue";
 import AddBox from "../AddBox.vue";
@@ -20,60 +21,15 @@ export default {
       greenBackground: false,
       redBackground: false,
       searchForBox: "",
-      boxContents: [
-        {
-          clientName: "Godzilla",
-          id: 111,
-        },
-        {
-          clientName: "Ghidora",
-          id: 112,
-        },
-        {
-          clientName: "Mothra",
-          id: 113,
-        },
-        {
-          clientName: "Rodan",
-          id: 114,
-        },
-        {
-          clientName: "Gundam",
-          id: 115,
-        },
-        {
-          clientName: "EVA-01",
-          id: 116,
-        },
-        {
-          clientName: "Totoro",
-          id: 117,
-        },
-        {
-          clientName: "Mechagodzilla",
-          id: 118,
-        },
-        {
-          clientName: "Bumblebee",
-          id: 119,
-        },
-        {
-          clientName: "Optimus Prime",
-          id: 120,
-        },
-        {
-          clientName: "Megatron",
-          id: 121,
-        },
-      ],
     };
   },
   computed: {
-    boxesVisible() {
-      return this.$store.getters.boxesVisible
-    },
+    ...mapGetters([
+      'allBoxContents',
+      'boxesVisible'
+    ]),
     filterBoxes() {
-      return this.boxContents.filter((element) => {
+      return this.allBoxContents.filter((element) => {
         return element.clientName.match(this.searchForBox);
       });
     },
@@ -84,14 +40,14 @@ export default {
   },
   methods: {
     removeBox(idNumber) {
-      const deleteBox = this.boxContents
+      const deleteBox = this.allBoxContents
         .map((item) => {
           return item.id;
         })
         .indexOf(idNumber);
       if (confirm("Are you sure you want to remove this component?")) {
         this.redBackground = true;
-        this.boxContents.splice(deleteBox, 1);
+        this.allBoxContents.splice(deleteBox, 1);
         setTimeout(() => {
           this.redBackground = false;
         }, 1000);
@@ -121,7 +77,7 @@ export default {
         delDate
       ) => {
         this.boxesVisible = true;
-        this.boxContents.unshift({
+        this.allBoxContents.unshift({
           id: (this.id += 1),
           clientName,
           confirmed,

@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
+import allBoxes from './modules/allBoxes'
 
 Vue.use(Vuex);
 
@@ -7,6 +8,7 @@ export const store = new Vuex.Store({
   state: {
     text: 'Tu na razie jest ściernisko',
     boxesVisible: false,
+    newText: 'ALE BYNDZIE SANFRANSISKO'
   },
   getters: {
     displayText: state => {
@@ -25,5 +27,8 @@ export const store = new Vuex.Store({
     addBoxDisplay: context => {
       context.commit('addBoxDisplay')
     }
+  },
+  modules: {
+    allBoxes
   }
 });

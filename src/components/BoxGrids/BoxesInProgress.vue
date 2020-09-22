@@ -2,6 +2,8 @@
   <div>
     <h1>This is where the In Progress Boxes will be</h1>
     <p>({{ displayText }})</p>
+    <h3>{{ newText }}</h3>
+
   </div>
 </template>
 
@@ -10,7 +12,9 @@
   export default {
     computed: {
       ...mapGetters([
-        'displayText'
+        'displayText',
+        'newText',
+        'boxContents'
       ])
     }
   }
