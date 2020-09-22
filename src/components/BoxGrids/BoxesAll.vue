@@ -1,7 +1,9 @@
 <template>
   <div :class="{'redBod': redBackground}">
     <div>
-      <app-box :boxes="filterBoxes" @boxRemoved="removeBox"></app-box>
+      <app-box 
+      :boxes="filterBoxes" 
+      @boxRemoved="removeBox"></app-box>
     </div>
     <add-box v-if="boxesVisible" @addingCanceled="cancelBox"></add-box>
   </div>
@@ -17,7 +19,6 @@ export default {
       id: 0,
       greenBackground: false,
       redBackground: false,
-      boxesVisible: false,
       searchForBox: "",
       boxContents: [
         {
@@ -68,6 +69,9 @@ export default {
     };
   },
   computed: {
+    boxesVisible() {
+      return this.$store.getters.boxesVisible
+    },
     filterBoxes() {
       return this.boxContents.filter((element) => {
         return element.clientName.match(this.searchForBox);

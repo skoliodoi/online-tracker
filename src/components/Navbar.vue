@@ -6,7 +6,7 @@
           <li class="nav-item">
             <button
               class="btn btn-success"
-              @click="boxesVisible=true, divBackground=true"
+              @click="addBoxDisplay"
             >Add New Box</button>
           </li>
         </ul>
@@ -87,7 +87,11 @@
 
 <script>
 export default {
-  props: ["boxes"],
+  methods: {
+    addBoxDisplay() {
+      this.$store.dispatch('addBoxDisplay')
+    }
+  }
 };
 </script>
 

@@ -188,7 +188,7 @@ export default {
       this.restart();
     },
     cancelBox() {
-      this.$emit("addingCanceled", false);
+      this.$store.dispatch('addBoxDisplay')
     },
     restart() {
       this.clientName = "";
