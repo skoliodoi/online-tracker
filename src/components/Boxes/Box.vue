@@ -23,7 +23,7 @@
                   :displayValue="box.clientName"
                 ></display-input-field>
                 <div class="container visible text-left col-2 my-auto">
-                  <p class="my-auto">Days till meeting: 20</p>
+                  <p class="my-auto">Days till meeting: {{box.id}}</p>
                 </div>
                 <div class="container visible text-left my-auto col-3">
                   <p class="my-auto">Progress:</p>

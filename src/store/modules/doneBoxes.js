@@ -1,5 +1,6 @@
+import { store } from '../store'
+
 const state = {
-  id: 0,
   doneBoxContents: [
     {
       clientName: "Optimus Prime",
@@ -21,7 +22,7 @@ const getters = {
 const mutations = {
   addInput: (state, payload) => {
     state.doneBoxContents.unshift({
-      id: state.id += 1,
+      id: store.state.id += 1,
       clientName: payload.clientName,
       confirmed: payload.confirmed,
       briefType: payload.briefType,
@@ -37,7 +38,9 @@ const mutations = {
 }
 
 const actions = {
-
+  addInput: ({commit}, payload) => {
+    commit('addInput', payload)
+  }
 }
 
 export default {

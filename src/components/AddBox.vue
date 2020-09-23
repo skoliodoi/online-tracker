@@ -183,7 +183,7 @@
 
 <script>
 import { tableBus } from "../main.js";
-import { mapMutations } from "vuex";
+import { mapActions } from "vuex";
 export default {
   data() {
     return {
@@ -200,7 +200,7 @@ export default {
     };
   },
   methods: {
-    ...mapMutations(["addInput"]),
+    ...mapActions(["addInput"]),
     addNewInput() {
       this.addInput({
               clientName: this.clientName,
