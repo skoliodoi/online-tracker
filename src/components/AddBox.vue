@@ -172,18 +172,7 @@
           <div class="d-flex justify-content-center">
             <button
               class="btn btn-outline-success"
-              @click.prevent="addInput({
-              clientName,
-              confirmed,
-              briefType,
-              setStatus,
-              whoFor,
-              whoWith,
-              startDate,
-              meetDate,
-              deadline,
-              delDate
-              })"
+              @click.prevent="addNewInput"
             >Add</button>
           </div>
         </div>
@@ -212,21 +201,36 @@ export default {
   },
   methods: {
     ...mapMutations(["addInput"]),
-    addBox() {
-      tableBus.addBox(
-        this.clientName,
-        this.confirmed,
-        this.briefType,
-        this.setStatus,
-        this.whoFor,
-        this.whoWith,
-        this.startDate,
-        this.meetDate,
-        this.deadline,
-        this.delDate
-      );
-      this.restart();
+    addNewInput() {
+      this.addInput({
+              clientName: this.clientName,
+              confirmed: this.confirmed,
+              briefType: this.briefType,
+              setStatus: this.setStatus,
+              whoFor: this.whoFor,
+              whoWith: this.whoWith,
+              startDate: this.startDate,
+              meetDate: this.meetDate,
+              deadline: this.deadline,
+              delDate: this.delDate
+              });
+              this.restart();
     },
+    // addBox() {
+    //   tableBus.addBox(
+    //     this.clientName,
+    //     this.confirmed,
+    //     this.briefType,
+    //     this.setStatus,
+    //     this.whoFor,
+    //     this.whoWith,
+    //     this.startDate,
+    //     this.meetDate,
+    //     this.deadline,
+    //     this.delDate
+    //   );
+    //   this.restart();
+    // },
     cancelBox() {
       this.$store.dispatch("addBoxDisplay");
     },
