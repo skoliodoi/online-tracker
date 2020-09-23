@@ -1,11 +1,16 @@
 <template>
   <div>
-    <h1>This is where the Complete Boxes will be</h1>
+   <div v-for="each in doneBoxContents">
+     {{ each.clientName }}
+   </div>
   </div>
 </template>
 
 <script>
-  export default {
-  
-  }
+import { mapGetters } from "vuex";
+export default {
+  computed: {
+    ...mapGetters(["doneBoxContents"]),
+  },
+};
 </script>

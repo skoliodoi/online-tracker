@@ -18,7 +18,11 @@ const getters = {
 }
 
 const mutations = {
-
+  addInput: (state, payload) => {
+    state.doneBoxContents.unshift({
+      clientName: payload.name
+    })
+  }
 }
 
 const actions = {

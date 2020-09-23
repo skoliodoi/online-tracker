@@ -146,7 +146,7 @@
             </div>
           </fieldset>
           <div class="d-flex justify-content-center">
-            <button class="btn btn-outline-success" @click.prevent="addBox">Add</button>
+            <button class="btn btn-outline-success" @click.prevent="addInput({name: 'Henio'})">Add</button>
           </div>
         </div>
       </form>
@@ -156,6 +156,7 @@
 
 <script>
 import { tableBus } from "../main.js";
+import { mapMutations } from "vuex";
 export default {
   data() {
     return {
@@ -172,6 +173,7 @@ export default {
     };
   },
   methods: {
+    ...mapMutations(['addInput']),
     addBox() {
       tableBus.addBox(
         this.clientName,
