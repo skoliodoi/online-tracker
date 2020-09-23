@@ -1,11 +1,8 @@
 <template>
   <div :class="{'redBod': redBackground}">
-    <div>
       <app-box 
       :boxes="filterBoxes" 
       @boxRemoved="removeBox"></app-box>
-    </div>
-    <add-box v-if="boxesVisible" @addingCanceled="cancelBox"></add-box>
   </div>
 </template>
 
@@ -13,7 +10,6 @@
 import { mapGetters } from "vuex";
 import { tableBus } from "../../main.js";
 import Box from "../Boxes/Box.vue";
-import AddBox from "../AddBox.vue";
 export default {
   data() {
     return {
@@ -26,7 +22,6 @@ export default {
   computed: {
     ...mapGetters([
       'allBoxContents',
-      'boxesVisible'
     ]),
     filterBoxes() {
       return this.allBoxContents.filter((element) => {
@@ -36,7 +31,6 @@ export default {
   },
   components: {
     appBox: Box,
-    addBox: AddBox,
   },
   methods: {
     removeBox(idNumber) {

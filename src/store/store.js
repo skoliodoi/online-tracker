@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import allBoxes from './modules/allBoxes'
+import doneBoxes from './modules/doneBoxes'
 
 Vue.use(Vuex);
 
@@ -29,6 +30,7 @@ export const store = new Vuex.Store({
     }
   },
   modules: {
-    allBoxes
+    allBoxes,
+    doneBoxes
   }
 });
