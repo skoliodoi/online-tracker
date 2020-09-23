@@ -1,7 +1,7 @@
 <template>
   <div>
    <div v-for="each in doneBoxContents">
-     {{ each.clientName }}
+     {{ each }}
    </div>
   </div>
 </template>

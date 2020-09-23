@@ -125,28 +125,66 @@
               <div class="col">
                 <div class="form-group">
                   <label>Start date:</label>
-                  <input v-model="startDate" class="form-control" id="startDate" type="date" name="startDate" />
+                  <input
+                    v-model="startDate"
+                    class="form-control"
+                    id="startDate"
+                    type="date"
+                    name="startDate"
+                  />
                 </div>
 
                 <div class="form-group">
                   <label>Meeting date:</label>
-                  <input v-model="meetDate" class="form-control" id="meetDate" type="date" name="meetDate" />
+                  <input
+                    v-model="meetDate"
+                    class="form-control"
+                    id="meetDate"
+                    type="date"
+                    name="meetDate"
+                  />
                 </div>
 
-                <div class="form-group"> 
+                <div class="form-group">
                   <label>Delivery date:</label>
-                  <input v-model="delDate" id="delDate" class="form-control" type="date" name="delDate" />
+                  <input
+                    v-model="delDate"
+                    id="delDate"
+                    class="form-control"
+                    type="date"
+                    name="delDate"
+                  />
                 </div>
 
                 <div class="form-group">
                   <label>OpCo deadline:</label>
-                  <input v-model="deadline" class="form-control" id="deadline" type="date" name="deadline" />
+                  <input
+                    v-model="deadline"
+                    class="form-control"
+                    id="deadline"
+                    type="date"
+                    name="deadline"
+                  />
                 </div>
               </div>
             </div>
           </fieldset>
           <div class="d-flex justify-content-center">
-            <button class="btn btn-outline-success" @click.prevent="addInput({name: 'Henio'})">Add</button>
+            <button
+              class="btn btn-outline-success"
+              @click.prevent="addInput({
+              clientName,
+              confirmed,
+              briefType,
+              setStatus,
+              whoFor,
+              whoWith,
+              startDate,
+              meetDate,
+              deadline,
+              delDate
+              })"
+            >Add</button>
           </div>
         </div>
       </form>
@@ -173,7 +211,7 @@ export default {
     };
   },
   methods: {
-    ...mapMutations(['addInput']),
+    ...mapMutations(["addInput"]),
     addBox() {
       tableBus.addBox(
         this.clientName,
@@ -190,7 +228,7 @@ export default {
       this.restart();
     },
     cancelBox() {
-      this.$store.dispatch('addBoxDisplay')
+      this.$store.dispatch("addBoxDisplay");
     },
     restart() {
       this.clientName = "";
