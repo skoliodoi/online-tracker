@@ -1,21 +1,20 @@
 <template>
   <div>
-    <h1>This is where the In Progress Boxes will be</h1>
-    <p>({{ displayText }})</p>
-    <h3>{{ newText }}</h3>
-
+   <app-box 
+   :boxes="wipBoxContents">
+   </app-box>
   </div>
 </template>
 
 <script>
-  import { mapGetters } from 'vuex';
-  export default {
-    computed: {
-      ...mapGetters([
-        'displayText',
-        'newText',
-        'boxContents'
-      ])
-    }
+import Box from '../Boxes/Box.vue'
+import { mapGetters } from "vuex";
+export default {
+  computed: {
+    ...mapGetters(["wipBoxContents"]),
+  },
+  components: {
+    appBox: Box
   }
+};
 </script>

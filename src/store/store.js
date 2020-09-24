@@ -2,6 +2,9 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import allBoxes from './modules/allBoxes'
 import doneBoxes from './modules/doneBoxes'
+import wipBoxes from './modules/wipBoxes'
+import * as actions from './actions'
+import * as mutations from './mutations'
 
 Vue.use(Vuex);
 
@@ -20,18 +23,11 @@ export const store = new Vuex.Store({
       return state.boxesVisible;
     }
   },
-  mutations: {
-    addBoxDisplay: state => {
-      state.boxesVisible = !state.boxesVisible;
-    }
-  },
-  actions: {
-    addBoxDisplay: context => {
-      context.commit('addBoxDisplay')
-    }
-  },
+  mutations,
+  actions,
   modules: {
     allBoxes,
-    doneBoxes
+    doneBoxes,
+    wipBoxes
   }
 });
