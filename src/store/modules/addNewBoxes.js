@@ -1,7 +1,6 @@
 import { store } from '../store'
-import pendingBoxes from './pendingBoxes'
 import allBoxes from './allBoxes'
-import wipBoxes from './wipBoxes'
+
 
 const mutations = {
   addInput: (state, payload) => {

@@ -1,37 +1,23 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import allBoxes from './modules/allBoxes'
-import doneBoxes from './modules/doneBoxes'
-import wipBoxes from './modules/wipBoxes'
-import pendingBoxes from './modules/pendingBoxes'
 import addNewBoxes from './modules/addNewBoxes'
 import * as actions from './actions'
 import * as mutations from './mutations'
+import * as getters from './getters'
 
 Vue.use(Vuex);
 
 export const store = new Vuex.Store({
   state: {
     id: 0,
-    text: 'Tu na razie jest ściernisko',
     boxesVisible: false,
-    newText: 'ALE BYNDZIE SANFRANSISKO'
   },
-  getters: {
-    displayText: state => {
-      return state.text;
-    },
-    boxesVisible: state => {
-      return state.boxesVisible;
-    }
-  },
+  getters,
   mutations,
   actions,
   modules: {
     allBoxes,
-    doneBoxes,
-    wipBoxes,
-    pendingBoxes,
     addNewBoxes
   }
 });
