@@ -1,11 +1,20 @@
 <template>
   <div>
-    <h1>This is where the Pending Boxes will be</h1>
+   <app-box 
+   :boxes="pendingBoxContents">
+   </app-box>
   </div>
 </template>
 
 <script>
-  export default {
-  
+import Box from '../Boxes/Box.vue'
+import { mapGetters } from "vuex";
+export default {
+  computed: {
+    ...mapGetters(["pendingBoxContents"]),
+  },
+  components: {
+    appBox: Box
   }
+};
 </script>

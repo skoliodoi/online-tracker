@@ -3,6 +3,8 @@ import Vuex from 'vuex';
 import allBoxes from './modules/allBoxes'
 import doneBoxes from './modules/doneBoxes'
 import wipBoxes from './modules/wipBoxes'
+import pendingBoxes from './modules/pendingBoxes'
+import addNewBoxes from './modules/addNewBoxes'
 import * as actions from './actions'
 import * as mutations from './mutations'
 
@@ -28,6 +30,8 @@ export const store = new Vuex.Store({
   modules: {
     allBoxes,
     doneBoxes,
-    wipBoxes
+    wipBoxes,
+    pendingBoxes,
+    addNewBoxes
   }
 });

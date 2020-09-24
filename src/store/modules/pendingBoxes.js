@@ -1,19 +1,19 @@
 const state = {
-  wipBoxContents: [
+  pendingBoxContents: [
     {
-      clientName: "Rodan",
-      id: 114,
+      clientName: "EVA-01",
+      id: 116,
     },
     {
-      clientName: "Gundam",
-      id: 115,
+      clientName: "Totoro",
+      id: 117,
     },
   ],
 }
 
 const getters = {
-  wipBoxContents: state => {
-    return state.wipBoxContents;
+  pendingBoxContents: state => {
+    return state.pendingBoxContents;
   }
 }
 
