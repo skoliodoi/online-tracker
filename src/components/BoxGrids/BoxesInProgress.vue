@@ -1,20 +1,40 @@
 <template>
-  <div>
-   <app-box 
-   :boxes="wipBoxContents">
-   </app-box>
+  <div :class="{'redBod': redBackground}">
+      <app-box 
+      :boxes="filterBoxes" 
+      @boxRemoved="removeBox"></app-box>
   </div>
 </template>
 
 <script>
-import Box from '../Boxes/Box.vue'
-import { mapGetters } from "vuex";
+
+import { boxMixin } from '../../boxMixin.js'
 export default {
-  computed: {
-    ...mapGetters(["wipBoxContents"]),
+  data() {
+    return {
+      id: 0,
+      greenBackground: false,
+      redBackground: false,
+      searchForBox: "",
+    };
   },
-  components: {
-    appBox: Box
-  }
+  computed: {
+    filterBoxes() {
+      return this.allBoxContents.filter((element) => {
+        return element.status.match("In Progress");
+      });
+    },
+  },
+  mixins: [boxMixin]
 };
 </script>
+
+<style scoped>
+.greenBod {
+  background: #6a8d73;
+}
+
+.redBod {
+  background: #f25f5c;
+}
+</style>

@@ -7,9 +7,8 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
-import { tableBus } from "../../main.js";
-import Box from "../Boxes/Box.vue";
+
+import { boxMixin } from '../../boxMixin.js'
 export default {
   data() {
     return {
@@ -20,39 +19,13 @@ export default {
     };
   },
   computed: {
-    ...mapGetters([
-      'allBoxContents',
-    ]),
     filterBoxes() {
       return this.allBoxContents.filter((element) => {
-        return element.status.match("In Progress");
+        return element.status.match("Done");
       });
     },
   },
-  components: {
-    appBox: Box,
-  },
-  methods: {
-    removeBox(idNumber) {
-      const deleteBox = this.allBoxContents
-        .map((item) => {
-          return item.id;
-        })
-        .indexOf(idNumber);
-      if (confirm("Are you sure you want to remove this component?")) {
-        this.redBackground = true;
-        this.allBoxContents.splice(deleteBox, 1);
-        setTimeout(() => {
-          this.redBackground = false;
-        }, 1000);
-      }
-      this.refreshInput();
-    },
-
-    refreshInput() {
-      this.searchForBox = "";
-    },
-  },
+  mixins: [boxMixin]
 };
 </script>
 
