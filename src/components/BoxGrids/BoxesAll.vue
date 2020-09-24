@@ -48,44 +48,10 @@ export default {
       }
       this.refreshInput();
     },
-    cancelBox(value) {
-      this.boxesVisible = value;
-    },
+
     refreshInput() {
       this.searchForBox = "";
     },
-  },
-  created() {
-    tableBus.$on(
-      "addBox",
-      (
-        clientName,
-        confirmed,
-        briefType,
-        setStatus,
-        whoFor,
-        whoWith,
-        startDate,
-        meetDate,
-        deadline,
-        delDate
-      ) => {
-        this.boxesVisible = true;
-        this.allBoxContents.unshift({
-          id: (this.id += 1),
-          clientName,
-          confirmed,
-          briefType,
-          setStatus,
-          whoFor,
-          whoWith,
-          startDate,
-          meetDate,
-          deadline,
-          delDate,
-        });
-      }
-    );
   },
 };
 </script>

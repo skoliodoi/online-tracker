@@ -26,7 +26,7 @@
                   <p class="my-auto">Days till meeting: {{box.id}}</p>
                 </div>
                 <div class="container visible text-left my-auto col-3">
-                  <p class="my-auto">Progress:</p>
+                  <p class="my-auto">Progress: {{ box.status }}</p>
                 </div>
                 <button
                   class="btn btn-danger text-right ml-5"

@@ -24,7 +24,7 @@ const mutations = {
         clientName: payload.clientName,
         confirmed: payload.confirmed,
         briefType: payload.briefType,
-        setStatus: payload.setStatus,
+        status: payload.setStatus,
         whoFor: payload.whoFor,
         whoWith: payload.whoWith,
         startDate: payload.startDate,
