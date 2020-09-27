@@ -35,6 +35,7 @@ export default {
     changeDisplay() {
       this.isEditable = !this.isEditable
       this.display = this.newDisplay
+      this.$store.commit('updateContents', this.newDisplay)
     }
   }
 }

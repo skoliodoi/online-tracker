@@ -69,8 +69,9 @@ const getters = {
 }
 
 const mutations = {
-  updateContents: (state, payload) =>
-   state.allBoxContents.clientName = payload
+  updateContents: (state, payload) => {
+    state.name = payload;
+  }
 }
 
 const actions = {
@@ -82,5 +83,5 @@ const actions = {
 export default {
   state,
   getters,
-
+  mutations
 }
