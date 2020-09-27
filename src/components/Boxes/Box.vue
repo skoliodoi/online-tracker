@@ -21,6 +21,7 @@
                   class="btn btn-outline-dark container text-left"
                   style="border: none"
                   :displayValue="box.clientName"
+                  :id="box.id"
                 ></display-input-field>
                 <div class="container visible text-left col-2 my-auto">
                   <p class="my-auto">Status: {{box.status}}</p>
@@ -88,7 +89,12 @@
                   <div id="col-three" class="col-sm">
                     <div class="card-body">
                       <label>Mercer Client:</label>
-                      <display-input-field :bool="true"></display-input-field>
+                      <display-input-field 
+                      :bool="false"
+                      :id="box.id"
+                      :property="mercerClient"
+                      :displayValue="box.mercerClient">
+                      </display-input-field>
                       <label>Marsh Client:</label>
                       <display-input-field :bool="true"></display-input-field>
                       <label>OW Client:</label>
