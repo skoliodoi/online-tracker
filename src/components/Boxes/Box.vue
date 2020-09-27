@@ -92,11 +92,15 @@
                       <display-input-field 
                       :bool="false"
                       :id="box.id"
-                      :property="mercerClient"
+                      :property="'mercerClient'"
                       :displayValue="box.mercerClient">
                       </display-input-field>
                       <label>Marsh Client:</label>
-                      <display-input-field :bool="true"></display-input-field>
+                      <display-input-field 
+                      :bool="false"
+                      :id="box.id"
+                      :property="'mercerCarrier'"
+                      :displayValue="box.mercerClient"></display-input-field>
                       <label>OW Client:</label>
                       <display-input-field :bool="true"></display-input-field>
                       <label>GC Client:</label>
@@ -150,6 +154,7 @@ export default {
   props: ["boxes"],
   data() {
     return {
+      mercerClient,
       isEditable: false,
     };
   },

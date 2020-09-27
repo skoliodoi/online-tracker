@@ -21,7 +21,7 @@ export default {
     return {
       isEditable: this.bool,
       display: this.displayValue,
-      newDisplay: ''
+      newDisplay: '',
     }
   },
   computed: {
@@ -35,7 +35,8 @@ export default {
     changeDisplay() {
       this.isEditable = !this.isEditable
       this.display = this.newDisplay
-      this.$store.commit('updateContents', {id: this.id, name:this.newDisplay})
+      this.$store.commit('updateContents', {id: this.id, property: this.property, value: this.newDisplay})
+  
     }
   }
 }
