@@ -11,7 +11,6 @@
     type="text" 
     v-model="newDisplay"
     v-on:keyup.enter="changeDisplay">
-    <p>{{value}}</p>
   </div>
 </div>
 </template>
@@ -26,9 +25,6 @@ export default {
     }
   },
   computed: {
-    value() {
-      return this.$store.getters.allBoxContents[0].clientName;
-    }
   },
   props: ["bool", "displayValue"],
   methods: {

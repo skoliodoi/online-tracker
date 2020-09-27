@@ -1,4 +1,5 @@
 const state = {
+  name: 'Some name',
   allBoxContents: [
     {
       clientName: "Godzilla",
@@ -61,6 +62,9 @@ const state = {
 const getters = {
   allBoxContents: state => {
     return state.allBoxContents;
+  },
+  name: state => {
+    return state.name;
   }
 }
 

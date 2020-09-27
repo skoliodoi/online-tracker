@@ -23,10 +23,13 @@
                   :displayValue="box.clientName"
                 ></display-input-field>
                 <div class="container visible text-left col-2 my-auto">
+                  <p class="my-auto">Status: {{box.status}}</p>
+                </div>
+                <div class="container visible text-left col-2 my-auto">
                   <p class="my-auto">Days till meeting: {{box.id}}</p>
                 </div>
                 <div class="container visible text-left my-auto col-3">
-                  <p class="my-auto">Progress: {{ box.status }}</p>
+                  <p class="my-auto">Progress: {{ name }}</p>
                 </div>
                 <button
                   class="btn btn-danger text-right ml-5"
@@ -143,6 +146,11 @@ export default {
     return {
       isEditable: false,
     };
+  },
+  computed: {
+    name() {
+      return this.$store.getters.name
+    }
   },
   methods: {
     removeBox(idNumber) {
