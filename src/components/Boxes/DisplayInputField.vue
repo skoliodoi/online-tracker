@@ -36,7 +36,6 @@ export default {
       this.isEditable = !this.isEditable
       this.display = this.newDisplay
       this.$store.commit('updateContents', {id: this.id, property: this.property, value: this.newDisplay})
-  
     }
   }
 }

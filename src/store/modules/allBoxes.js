@@ -5,7 +5,7 @@ const state = {
       clientName: "Godzilla",
       id: 111,
       status: "In Progress",
-      mercerClient: 'ok'
+      mercerClient: ''
     },
     {
       clientName: "Ghidora",
@@ -76,7 +76,13 @@ const mutations = {
   updateContents: (state, payload) => {
     for (var i = 0; i<state.allBoxContents.length; i++) {
       if (state.allBoxContents[i].id == payload.id) {
-        state.allBoxContents[i].clientName = payload.name
+        var key = Object.keys(state.allBoxContents[i])
+        console.log(key)
+        for (var j =0; j<key.length; j++) {
+          if (key[j] == payload.property) {
+            console.log("The property name is: " + key[j])
+          }
+        }
       }
     }
   }

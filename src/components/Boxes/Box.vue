@@ -22,6 +22,7 @@
                   style="border: none"
                   :displayValue="box.clientName"
                   :id="box.id"
+                  :property="'clientName'"
                 ></display-input-field>
                 <div class="container visible text-left col-2 my-auto">
                   <p class="my-auto">Status: {{box.status}}</p>
@@ -90,17 +91,16 @@
                     <div class="card-body">
                       <label>Mercer Client:</label>
                       <display-input-field 
-                      :bool="false"
+                      :bool="true"
                       :id="box.id"
                       :property="'mercerClient'"
-                      :displayValue="box.mercerClient">
+                      >
                       </display-input-field>
                       <label>Marsh Client:</label>
                       <display-input-field 
                       :bool="false"
                       :id="box.id"
-                      :property="'mercerCarrier'"
-                      :displayValue="box.mercerClient"></display-input-field>
+                      ></display-input-field>
                       <label>OW Client:</label>
                       <display-input-field :bool="true"></display-input-field>
                       <label>GC Client:</label>
@@ -154,7 +154,6 @@ export default {
   props: ["boxes"],
   data() {
     return {
-      mercerClient,
       isEditable: false,
     };
   },

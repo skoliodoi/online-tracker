@@ -1,7 +1,7 @@
 <template>
   <div :class="{'redBod': redBackground}">
       <app-box 
-      :boxes="filterBoxes" 
+      :boxes="allBoxContents" 
       @boxRemoved="removeBox"></app-box>
   </div>
 </template>
