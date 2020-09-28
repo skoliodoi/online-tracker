@@ -76,13 +76,7 @@ const mutations = {
   updateContents: (state, payload) => {
     for (var i = 0; i<state.allBoxContents.length; i++) {
       if (state.allBoxContents[i].id == payload.id) {
-        var key = Object.keys(state.allBoxContents[i])
-        console.log(key)
-        for (var j =0; j<key.length; j++) {
-          if (key[j] == payload.property) {
-            console.log("The property name is: " + key[j])
-          }
-        }
+        state.allBoxContents[i][payload.property] = payload.value
       }
     }
   }

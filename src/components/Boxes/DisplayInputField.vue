@@ -19,14 +19,18 @@
 export default {
   data() {
     return {
-      isEditable: this.bool,
-      display: this.displayValue,
+      isEditable: false,
+      display: '',
       newDisplay: '',
     }
   },
   computed: {
   },
   props: ["bool", "displayValue", "id", 'property'],
+  mounted() {
+    this.isEditable = this.bool
+    this.display = this.displayValue
+  },
   methods: {
     makeEditable() {
       this.isEditable = !this.isEditable

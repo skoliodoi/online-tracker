@@ -91,15 +91,18 @@
                     <div class="card-body">
                       <label>Mercer Client:</label>
                       <display-input-field 
-                      :bool="true"
+                      :bool="!box.mercerClient"
                       :id="box.id"
                       :property="'mercerClient'"
+                      :displayValue="box.mercerClient"
                       >
                       </display-input-field>
                       <label>Marsh Client:</label>
                       <display-input-field 
-                      :bool="false"
+                      :bool="!box.marshClient"
                       :id="box.id"
+                      :property="'marshClient'"
+                      :displayValue="box.marshClient"
                       ></display-input-field>
                       <label>OW Client:</label>
                       <display-input-field :bool="true"></display-input-field>
