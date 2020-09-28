@@ -10,18 +10,20 @@
             >Add New Box</button>
           </li>
         </ul>
-        <form class="form-inline mx-auto my-2 my-lg-0 col-5">
+        <form class="form-inline mx-auto my-lg-0 col">
           <ul class="nav nav-pills mr-2">
-               <li class="nav-item">
+               <li class="nav-item" @click="changeLink('In Progress')">
               <router-link
                 :to="{ name: 'wip' }"
                 class="nav-link"
                 style="color: white;"
                 active-class="active"
+                @click="addBoxDisplay"
                 exact
               >In Progress</router-link>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" 
+            @click="changeLink('Pending')">
               <router-link
                 :to="{ name: 'pending' }"
                 class="nav-link"
@@ -30,7 +32,8 @@
                 exact
               >Pending</router-link>
             </li>
-            <li class="nav-item">
+            <li class="nav-item"
+            @click="changeLink('Done')">
               <router-link
                 :to="{ name: 'done' }"
                 class="nav-link"
@@ -40,7 +43,8 @@
               >Done</router-link>
             </li>
          
-            <li class="nav-item">
+            <li class="nav-item"
+            @click="changeLink('All')">
               <router-link
                 :to="{ name: 'all' }"
                 class="nav-link"
@@ -87,9 +91,22 @@
 
 <script>
 export default {
+  data() {
+    return {
+      searchForBox: '',
+    }
+  },
+  computed: {
+    boxes() {
+      return this.$store.getters.filteredList
+    }
+  },
   methods: {
     addBoxDisplay() {
       this.$store.dispatch('addBoxDisplay')
+    },
+    changeLink(value) {
+      this.$store.commit('changeLink', value)
     }
   }
 };

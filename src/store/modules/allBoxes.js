@@ -1,5 +1,5 @@
 const state = {
-  name: 'Some name',
+  linkName: '',
   allBoxContents: [
     {
       clientName: "Godzilla",
@@ -64,21 +64,38 @@ const getters = {
   allBoxContents: state => {
     return state.allBoxContents;
   },
-  name: state => {
-    return state.name;
+  link: state => {
+    return state.linkName;
+  },
+  filteredList: state => {
+    if (state.linkName == "In Progress") {
+      return state.allBoxContents.filter((element) => {
+        return element.status.match("In Progress");
+      });
+    } else if (state.linkName == "Pending") {
+      return state.allBoxContents.filter((element) => {
+        return element.status.match("Pending");
+      });
+    } else if (state.linkName == "Done") {
+      return state.allBoxContents.filter((element) => {
+        return element.status.match("Done");
+      });
+    } else {
+      return state.allBoxContents
+    }
   }
 }
 
 const mutations = {
-  checkup: (state, payload) => {
-    console.log(payload.property)
-  },
   updateContents: (state, payload) => {
     for (var i = 0; i<state.allBoxContents.length; i++) {
       if (state.allBoxContents[i].id == payload.id) {
         state.allBoxContents[i][payload.property] = payload.value
       }
     }
+  },
+  changeLink: (state, payload) => {
+    state.linkName = payload
   }
 }
 

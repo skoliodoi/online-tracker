@@ -5,8 +5,7 @@
     <router-view></router-view>
   </div>
   <add-box 
-  v-if="boxesVisible" 
-  @addingCanceled="cancelBox">
+  v-if="boxesVisible">
   </add-box>
 </div>
 </template>
