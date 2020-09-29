@@ -50,7 +50,7 @@ export default {
     },
 
     refreshInput() {
-      this.searchForBox = "";
+      this.searchbar = "";
     },
   },
 };
