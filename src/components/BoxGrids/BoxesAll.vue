@@ -1,7 +1,8 @@
 <template>
   <div :class="{'redBod': redBackground}">
+      <app-navbar></app-navbar>
       <app-box 
-      :boxes="allBoxContents" 
+      :boxes="filteredList" 
       @boxRemoved="removeBox"></app-box>
   </div>
 </template>
@@ -10,6 +11,7 @@
 import { mapGetters } from "vuex";
 import { tableBus } from "../../main.js";
 import Box from "../Boxes/Box.vue";
+import Navbar from "../Navbar.vue"
 export default {
   data() {
     return {
@@ -22,17 +24,17 @@ export default {
   computed: {
     ...mapGetters([
       'allBoxContents',
+      'filteredList'
     ]),
-    filterBoxes() {
-      return this.allBoxContents.filter((element) => {
-        return element.clientName.match(this.searchForBox);
-      });
-    },
   },
   components: {
     appBox: Box,
+    appNavbar: Navbar
   },
   methods: {
+        changeLink(value) {
+      this.$store.commit("changeLink", value);
+    },
     removeBox(idNumber) {
       const deleteBox = this.allBoxContents
         .map((item) => {

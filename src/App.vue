@@ -1,6 +1,5 @@
 <template>
 <div>
-  <app-navbar></app-navbar>
   <div class="col-xs-12">
     <router-view></router-view>
   </div>

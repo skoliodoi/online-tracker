@@ -1,61 +1,64 @@
 <template>
   <div style="padding-top: 100px">
-    <nav style="height: 100px" class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+    <nav
+      style="height: 100px"
+      class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark"
+    >
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav col-1">
           <li class="nav-item">
-            <button
-              class="btn btn-success"
-              @click="addBoxDisplay"
-            >Add New Box</button>
+            <button class="btn btn-success" @click="addBoxDisplay">
+              Add New Box
+            </button>
           </li>
         </ul>
         <form class="form-inline mx-auto my-lg-0 col">
           <ul class="nav nav-pills mr-2">
-               <li class="nav-item" @click="changeLink('In Progress')">
-              <router-link
-                :to="{ name: 'wip' }"
+            <li class="nav-item" @click="changeLink('In Progress')">
+              <a
                 class="nav-link"
-                style="color: white;"
+                style="color: white"
                 active-class="active"
-                @click="addBoxDisplay"
                 exact
-              >In Progress</router-link>
+                >In Progress</a
+              >
             </li>
-            <li class="nav-item" 
-            @click="changeLink('Pending')">
-              <router-link
+            <li class="nav-item" @click="changeLink('Pending')">
+              <a
                 :to="{ name: 'pending' }"
                 class="nav-link"
-                style="color: white;"
+                style="color: white"
                 active-class="active"
                 exact
-              >Pending</router-link>
+                >Pending</a
+              >
             </li>
-            <li class="nav-item"
-            @click="changeLink('Done')">
-              <router-link
+            <li class="nav-item" @click="changeLink('Done')">
+              <a
                 :to="{ name: 'done' }"
                 class="nav-link"
-                style="color: white;"
+                style="color: white"
                 active-class="active"
                 exact
-              >Done</router-link>
+                >Done</a
+              >
             </li>
-         
-            <li class="nav-item"
-            @click="changeLink('All')">
-              <router-link
+
+            <li class="nav-item" @click="changeLink('All')">
+              <a
                 :to="{ name: 'all' }"
                 class="nav-link"
-                style="color: white;"
+                style="color: white"
                 active-class="active"
                 exact
-              >All</router-link>
+                >All</a
+              >
             </li>
           </ul>
           <select class="form-control" v-model="searchForBox">
-            <option value selected disabled hidden>Choose a client from a dropdown list:</option>
+            <option value selected disabled hidden>
+              Choose a client from a dropdown list:
+            </option>
             <option v-for="each in boxes">{{ each.clientName }}</option>
           </select>
           <p style="margin: 10px; color: white">or</p>
@@ -66,25 +69,28 @@
             aria-label="Search"
             v-model="searchForBox"
           />
+          <p>{{ searchForBox }}</p>
           <button
             class="btn btn-outline-danger my-2 my-sm-0"
             type="submit"
             @click.prevent="refreshInput"
-          >Clear</button>
+          >
+            Clear
+          </button>
         </form>
         <button class="btn btn-danger">Log out</button>
       </div>
     </nav>
     <div>
-    <ul class="nav nav-pills">
-      <router-link to="/" tag="li" active-class="active" exact>
-        <a class="nav-link">All</a>
-      </router-link>
-      <router-link to="/wip" tag="li" active-class="active">
-        <a class="nav-link">WIP</a>
-      </router-link>
-      <li class="nav-link" style="color: red">THIS WILL GET DELETED LATER</li>
-    </ul>
+      <ul class="nav nav-pills">
+        <a to="/" tag="li" active-class="active" exact>
+          <a class="nav-link">All</a>
+        </a>
+        <a to="/wip" tag="li" active-class="active">
+          <a class="nav-link">WIP</a>
+        </a>
+        <li class="nav-link" style="color: red">THIS WILL GET DELETED LATER</li>
+      </ul>
     </div>
   </div>
 </template>
@@ -93,27 +99,35 @@
 export default {
   data() {
     return {
-      searchForBox: '',
-    }
+      searchForBox: "",
+    };
   },
   computed: {
     boxes() {
-      return this.$store.getters.filteredList
-    }
+      return this.$store.getters.filteredList;
+    },
+    filterBoxes() {
+      return this.boxes.filter((element) => {
+        return element.clientName.match(this.searchForBox);
+      });
+    },
   },
   methods: {
     addBoxDisplay() {
-      this.$store.dispatch('addBoxDisplay')
+      this.$store.dispatch("addBoxDisplay");
     },
     changeLink(value) {
-      this.$store.commit('changeLink', value)
-    }
-  }
+      this.$store.commit("changeLink", value);
+    },
+  },
 };
 </script>
 
 <style scoped>
 .visible {
   border: 1px solid red;
+}
+a:hover {
+  cursor: pointer;
 }
 </style>
