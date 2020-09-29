@@ -55,11 +55,13 @@
               >
             </li>
           </ul>
-          <select class="form-control" v-model="searchForBox">
+          <select class="form-control" v-model="filterBoxes">
             <option value selected disabled hidden>
               Choose a client from a dropdown list:
             </option>
-            <option v-for="each in boxes">{{ each.clientName }}</option>
+            <option v-for="each in boxes">
+              {{ each.clientName }}
+            </option>
           </select>
           <p style="margin: 10px; color: white">or</p>
           <input
@@ -67,9 +69,8 @@
             type="search"
             placeholder="Search"
             aria-label="Search"
-            v-model="searchForBox"
+            v-model="filterBoxes"
           />
-          <p>{{ searchForBox }}</p>
           <button
             class="btn btn-outline-danger my-2 my-sm-0"
             type="submit"
@@ -97,19 +98,17 @@
 
 <script>
 export default {
-  data() {
-    return {
-      searchForBox: "",
-    };
-  },
   computed: {
     boxes() {
       return this.$store.getters.filteredList;
     },
-    filterBoxes() {
-      return this.boxes.filter((element) => {
-        return element.clientName.match(this.searchForBox);
-      });
+    filterBoxes: {
+      get() {
+        return this.$store.getters.searchbar
+      },
+      set(value) {
+        this.$store.dispatch('updateSearch', value)
+      }
     },
   },
   methods: {
