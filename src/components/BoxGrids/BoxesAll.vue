@@ -1,8 +1,9 @@
 <template>
   <div :class="{ redBod: redBackground }">
     <app-navbar></app-navbar>
-    <app-box :boxes="filterBoxes" @boxRemoved="removeBox"></app-box>
-    
+    <app-box 
+    :boxes="filterBoxes" 
+    @boxRemoved="removeBox"></app-box>
   </div>
 </template>
 
@@ -46,11 +47,7 @@ export default {
           this.redBackground = false;
         }, 1000);
       }
-      this.refreshInput();
-    },
-
-    refreshInput() {
-      this.searchbar = "";
+      this.$store.dispatch('clearSearch')
     },
   },
 };

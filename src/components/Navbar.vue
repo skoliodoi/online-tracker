@@ -74,7 +74,7 @@
           <button
             class="btn btn-outline-danger my-2 my-sm-0"
             type="submit"
-            @click.prevent="refreshInput"
+            @click.prevent="clearSearch"
           >
             Clear
           </button>
@@ -97,6 +97,7 @@
 </template>
 
 <script>
+import {mapActions} from "vuex";
 export default {
   computed: {
     boxes() {
@@ -112,12 +113,11 @@ export default {
     },
   },
   methods: {
-    addBoxDisplay() {
-      this.$store.dispatch("addBoxDisplay");
-    },
-    changeLink(value) {
-      this.$store.commit("changeLink", value);
-    },
+    ...mapActions([
+      'addBoxDisplay',
+      'changeLink',
+      'clearSearch'
+      ]),
   },
 };
 </script>

@@ -102,11 +102,15 @@ const mutations = {
 const actions = {
   updateContents: ({commit}, payload) => {
     commit('updateContents', payload)
+  },
+  changeLink: ({commit}, payload) => {
+    commit('changeLink', payload)
   }
 }
 
 export default {
   state,
   getters,
-  mutations
+  mutations,
+  actions
 }

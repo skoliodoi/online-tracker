@@ -11,7 +11,6 @@
 
 <script>
   import {mapGetters} from "vuex";
-  import Navbar from './components/Navbar.vue'
   import AddBox from './components/AddBox.vue'
   export default {
     computed: {
@@ -20,7 +19,6 @@
     ]),
   },
     components: {
-      appNavbar: Navbar,
       AddBox: AddBox
     }
   }
