@@ -3,7 +3,7 @@
     <div class="overlay" @click="cancelBox"></div>
     <div class="add-box">
       <form action>
-        <div class="d-flex text-light bg-dark justify-content-between align-items-center">
+        <div class="d-flex text-light add-box-buttons justify-content-between align-items-center">
           <div class="pl-2">Add a new brief information</div>
           <button class="btn btn-danger" @click="cancelBox">X</button>
         </div>
@@ -13,7 +13,7 @@
               <div class="col">
                 <div class="row">
                   <legend
-                    class="col-form-label col pt-0 text-light bg-info d-flex justify-content-center align-items-center"
+                    class="col-form-label col pt-0 text-light add-box-buttons d-flex justify-content-center align-items-center"
                   >Confirmed?</legend>
                   <div class="col">
                     <div class="form-check">
@@ -45,7 +45,7 @@
               <div class="col">
                 <div class="row">
                   <legend
-                    class="col-form-label col pt-0 text-light bg-info d-flex justify-content-center align-items-center"
+                    class="col-form-label col pt-0 text-light add-box-buttons d-flex justify-content-center align-items-center"
                   >Brief type</legend>
                   <div class="col">
                     <div class="form-check-inline">
@@ -77,7 +77,7 @@
               <div class="col">
                 <div class="row">
                   <legend
-                    class="col-form-label col pt-0 text-light bg-info d-flex justify-content-center align-items-center"
+                    class="col-form-label col pt-0 text-light add-box-buttons d-flex justify-content-center align-items-center"
                   >Set status:</legend>
                   <div class="col">
                     <div class="form-check">
@@ -277,5 +277,9 @@ export default {
 
 .visible {
   border: 1px solid red;
+}
+
+.add-box-buttons {
+  background: #003865;
 }
 </style>

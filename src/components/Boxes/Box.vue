@@ -4,7 +4,7 @@
       <div v-for="box in boxes" :key="box.id">
         <div class="accordion" :id="'accordion'+box.id">
           <div class="card">
-            <div class="card-header bg-light" style="display:inline-block" :id="'heading'
+            <div class="card-header" style="display:inline-block; background: #F6F7F8" :id="'heading'
             +box.id">
               <div class="visible" style="display: flex">
                 <div class="col quiver visible"

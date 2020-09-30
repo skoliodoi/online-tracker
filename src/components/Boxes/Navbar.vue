@@ -1,8 +1,8 @@
 <template>
   <div style="padding-top: 100px">
     <nav
-      style="height: 100px"
-      class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark"
+      style="height: 100px; background: #003865"
+      class="navbar fixed-top navbar-expand-lg navbar-dark"
     >
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav col-1">
@@ -76,7 +76,7 @@
             Clear
           </button>
         </form>
-        <button class="btn btn-danger">Log out</button>
+        <router-link tag="button" to="/" class="btn btn-danger">Log out</router-link>
       </div>
     </nav>
     <div>
