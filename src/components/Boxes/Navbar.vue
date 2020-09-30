@@ -1,7 +1,7 @@
 <template>
-  <div style="padding-top: 100px">
+  <div style="padding-top: 75px">
     <nav
-      style="height: 100px; background: #003865"
+      style="height: 75px; background: #003865"
       class="navbar fixed-top navbar-expand-lg navbar-dark"
     >
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -12,46 +12,25 @@
             </button>
           </li>
         </ul>
+        <ul class="nav nav-pills">
+          <li class="nav-item" @click="changeLink('In Progress')">
+            <a class="nav-link active" data-toggle="tab"
+            style="color: whitesmoke">In Progress</a>
+          </li>
+          <li class="nav-item" @click="changeLink('Pending')">
+            <a class="nav-link" data-toggle="tab"
+            style="color: whitesmoke">Pending</a>
+          </li>
+          <li class="nav-item" @click="changeLink('Done')">
+            <a class="nav-link" data-toggle="tab"
+            style="color: whitesmoke">Done</a>
+          </li>
+          <li class="nav-item" @click="changeLink('All')">
+            <a class="nav-link" data-toggle="tab"
+            style="color: whitesmoke">All</a>
+          </li>
+        </ul>
         <form class="form-inline mx-auto my-lg-0 col">
-          <ul class="nav nav-pills mr-2">
-            <li class="nav-item" @click="changeLink('In Progress')">
-              <a
-                class="nav-link"
-                style="color: white"
-                active-class="active"
-                exact
-                >In Progress</a
-              >
-            </li>
-            <li class="nav-item" @click="changeLink('Pending')">
-              <a
-                class="nav-link"
-                style="color: white"
-                active-class="active"
-                exact
-                >Pending</a
-              >
-            </li>
-            <li class="nav-item" @click="changeLink('Done')">
-              <a
-                class="nav-link"
-                style="color: white"
-                active-class="active"
-                exact
-                >Done</a
-              >
-            </li>
-
-            <li class="nav-item" @click="changeLink('All')">
-              <a
-                class="nav-link"
-                style="color: white"
-                active-class="active"
-                exact
-                >All</a
-              >
-            </li>
-          </ul>
           <select class="form-control" v-model="filterBoxes">
             <option value selected disabled hidden>
               Choose a client from a dropdown list:
@@ -76,25 +55,17 @@
             Clear
           </button>
         </form>
-        <router-link tag="button" to="/" class="btn btn-danger">Log out</router-link>
+        <router-link tag="button" to="/" class="btn btn-danger"
+          >Log out</router-link
+        >
       </div>
     </nav>
-    <div>
-      <ul class="nav nav-pills">
-        <a to="/" tag="li" active-class="active" exact>
-          <a class="nav-link">All</a>
-        </a>
-        <a to="/wip" tag="li" active-class="active">
-          <a class="nav-link">WIP</a>
-        </a>
-        <li class="nav-link" style="color: red">THIS WILL GET DELETED LATER</li>
-      </ul>
-    </div>
+    <div></div>
   </div>
 </template>
 
 <script>
-import {mapActions} from "vuex";
+import { mapActions } from "vuex";
 export default {
   computed: {
     boxes() {
@@ -102,19 +73,15 @@ export default {
     },
     filterBoxes: {
       get() {
-        return this.$store.getters.searchbar
+        return this.$store.getters.searchbar;
       },
       set(value) {
-        this.$store.dispatch('updateSearch', value)
-      }
+        this.$store.dispatch("updateSearch", value);
+      },
     },
   },
   methods: {
-    ...mapActions([
-      'addBoxDisplay',
-      'changeLink',
-      'clearSearch'
-      ]),
+    ...mapActions(["addBoxDisplay", "changeLink", "clearSearch"]),
   },
 };
 </script>
