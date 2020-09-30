@@ -24,3 +24,8 @@
   }
 </script>
 
+<style>
+body {
+  background: linear-gradient(45deg, #009DDF, #00AC42);
+}
+</style>
