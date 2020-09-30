@@ -9,9 +9,8 @@
 
 <script>
 import { mapGetters } from "vuex";
-import { tableBus } from "../../main.js";
 import Box from "./Box.vue";
-import Navbar from "../Navbar.vue";
+import Navbar from "./Navbar.vue";
 export default {
   data() {
     return {

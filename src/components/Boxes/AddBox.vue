@@ -182,7 +182,6 @@
 </template>
 
 <script>
-import { tableBus } from "../main.js";
 import { mapActions } from "vuex";
 export default {
   data() {

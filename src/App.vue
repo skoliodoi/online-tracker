@@ -11,7 +11,7 @@
 
 <script>
   import {mapGetters} from "vuex";
-  import AddBox from './components/AddBox.vue'
+  import AddBox from './components/Boxes/AddBox.vue'
   export default {
     computed: {
     ...mapGetters([
