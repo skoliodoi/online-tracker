@@ -1,7 +1,7 @@
-import BoxesAll from './components/BoxGrids/BoxesAll.vue'
+import Boxes from './components/Boxes/Boxes.vue'
 
 
 export const routes = [
-  { path: '/tracker', component: BoxesAll, name:'tracker' },
+  { path: '/tracker', component: Boxes, name:'tracker' },
   { path: '*', redirect: '/tracker' }
 ];

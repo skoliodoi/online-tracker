@@ -24,9 +24,11 @@
                   :id="box.id"
                   :property="'clientName'"
                 ></display-input-field>
-                <div class="container visible text-left col-2 my-auto">
-                  <p class="my-auto">Status: {{box.status}}</p>
-                </div>
+                <display-input-field class="container visible text-left col-2 my-auto"
+                :displayValue="box.status"
+                :id="box.id"
+                :property="'status'">
+                </display-input-field>
                 <div class="container visible text-left col-2 my-auto">
                   <p class="my-auto">Days till meeting: {{box.id}}</p>
                 </div>
@@ -53,7 +55,8 @@
                     <div class="card-body">
                       <label>Confirmed?</label>
                       <display-input-field 
-                      :bool="false" :displayValue="box.confirmed"></display-input-field>
+                      :bool="!box.confirmed" 
+                      :displayValue="box.confirmed"></display-input-field>
 
                       <label>Type:</label>
                       <display-input-field :bool="false" :displayValue="box.briefType"></display-input-field>

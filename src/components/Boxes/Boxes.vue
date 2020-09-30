@@ -10,7 +10,7 @@
 <script>
 import { mapGetters } from "vuex";
 import { tableBus } from "../../main.js";
-import Box from "../Boxes/Box.vue";
+import Box from "./Box.vue";
 import Navbar from "../Navbar.vue";
 export default {
   data() {
