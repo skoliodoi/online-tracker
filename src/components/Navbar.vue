@@ -25,7 +25,6 @@
             </li>
             <li class="nav-item" @click="changeLink('Pending')">
               <a
-                :to="{ name: 'pending' }"
                 class="nav-link"
                 style="color: white"
                 active-class="active"
@@ -35,7 +34,6 @@
             </li>
             <li class="nav-item" @click="changeLink('Done')">
               <a
-                :to="{ name: 'done' }"
                 class="nav-link"
                 style="color: white"
                 active-class="active"
@@ -46,7 +44,6 @@
 
             <li class="nav-item" @click="changeLink('All')">
               <a
-                :to="{ name: 'all' }"
                 class="nav-link"
                 style="color: white"
                 active-class="active"
