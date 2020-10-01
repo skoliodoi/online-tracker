@@ -43,6 +43,7 @@
 </template>
 
 <script>
+import { DateTime } from 'luxon';
 export default {
   data() {
     return {
@@ -51,7 +52,9 @@ export default {
       newDisplay: "",
     };
   },
-  computed: {},
+  computed: {
+    
+  },
   props: [
     "bool",
     "displayValue",
@@ -74,11 +77,17 @@ export default {
     },
     changeDisplay() {
       this.isEditable = !this.isEditable;
-      this.display = this.newDisplay;
+      if (this.inputType == "date") {
+      console.log("Date")
+      this.display = DateTime.fromISO(this.newDisplay).toLocaleString(DateTime.DATE_HUGE);
+      } else {
+        this.display = this.newDisplay;
+      }
       this.$store.commit("updateContents", {
         id: this.id,
         property: this.property,
         value: this.newDisplay,
+        input: this.inputType
       });
     },
   },
