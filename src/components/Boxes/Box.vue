@@ -146,7 +146,8 @@
                       :id="box.id"
                       :property="'mercerClient'"
                       :displayValue="box.mercerClient"
-                      :input="true"
+                      :select="true"
+                      :optionTable="stateTable"
                       >
                       </display-input-field>
                       <label>Marsh Client:</label>
@@ -155,7 +156,8 @@
                       :id="box.id"
                       :property="'marshClient'"
                       :displayValue="box.marshClient"
-                      :input="true"
+                      :select="true"
+                      :optionTable="stateTable"
                       ></display-input-field>
                       
                       <label>OW Client:</label>
@@ -164,7 +166,8 @@
                       :id="box.id"
                       :property="'owClient'"
                       :displayValue="box.owClient"
-                      :input="true"
+                      :select="true"
+                      :optionTable="stateTable"
                       ></display-input-field>
 
                       <label>GC Client:</label>
@@ -173,7 +176,8 @@
                       :id="box.id"
                       :property="'gcClient'"
                       :displayValue="box.gcClient"
-                      :input="true"
+                      :select="true"
+                      :optionTable="stateTable"
                       ></display-input-field>
                     </div>
                   </div>
@@ -186,7 +190,8 @@
                       :id="box.id"
                       :property="'mmb'"
                       :displayValue="box.mmb"
-                      :input="true"
+                      :select="true"
+                      :optionTable="stateTable"
                       ></display-input-field>
                       
                       <label>Marsh Carrier:</label>
@@ -195,7 +200,8 @@
                       :id="box.id"
                       :property="'marshCarrier'"
                       :displayValue="box.marshCarrier"
-                      :input="true"
+                      :select="true"
+                      :optionTable="stateTable"
                       ></display-input-field>
 
                       <label>OW Carrier:</label>
@@ -204,7 +210,8 @@
                       :id="box.id"
                       :property="'owCarrier'"
                       :displayValue="box.owCarrier"
-                      :input="true"
+                      :select="true"
+                      :optionTable="stateTable"
                       ></display-input-field>
 
                       <label>GC Carrier:</label>
@@ -213,7 +220,8 @@
                       :id="box.id"
                       :property="'gcCarrier'"
                       :displayValue="box.gcCarrier"
-                      :input="true"
+                      :select="true"
+                      :optionTable="stateTable"
                       ></display-input-field>
                     </div>
                   </div>
@@ -226,7 +234,8 @@
                       :id="box.id"
                       :property="'wealth'"
                       :displayValue="box.wealth"
-                      :input="true"
+                      :select="true"
+                      :optionTable="stateTable"
                       ></display-input-field>
 
                       <label>B2B:</label>
@@ -235,7 +244,8 @@
                       :id="box.id"
                       :property="'b2b'"
                       :displayValue="box.b2b"
-                      :input="true"
+                      :select="true"
+                      :optionTable="stateTable"
                       ></display-input-field>
 
                       <label>MMC:</label>
@@ -244,16 +254,18 @@
                       :id="box.id"
                       :property="'mmc'"
                       :displayValue="box.mmc"
-                      :input="true"
+                      :select="true"
+                      :optionTable="stateTable"
                       ></display-input-field>
 
-                      <label>Other:</label>
+                      <label>Other (if necessary):</label>
                       <display-input-field 
                       :bool="!box.other"
                       :id="box.id"
                       :property="'other'"
                       :displayValue="box.other"
-                      :input="true"
+                      :select="true"
+                      :optionTable="stateTable"
                       ></display-input-field>
                     </div>
                   </div>
@@ -288,7 +300,8 @@ export default {
       isEditable: false,
       booleanTable: ["Yes", "No"],
       statusTable: ["In Progress", "Pending", "Done"],
-      typeTable: ["Client", "Carrier"]
+      typeTable: ["Client", "Carrier"],
+      stateTable: ["Ok", "FYA SP", 'FYA Mail', "NR", "N/A", "Escalated"]
     };
   },
   computed: {

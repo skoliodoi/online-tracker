@@ -5,6 +5,6 @@ export const boxesVisible = state => {
 }
 
 export const date = state => {
-  return state.date.toLocaleString(DateTime.DATE_MED)
+  return state.date.minus({days: 7}).toLocaleString(DateTime.DATE_MED)
 }
 

@@ -14,7 +14,7 @@ export const store = new Vuex.Store({
   state: {
     id: 0,
     boxesVisible: false,
-    date: DateTime.local()
+    date: DateTime.fromISO("1990-04-29"),
   },
   getters,
   mutations,

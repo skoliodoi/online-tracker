@@ -21,7 +21,8 @@
           <option value selected disabled hidden>
             Choose:
           </option>
-          <option v-for="each in optionTable">
+          <option v-for="each in optionTable"
+          @click="changeDisplay">
             {{each}}
           </option>
         </select>
