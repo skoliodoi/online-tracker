@@ -182,6 +182,7 @@
 </template>
 
 <script>
+import { DateTime } from 'luxon';
 import { mapActions } from "vuex";
 export default {
   data() {
@@ -208,28 +209,13 @@ export default {
               setStatus: this.setStatus,
               whoFor: this.whoFor,
               whoWith: this.whoWith,
-              startDate: this.startDate,
-              meetDate: this.meetDate,
-              deadline: this.deadline,
-              delivery: this.delivery
+              startDate: DateTime.fromISO(this.startDate),
+              meetDate: DateTime.fromISO(this.meetDate),
+              deadline: DateTime.fromISO(this.deadline),
+              delivery: DateTime.fromISO(this.delivery)
               });
               this.restart();
     },
-    // addBox() {
-    //   tableBus.addBox(
-    //     this.clientName,
-    //     this.confirmed,
-    //     this.briefType,
-    //     this.setStatus,
-    //     this.whoFor,
-    //     this.whoWith,
-    //     this.startDate,
-    //     this.meetDate,
-    //     this.deadline,
-    //     this.delDate
-    //   );
-    //   this.restart();
-    // },
     cancelBox() {
       this.$store.dispatch("addBoxDisplay");
     },

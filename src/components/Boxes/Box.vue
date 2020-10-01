@@ -36,7 +36,7 @@
                   <p class="my-auto">Days till meeting: {{box.id}}</p>
                 </div>
                 <div class="container visible text-left my-auto col-3">
-                  <p class="my-auto">Progress: {{ name }}</p>
+                  <p class="my-auto">Progress: {{ date }}</p>
                 </div>
                 <button
                   class="btn btn-danger text-right ml-5"
@@ -279,6 +279,7 @@
 </template>
 
 <script>
+import { DateTime } from 'luxon';
 import DisplayInputField from "./DisplayInputField.vue";
 export default {
   props: ["boxes"],
@@ -293,6 +294,9 @@ export default {
   computed: {
     name() {
       return this.$store.getters.name
+    },
+    date() {
+      return this.$store.getters.date
     }
   },
   methods: {

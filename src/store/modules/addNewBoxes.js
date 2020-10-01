@@ -1,4 +1,5 @@
 import { store } from '../store'
+import { DateTime } from 'luxon';
 import allBoxes from './allBoxes'
 
 
@@ -12,10 +13,10 @@ const mutations = {
         status: payload.setStatus,
         whoFor: payload.whoFor,
         whoWith: payload.whoWith,
-        startDate: payload.startDate,
-        meetDate: payload.meetDate,
-        deadline: payload.deadline,
-        delivery: payload.delivery,
+        startDate: payload.startDate.toLocaleString(DateTime.DATE_HUGE),
+        meetDate: payload.meetDate.toLocaleString(DateTime.DATE_HUGE),
+        deadline: payload.deadline.toLocaleString(DateTime.DATE_HUGE),
+        delivery: payload.delivery.toLocaleString(DateTime.DATE_HUGE),
       });
     } 
   }

@@ -1,3 +1,5 @@
+import { DateTime } from "luxon";
+
 const state = {
   linkName: '',
   allBoxContents: [
@@ -5,7 +7,7 @@ const state = {
       clientName: "Godzilla",
       id: 111,
       status: "In Progress",
-      mercerClient: ''
+      mercerClient: '',
     },
     {
       clientName: "Ghidora",
@@ -59,7 +61,6 @@ const state = {
     },
   ],
 }
-
 const getters = {
   allBoxContents: state => {
     return state.allBoxContents;
