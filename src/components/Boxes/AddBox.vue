@@ -148,11 +148,11 @@
                 <div class="form-group">
                   <label>Delivery date:</label>
                   <input
-                    v-model="delDate"
+                    v-model="delivery"
                     id="delDate"
                     class="form-control"
                     type="date"
-                    name="delDate"
+                    name="delivery"
                   />
                 </div>
 
@@ -195,7 +195,7 @@ export default {
       startDate: "",
       meetDate: "",
       deadline: "",
-      delDate: "",
+      delivery: "",
     };
   },
   methods: {
@@ -211,7 +211,7 @@ export default {
               startDate: this.startDate,
               meetDate: this.meetDate,
               deadline: this.deadline,
-              delDate: this.delDate
+              delivery: this.delivery
               });
               this.restart();
     },

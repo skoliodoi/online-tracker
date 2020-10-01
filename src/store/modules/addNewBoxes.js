@@ -15,7 +15,7 @@ const mutations = {
         startDate: payload.startDate,
         meetDate: payload.meetDate,
         deadline: payload.deadline,
-        delDate: payload.delDate,
+        delivery: payload.delivery,
       });
     } 
   }

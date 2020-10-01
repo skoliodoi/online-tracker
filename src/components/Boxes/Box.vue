@@ -22,11 +22,14 @@
                   style="border: none"
                   :displayValue="box.clientName"
                   :id="box.id"
+                  :input="true"
                   :property="'clientName'"
                 ></display-input-field>
                 <display-input-field class="container visible text-left col-2 my-auto"
+                :select="true"
                 :displayValue="box.status"
                 :id="box.id"
+                :optionTable="statusTable"
                 :property="'status'">
                 </display-input-field>
                 <div class="container visible text-left col-2 my-auto">
@@ -56,35 +59,80 @@
                       <label>Confirmed?</label>
                       <display-input-field 
                       :bool="!box.confirmed" 
-                      :displayValue="box.confirmed"></display-input-field>
+                      :displayValue="box.confirmed"
+                      :id="box.id"
+                      :property="'confirmed'"
+                      :select="true"
+                      :optionTable="booleanTable"></display-input-field>
 
                       <label>Type:</label>
-                      <display-input-field :bool="false" :displayValue="box.briefType"></display-input-field>
-
-                      <label>Status:</label>
-                      <display-input-field :bool="false" :displayValue="box.setStatus"></display-input-field>
+                      <display-input-field
+                      :bool="!box.briefType" 
+                      :displayValue="box.briefType"
+                      :id="box.id"
+                      :property="'briefType'"
+                      :select="true"
+                      :optionTable="typeTable"
+                      ></display-input-field>
 
                       <label>For:</label>
-                      <display-input-field :bool="false" :displayValue="box.whoFor"></display-input-field>
+                      <display-input-field 
+                      :bool="!box.whoFor" 
+                      :displayValue="box.whoFor"
+                      :id="box.id"
+                      :property="'whoFor'"
+                      :input="true"></display-input-field>
 
                       <label>Who is the meeting with:</label>
-                      <display-input-field :bool="false" :displayValue="box.whoWith"></display-input-field>
+                      <display-input-field 
+                      :bool="!box.whoWith" :displayValue="box.whoWith"
+                      :id="box.id"
+                      :property="'whoWith'"
+                      :input="true"></display-input-field>
 
                       <label>Meeting date:</label>
-                      <display-input-field :bool="false" :displayValue="box.whoWith"></display-input-field>
+                      <display-input-field 
+                      :bool="!box.meetDate" 
+                      :displayValue="box.meetDate"
+                      :id="box.id"
+                      :property="'meetDate'"
+                      :input="true"
+                      :inputType="'date'"></display-input-field>
                     </div>
                   </div>
 
                   <div id="col-two" class="col-sm">
                     <div class="card-body">
+
                       <label>Start:</label>
-                      <display-input-field :bool="false" :displayValue="box.confirmed"></display-input-field>
+                      <display-input-field 
+                      :bool="!box.startDate" :displayValue="box.startDate"
+                      :id="box.id"
+                      :property="'startDate'"
+                      :input="true"
+                      :inputType="'date'"></display-input-field>
+
                       <label>Delivery Date:</label>
-                      <display-input-field :bool="false" :displayValue="box.confirmed"></display-input-field>
+                      <display-input-field 
+                      :bool="!box.delivery" 
+                      :displayValue="box.delivery"
+                      :id="box.id"
+                      :property="'delivery'"
+                      :input="true"
+                      :inputType="'date'"></display-input-field>
+
                       <label>OpCo deadline:</label>
-                      <display-input-field :bool="false" :displayValue="box.confirmed"></display-input-field>
+                      <display-input-field 
+                      :bool="!box.deadline" 
+                      :displayValue="box.deadline"
+                      :id="box.id"
+                      :property="'deadline'"
+                      :input="true"
+                      :inputType="'date'"></display-input-field>
+
                       <label>Reminder 1:</label>
                       <display-input-field :bool="false" :displayValue="box.confirmed"></display-input-field>
+
                       <label>Reminder 2:</label>
                       <display-input-field :bool="false" :displayValue="box.confirmed"></display-input-field>
                     </div>
@@ -98,6 +146,7 @@
                       :id="box.id"
                       :property="'mercerClient'"
                       :displayValue="box.mercerClient"
+                      :input="true"
                       >
                       </display-input-field>
                       <label>Marsh Client:</label>
@@ -106,44 +155,119 @@
                       :id="box.id"
                       :property="'marshClient'"
                       :displayValue="box.marshClient"
+                      :input="true"
                       ></display-input-field>
+                      
                       <label>OW Client:</label>
-                      <display-input-field :bool="true"></display-input-field>
+                      <display-input-field 
+                      :bool="!box.owClient"
+                      :id="box.id"
+                      :property="'owClient'"
+                      :displayValue="box.owClient"
+                      :input="true"
+                      ></display-input-field>
+
                       <label>GC Client:</label>
-                      <display-input-field :bool="true"></display-input-field>
+                      <display-input-field 
+                      :bool="!box.gcClient"
+                      :id="box.id"
+                      :property="'gcClient'"
+                      :displayValue="box.gcClient"
+                      :input="true"
+                      ></display-input-field>
                     </div>
                   </div>
 
                   <div id="col-four" class="col-sm">
                     <div class="card-body">
                       <label>MMB (Jeffrey):</label>
-                      <display-input-field :bool="true"></display-input-field>
+                      <display-input-field 
+                      :bool="!box.mmb"
+                      :id="box.id"
+                      :property="'mmb'"
+                      :displayValue="box.mmb"
+                      :input="true"
+                      ></display-input-field>
+                      
                       <label>Marsh Carrier:</label>
-                      <display-input-field :bool="true"></display-input-field>
+                      <display-input-field 
+                      :bool="!box.marshCarrier"
+                      :id="box.id"
+                      :property="'marshCarrier'"
+                      :displayValue="box.marshCarrier"
+                      :input="true"
+                      ></display-input-field>
+
                       <label>OW Carrier:</label>
-                      <display-input-field :bool="true"></display-input-field>
+                      <display-input-field 
+                      :bool="!box.owCarrier"
+                      :id="box.id"
+                      :property="'owCarrier'"
+                      :displayValue="box.owCarrier"
+                      :input="true"
+                      ></display-input-field>
+
                       <label>GC Carrier:</label>
-                      <display-input-field :bool="true"></display-input-field>
+                      <display-input-field 
+                      :bool="!box.gcCarrier"
+                      :id="box.id"
+                      :property="'gcCarrier'"
+                      :displayValue="box.gcCarrier"
+                      :input="true"
+                      ></display-input-field>
                     </div>
                   </div>
 
                   <div id="col-five" class="col-sm">
                     <div class="card-body">
                       <label>Wealth (Lindsey):</label>
-                      <display-input-field :bool="true"></display-input-field>
+                      <display-input-field 
+                      :bool="!box.wealth"
+                      :id="box.id"
+                      :property="'wealth'"
+                      :displayValue="box.wealth"
+                      :input="true"
+                      ></display-input-field>
+
                       <label>B2B:</label>
-                      <display-input-field :bool="true"></display-input-field>
+                      <display-input-field 
+                      :bool="!box.b2b"
+                      :id="box.id"
+                      :property="'b2b'"
+                      :displayValue="box.b2b"
+                      :input="true"
+                      ></display-input-field>
+
                       <label>MMC:</label>
-                      <display-input-field :bool="true"></display-input-field>
+                      <display-input-field 
+                      :bool="!box.mmc"
+                      :id="box.id"
+                      :property="'mmc'"
+                      :displayValue="box.mmc"
+                      :input="true"
+                      ></display-input-field>
+
                       <label>Other:</label>
-                      <display-input-field :bool="true"></display-input-field>
+                      <display-input-field 
+                      :bool="!box.other"
+                      :id="box.id"
+                      :property="'other'"
+                      :displayValue="box.other"
+                      :input="true"
+                      ></display-input-field>
                     </div>
                   </div>
                 </div>
               </div>
               <div class="card-body">
                 <label>Comments</label>
-                <textarea style="width: 100%; height: 7em"></textarea>
+                <display-input-field
+                :textarea="true"
+                :bool="!box.comments"
+                :displayValue="box.comments"
+                :id="box.id"
+                :property="'comments'">
+                </display-input-field>
               </div>
               <div class="tiny">#{{ box.id }}</div>
             </div>
@@ -161,6 +285,9 @@ export default {
   data() {
     return {
       isEditable: false,
+      booleanTable: ["Yes", "No"],
+      statusTable: ["In Progress", "Pending", "Done"],
+      typeTable: ["Client", "Carrier"]
     };
   },
   computed: {
