@@ -78,7 +78,6 @@ export default {
     changeDisplay() {
       this.isEditable = !this.isEditable;
       if (this.inputType == "date") {
-      console.log("Date")
       this.display = DateTime.fromISO(this.newDisplay).toLocaleString(DateTime.DATE_HUGE);
       } else {
         this.display = this.newDisplay;

@@ -91,7 +91,11 @@ const mutations = {
   updateContents: (state, payload) => {
     for (var i = 0; i<state.allBoxContents.length; i++) {
       if (state.allBoxContents[i].id == payload.id) {
-        state.allBoxContents[i][payload.property] = payload.value
+        if (payload.input == "date") {
+          state.allBoxContents[i][payload.property] = DateTime.fromISO(payload.value).toLocaleString(DateTime.DATE_HUGE);
+        } else {
+          state.allBoxContents[i][payload.property] = payload.value
+        }
       }
     }
   },
