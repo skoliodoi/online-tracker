@@ -33,7 +33,8 @@
                 :property="'status'">
                 </display-input-field>
                 <div class="container visible text-left col-2 my-auto">
-                  <p class="my-auto">Days till meeting: {{box.id}}</p>
+                  <p class="my-auto">Days till meeting: 
+                    {{ date }}</p>
                 </div>
                 <div class="container visible text-left my-auto col-3">
                   <p class="my-auto">Progress: {{ date }}</p>
@@ -310,7 +311,7 @@ export default {
     },
     date() {
       return this.$store.getters.date
-    }
+    },
   },
   methods: {
     removeBox(idNumber) {

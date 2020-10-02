@@ -62,6 +62,9 @@ const state = {
   ],
 }
 const getters = {
+  dateTill: (state) => (value) => {
+    return state.value.toRelative()
+  },
   allBoxContents: state => {
     return state.allBoxContents;
   },
