@@ -14,7 +14,7 @@
         </ul>
         <ul class="nav nav-pills">
           <li class="nav-item" @click="changeLink('In Progress')">
-            <a class="nav-link active" data-toggle="tab"
+            <a class="nav-link" data-toggle="tab"
             style="color: whitesmoke">In Progress</a>
           </li>
           <li class="nav-item" @click="changeLink('Pending')">
@@ -26,7 +26,7 @@
             style="color: whitesmoke">Done</a>
           </li>
           <li class="nav-item" @click="changeLink('All')">
-            <a class="nav-link" data-toggle="tab"
+            <a class="nav-link active" data-toggle="tab"
             style="color: whitesmoke">All</a>
           </li>
         </ul>
