@@ -33,7 +33,7 @@
                 :property="'status'">
                 </display-input-field>
                 <div class="container visible text-left col-2 my-auto">
-                  <p class="my-auto">Days till meeting: 
+                  <p class="my-auto">Delivery: 
                     {{ date }}</p>
                 </div>
                 <div class="container visible text-left my-auto col-3">
