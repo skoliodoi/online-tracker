@@ -65,7 +65,8 @@ export default {
     "input",
     "select",
     "textarea",
-    "optionTable"
+    "optionTable",
+    "updateProgress"
   ],
   mounted() {
     this.isEditable = this.bool;
@@ -87,7 +88,8 @@ export default {
         id: this.id,
         property: this.property,
         value: this.newDisplay,
-        input: this.inputType
+        input: this.inputType,
+        updateProgress: this.updateProgress
       });
     },
   },

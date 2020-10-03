@@ -212,7 +212,7 @@ export default {
               startDate: DateTime.fromISO(this.startDate),
               meetDate: DateTime.fromISO(this.meetDate),
               deadline: DateTime.fromISO(this.deadline),
-              delivery: DateTime.fromISO(this.delivery)
+              delivery: DateTime.fromISO(this.delivery),
               });
               this.restart();
     },
