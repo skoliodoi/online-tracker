@@ -114,6 +114,7 @@ const mutations = {
     for (var i = 0; i<state.allBoxContents.length; i++) {
       if (state.allBoxContents[i].id == payload.id) {
         if (payload.input == "date" && payload.property == "delivery") {
+          state.allBoxContents[i][payload.property] = DateTime.fromISO(payload.value).toLocaleString(DateTime.DATE_HUGE);
           state.allBoxContents[i].tillDelivery = DateTime.fromISO(payload.value).toRelative();
         } else if (payload.input == "date"){
           state.allBoxContents[i][payload.property] = DateTime.fromISO(payload.value).toLocaleString(DateTime.DATE_HUGE);
