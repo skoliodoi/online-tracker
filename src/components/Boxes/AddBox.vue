@@ -197,7 +197,61 @@ export default {
       meetDate: "",
       deadline: "",
       delivery: "",
+      reminder1: "",
+      reminder2: "",
+      tillDelivery: ""
     };
+  },
+  computed: {
+    startDateProper() {
+      if (!this.startDate == ""){
+        return  DateTime.fromISO(this.startDate)
+      } else {
+        return "No date provided"
+      }
+    },
+    meetDateProper() {
+      if (!this.meetDate == ""){
+        return  DateTime.fromISO(this.meetDate)
+      } else {
+        return "No date provided"
+      }
+    },
+    deadlineProper() {
+      if (!this.deadline == ""){
+        return  DateTime.fromISO(this.deadline)
+      } else {
+        return "No date provided"
+      }
+    },
+    deliveryProper() {
+      if (!this.delivery == ""){
+        return  DateTime.fromISO(this.delivery)
+      } else {
+        return "No date provided"
+      }
+    },
+    reminder1Proper() {
+      if (!this.reminder1 == ""){
+        return  DateTime.fromISO(this.reminder1)
+      } else {
+        return "No date provided"
+      }
+    },
+    reminder2Proper() {
+      if (!this.reminder2 == ""){
+        return  DateTime.fromISO(this.reminder2)
+      } else {
+        return "No date provided"
+      }
+    },
+    deliveryDeadline() {
+      if (!this.delivery == ""){
+        return  DateTime.fromISO(this.delivery).toRelative()
+      } else {
+        return "No delivery date provided"
+      }
+    },
   },
   methods: {
     ...mapActions(["addInput"]),
@@ -209,10 +263,13 @@ export default {
               setStatus: this.setStatus,
               whoFor: this.whoFor,
               whoWith: this.whoWith,
-              startDate: DateTime.fromISO(this.startDate),
-              meetDate: DateTime.fromISO(this.meetDate),
-              deadline: DateTime.fromISO(this.deadline),
-              delivery: DateTime.fromISO(this.delivery),
+              startDate: this.startDateProper,
+              meetDate: this.meetDateProper,
+              deadline: this.deadlineProper,
+              delivery: this.deliveryProper,
+              reminder1: this.reminder1Proper,
+              reminder2: this.reminder2Proper,
+              tillDelivery: this.deliveryDeadline
               });
               this.restart();
     },
@@ -229,7 +286,7 @@ export default {
       this.startDate = "";
       this.meetDate = "";
       this.deadline = "";
-      this.delDate = "";
+      this.delivery = "";
       this.inputEntry = "";
     },
   },

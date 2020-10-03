@@ -336,8 +336,12 @@ export default {
     name() {
       return this.$store.getters.name;
     },
-    date() {
-      return this.$store.getters.date;
+    formatDate(date) {
+      if (date.isValid) {
+        return date.toLocaleString(DateTime.DATE_MED)
+      } else {
+        return "N/A"
+      }
     },
   },
   methods: {
