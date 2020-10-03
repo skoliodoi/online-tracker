@@ -120,9 +120,12 @@ const mutations = {
         } else{
           state.allBoxContents[i][payload.property] = payload.value;
           if (payload.updateProgress){
-            state.allBoxContents[i].progress.push({
-              [payload.property]: payload.value
-            }) 
+            if (payload.value == "Ok"||payload.value=="N/A"){
+              console.log("Check!")
+              state.allBoxContents[i].progress.push({
+                [payload.property]: payload.value
+              }) 
+            }
           }
         }
       }

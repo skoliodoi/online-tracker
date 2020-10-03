@@ -39,6 +39,9 @@
                 <div class="container visible text-left col-2 my-auto">
                   <p class="my-auto">Delivery: {{ box.tillDelivery }}</p>
                 </div>
+                <div class="container visible text-left col-2 my-auto">
+                  <p class="my-auto">{{ box.progress }}</p>
+                </div>
                 <div class="container text-left my-auto col-3">
                   <div class="progress">
                     <div
