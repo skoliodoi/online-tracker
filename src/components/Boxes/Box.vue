@@ -40,14 +40,14 @@
                   <p class="my-auto">Delivery: {{ box.tillDelivery }}</p>
                 </div>
                 <div class="container visible text-left col-2 my-auto">
-                  <p class="my-auto">{{ Object.keys(box.progress).length }}</p>
+                  <p class="my-auto">{{ box.progressBar }}</p>
                 </div>
                 <div class="container text-left my-auto col-3">
                   <div class="progress">
                     <div
                       class="progress-bar bg-success"
                       role="progressbar"
-                      style="width: 100%"
+                      :style="{width: (box.progressBar/maxProgress) *100+'%'}"
                       aria-valuemin="0"
                       aria-valuemax="120"
                     ></div>
@@ -199,6 +199,7 @@
                         :displayValue="box.owClient"
                         :select="true"
                         :optionTable="stateTable"
+                        :updateProgress="true"
                       ></display-input-field>
 
                       <label>GC Client:</label>
@@ -209,6 +210,7 @@
                         :displayValue="box.gcClient"
                         :select="true"
                         :optionTable="stateTable"
+                        :updateProgress="true"
                       ></display-input-field>
                     </div>
                   </div>
@@ -223,6 +225,7 @@
                         :displayValue="box.mmb"
                         :select="true"
                         :optionTable="stateTable"
+                        :updateProgress="true"
                       ></display-input-field>
 
                       <label>Marsh Carrier:</label>
@@ -233,6 +236,7 @@
                         :displayValue="box.marshCarrier"
                         :select="true"
                         :optionTable="stateTable"
+                        :updateProgress="true"
                       ></display-input-field>
 
                       <label>OW Carrier:</label>
@@ -243,6 +247,7 @@
                         :displayValue="box.owCarrier"
                         :select="true"
                         :optionTable="stateTable"
+                        :updateProgress="true"
                       ></display-input-field>
 
                       <label>GC Carrier:</label>
@@ -253,6 +258,7 @@
                         :displayValue="box.gcCarrier"
                         :select="true"
                         :optionTable="stateTable"
+                        :updateProgress="true"
                       ></display-input-field>
                     </div>
                   </div>
@@ -267,6 +273,7 @@
                         :displayValue="box.wealth"
                         :select="true"
                         :optionTable="stateTable"
+                        :updateProgress="true"
                       ></display-input-field>
 
                       <label>B2B:</label>
@@ -277,6 +284,7 @@
                         :displayValue="box.b2b"
                         :select="true"
                         :optionTable="stateTable"
+                        :updateProgress="true"
                       ></display-input-field>
 
                       <label>MMC:</label>
@@ -287,6 +295,7 @@
                         :displayValue="box.mmc"
                         :select="true"
                         :optionTable="stateTable"
+                        :updateProgress="true"
                       ></display-input-field>
 
                       <label>Other (if necessary):</label>
@@ -297,6 +306,7 @@
                         :displayValue="box.other"
                         :select="true"
                         :optionTable="stateTable"
+                        :updateProgress="true"
                       ></display-input-field>
                     </div>
                   </div>
@@ -334,19 +344,16 @@ export default {
       statusTable: ["In Progress", "Pending", "Done"],
       typeTable: ["Client", "Carrier"],
       stateTable: ["Ok", "FYA SP", "FYA Mail", "NR", "N/A", "Escalated"],
+      maxProgress: 12
     };
   },
   computed: {
     name() {
       return this.$store.getters.name;
     },
-    formatDate(date) {
-      if (date.isValid) {
-        return date.toLocaleString(DateTime.DATE_MED)
-      } else {
-        return "N/A"
-      }
-    },
+    progressBar(value) {
+      return Object.keys(value).length
+    }
   },
   methods: {
     removeBox(idNumber) {

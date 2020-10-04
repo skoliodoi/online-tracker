@@ -9,77 +9,88 @@ const state = {
       status: "In Progress",
       mercerClient: '',
       progress: {},
-      tillDelivery: ""
+      tillDelivery: "",
+      progressBar: 0
     },
     {
       clientName: "Ghidora",
       id: 112,
       status: "Pending",
       progress: {},
-      tillDelivery: ""
+      tillDelivery: "",
+      progressBar: 0
     },
     {
       clientName: "Mothra",
       id: 113,
       status: "Pending",
       progress: {},
-      tillDelivery: ""
+      tillDelivery: "",
+      progressBar: 0
     },
     {
       clientName: "Rodan",
       id: 114,
       status: "In Progress",
       progress: {},
-      tillDelivery: ""
+      tillDelivery: "",
+      progressBar: 0
     },
     {
       clientName: "Gundam",
       id: 115,
       status: "Pending",
       progress: {},
-      tillDelivery: ""
+      tillDelivery: "",
+      progressBar: 0
     },
     {
       clientName: "EVA-01",
       id: 116,
       status: "In Progress",
       progress: {},
-      tillDelivery: ""
+      tillDelivery: "",
+      progressBar: 0
     },
     {
       clientName: "Totoro",
       id: 117,
       status: "In Progress",
       progress: {},
-      tillDelivery: ""
+      tillDelivery: "",
+      progressBar: 0
     },
     {
       clientName: "Mechagodzilla",
       id: 118,
       status: "In Progress",
       progress: {},
-      tillDelivery: ""
+      tillDelivery: "",
+      progressBar: 0
     },
     {
       clientName: "Bumblebee",
       id: 119,
       status: "In Progress",
       progress: {},
-      tillDelivery: ""
+      tillDelivery: "",
+      progressBar: 0
     },
     {
       clientName: "Optimus Prime",
       id: 120,
       status: "In Progress",
       progress: {},
-      tillDelivery: ""
+      tillDelivery: "",
+      progressBar: 0
     },
     {
       clientName: "Megatron",
       id: 121,
       status: "Pending",
       progress: {},
-      tillDelivery: ""
+      tillDelivery: "",
+      progressBar: 0
     },
   ],
 }
@@ -130,7 +141,10 @@ const mutations = {
         if (payload.updateProgress){
           if (payload.value == "Ok"||payload.value=="N/A"){
             state.allBoxContents[i].progress[payload.property] = payload.value;
+          } else {
+            delete state.allBoxContents[i].progress[payload.property]
           }
+          state.allBoxContents[i].progressBar = Object.keys(state.allBoxContents[i].progress).length
         }
       }
     }
