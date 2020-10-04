@@ -69,7 +69,7 @@ const state = {
       progressBar: 0
     },
     {
-      clientName: "Bumblebee",
+      clientName: "Akira",
       id: 119,
       status: "In Progress",
       progress: {},
@@ -77,7 +77,7 @@ const state = {
       progressBar: 0
     },
     {
-      clientName: "Optimus Prime",
+      clientName: "Tetsuo",
       id: 120,
       status: "In Progress",
       progress: {},
@@ -85,7 +85,7 @@ const state = {
       progressBar: 0
     },
     {
-      clientName: "Megatron",
+      clientName: "Mononoke",
       id: 121,
       status: "Pending",
       progress: {},
@@ -157,6 +157,9 @@ const mutations = {
 const actions = {
   updateContents: ({commit}, payload) => {
     commit('updateContents', payload)
+  },
+  updateProgressBar: ({commit}, payload) => {
+    commit('updateProgressBar', payload)
   },
   changeLink: ({commit}, payload) => {
     commit('changeLink', payload)

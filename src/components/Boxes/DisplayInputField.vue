@@ -22,7 +22,12 @@
             Choose:
           </option>
           <option v-for="each in optionTable"
-          @click="updateProgressBar(); changeDisplay()">
+          @click="updateProgressBar(
+          {id,
+          property,
+          value: newDisplay,
+          updateProgress: update}); 
+          changeDisplay()">
             {{each}}
           </option>
         </select>
@@ -45,6 +50,7 @@
 
 <script>
 import { DateTime } from 'luxon';
+import { mapActions } from "vuex";
 export default {
   data() {
     return {
@@ -77,6 +83,7 @@ export default {
     this.progress = this.updateProgress;
   },
   methods: {
+    ...mapActions(['updateProgressBar']),
     makeEditable() {
       this.isEditable = !this.isEditable;
       this.newDisplay = this.display;
@@ -88,21 +95,13 @@ export default {
       } else {
         this.display = this.newDisplay;
       }
-      this.$store.commit("updateContents", {
+      this.$store.dispatch("updateContents", {
         id: this.id,
         property: this.property,
         value: this.newDisplay,
         input: this.inputType,
       });
     },
-    updateProgressBar() {
-      this.$store.commit("updateProgressBar", {
-        id: this.id,
-        property: this.property,
-        value: this.newDisplay,
-        updateProgress: this.update
-      });
-    }
   },
 };
 </script>

@@ -17,7 +17,8 @@ const mutations = {
       meetDate: payload.meetDate.toLocaleString(DateTime.DATE_HUGE),
       deadline: payload.deadline.toLocaleString(DateTime.DATE_HUGE),
       delivery: payload.delivery.toLocaleString(DateTime.DATE_HUGE),
-      progress: [],
+      progress: {},
+      progressBar: 0,
       reminder1: payload.reminder1,
       reminder2: payload.reminder2,
       tillDelivery: payload.tillDelivery
