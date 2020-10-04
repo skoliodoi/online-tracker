@@ -10,7 +10,8 @@ const state = {
       mercerClient: '',
       progress: {},
       tillDelivery: "",
-      progressBar: 0
+      progressBar: 0,
+      progressDisplay: ""
     },
     {
       clientName: "Ghidora",
@@ -145,6 +146,7 @@ const mutations = {
             delete state.allBoxContents[i].progress[payload.property]
           }
           state.allBoxContents[i].progressBar = Object.keys(state.allBoxContents[i].progress).length
+          state.allBoxContents[i].progressDisplay = Math.round((state.allBoxContents[i].progressBar/12) * 100) + '%'
         }
       }
     }

@@ -19,6 +19,7 @@ const mutations = {
       delivery: payload.delivery.toLocaleString(DateTime.DATE_HUGE),
       progress: {},
       progressBar: 0,
+      progressDisplay: "",
       reminder1: payload.reminder1,
       reminder2: payload.reminder2,
       tillDelivery: payload.tillDelivery

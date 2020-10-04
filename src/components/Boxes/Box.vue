@@ -47,7 +47,9 @@
                       :style="{width: (box.progressBar/maxProgress) *100+'%'}"
                       aria-valuemin="0"
                       aria-valuemax="120"
-                    ></div>
+                    >
+                      <strong>{{ (box.progressDisplay) }}</strong>
+                    </div>
                   </div>
                 </div>
                 <button
