@@ -31,6 +31,7 @@
                   class="container visible text-left col-2 my-auto"
                   :select="true"
                   :displayValue="box.status"
+                  :key="box.componentKey"
                   :id="box.id"
                   :optionTable="statusTable"
                   :property="'status'"
@@ -347,12 +348,6 @@ export default {
     };
   },
   computed: {
-    name() {
-      return this.$store.getters.name;
-    },
-    progressBar(value) {
-      return Object.keys(value).length
-    }
   },
   methods: {
     removeBox(idNumber) {

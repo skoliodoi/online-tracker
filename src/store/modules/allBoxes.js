@@ -11,7 +11,7 @@ const state = {
       progress: {},
       tillDelivery: "",
       progressBar: 0,
-      progressDisplay: ""
+      progressDisplay: "",
     },
     {
       clientName: "Ghidora",
@@ -147,6 +147,12 @@ const mutations = {
           }
           state.allBoxContents[i].progressBar = Object.keys(state.allBoxContents[i].progress).length
           state.allBoxContents[i].progressDisplay = Math.round((state.allBoxContents[i].progressBar/12) * 100) + '%'
+          if (state.allBoxContents[i].progressBar == 12) {
+            if(confirm("The status of this request will be changed to 'Done' and moved to appropriate subpage. Would you wish to continue?")){
+              state.allBoxContents[i].status = "Done"
+              state.allBoxContents[i].componentKey += 1;
+            }  
+          }
         }
       }
     }
