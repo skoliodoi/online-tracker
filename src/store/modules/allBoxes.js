@@ -8,77 +8,77 @@ const state = {
       id: 111,
       status: "In Progress",
       mercerClient: '',
-      progress: [],
+      progress: {},
       tillDelivery: ""
     },
     {
       clientName: "Ghidora",
       id: 112,
       status: "Pending",
-      progress: [],
+      progress: {},
       tillDelivery: ""
     },
     {
       clientName: "Mothra",
       id: 113,
       status: "Pending",
-      progress: [],
+      progress: {},
       tillDelivery: ""
     },
     {
       clientName: "Rodan",
       id: 114,
       status: "In Progress",
-      progress: [],
+      progress: {},
       tillDelivery: ""
     },
     {
       clientName: "Gundam",
       id: 115,
       status: "Pending",
-      progress: [],
+      progress: {},
       tillDelivery: ""
     },
     {
       clientName: "EVA-01",
       id: 116,
       status: "In Progress",
-      progress: [],
+      progress: {},
       tillDelivery: ""
     },
     {
       clientName: "Totoro",
       id: 117,
       status: "In Progress",
-      progress: [],
+      progress: {},
       tillDelivery: ""
     },
     {
       clientName: "Mechagodzilla",
       id: 118,
       status: "In Progress",
-      progress: [],
+      progress: {},
       tillDelivery: ""
     },
     {
       clientName: "Bumblebee",
       id: 119,
       status: "In Progress",
-      progress: [],
+      progress: {},
       tillDelivery: ""
     },
     {
       clientName: "Optimus Prime",
       id: 120,
       status: "In Progress",
-      progress: [],
+      progress: {},
       tillDelivery: ""
     },
     {
       clientName: "Megatron",
       id: 121,
       status: "Pending",
-      progress: [],
+      progress: {},
       tillDelivery: ""
     },
   ],
@@ -120,13 +120,16 @@ const mutations = {
           state.allBoxContents[i][payload.property] = DateTime.fromISO(payload.value).toLocaleString(DateTime.DATE_HUGE);
         } else{
           state.allBoxContents[i][payload.property] = payload.value;
-          if (payload.updateProgress){
-            if (payload.value == "Ok"||payload.value=="N/A"){
-              console.log("Check!")
-              state.allBoxContents[i].progress.push({
-                [payload.property]: payload.value
-              }) 
-            }
+        }
+      }
+    }
+  },
+  updateProgressBar: (state, payload) => {
+    for (var i = 0; i<state.allBoxContents.length; i++) {
+      if (state.allBoxContents[i].id == payload.id) {
+        if (payload.updateProgress){
+          if (payload.value == "Ok"||payload.value=="N/A"){
+            state.allBoxContents[i].progress[payload.property] = payload.value;
           }
         }
       }

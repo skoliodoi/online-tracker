@@ -40,7 +40,7 @@
                   <p class="my-auto">Delivery: {{ box.tillDelivery }}</p>
                 </div>
                 <div class="container visible text-left col-2 my-auto">
-                  <p class="my-auto">{{ box.progress }}</p>
+                  <p class="my-auto">{{ Object.keys(box.progress).length }}</p>
                 </div>
                 <div class="container text-left my-auto col-3">
                   <div class="progress">
@@ -188,6 +188,7 @@
                         :displayValue="box.marshClient"
                         :select="true"
                         :optionTable="stateTable"
+                        :updateProgress="true"
                       ></display-input-field>
 
                       <label>OW Client:</label>

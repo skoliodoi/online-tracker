@@ -22,7 +22,7 @@
             Choose:
           </option>
           <option v-for="each in optionTable"
-          @click="changeDisplay">
+          @click="updateProgressBar(); changeDisplay()">
             {{each}}
           </option>
         </select>
@@ -51,10 +51,13 @@ export default {
       isEditable: false,
       display: "",
       newDisplay: "",
+      progress: this.updateProgress
     };
   },
   computed: {
-    
+    update() {
+      return this.progress
+    }
   },
   props: [
     "bool",
@@ -71,6 +74,7 @@ export default {
   mounted() {
     this.isEditable = this.bool;
     this.display = this.displayValue;
+    this.progress = this.updateProgress;
   },
   methods: {
     makeEditable() {
@@ -89,9 +93,16 @@ export default {
         property: this.property,
         value: this.newDisplay,
         input: this.inputType,
-        updateProgress: this.updateProgress
       });
     },
+    updateProgressBar() {
+      this.$store.commit("updateProgressBar", {
+        id: this.id,
+        property: this.property,
+        value: this.newDisplay,
+        updateProgress: this.update
+      });
+    }
   },
 };
 </script>
