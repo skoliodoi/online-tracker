@@ -9,9 +9,9 @@
               style="display: inline-block; background: #f6f7f8"
               :id="'heading' + box.id"
             >
-              <div class="visible" style="display: flex">
+              <div style="display: flex">
                 <div
-                  class="col quiver visible"
+                  class="col quiver"
                   data-toggle="collapse"
                   :data-target="'#collapse-' + box.id"
                   aria-expanded="false"
@@ -20,26 +20,30 @@
                   <div class="arrow"></div>
                 </div>
                 <display-input-field
-                  class="btn btn-outline-dark container text-left"
+                  class="my-auto container text-left col-xs-2"
                   style="border: none"
                   :displayValue="box.clientName"
                   :id="box.id"
                   :input="true"
                   :property="'clientName'"
                 ></display-input-field>
-                <display-input-field
-                  class="container visible text-left col-2 my-auto"
+                <div class="container text-left col-2 my-auto"
+                style='display: flex'>
+                  <p class='mr-1 my-auto'>Status: </p>
+                  <display-input-field
                   :select="true"
                   :displayValue="box.status"
                   :key="box.componentKey"
                   :id="box.id"
                   :optionTable="statusTable"
                   :property="'status'"
-                >
-                </display-input-field>
-                <div class="container visible text-left col-2 my-auto">
-                  <p class="my-auto">Delivery: {{ box.tillDelivery }}</p>
+                  >
+                 </display-input-field>
                 </div>
+                <div class="container text-left col-2 my-auto">
+                  <p class="my-auto">Delivery: <strong>{{ box.tillDelivery }}</strong></p>
+                </div>
+                <p class="my-auto">Progress:</p>
                 <div class="container text-left my-auto col-3">
                   <div class="progress">
                     <div
@@ -71,7 +75,8 @@
                 <div class="row">
                   <div id="col-one" class="col-sm">
                     <div class="card-body">
-                      <label>Confirmed?</label>
+                      <div class="form-group">
+                      <label><strong>Confirmed?</strong></label>
                       <display-input-field
                         :bool="!box.confirmed"
                         :displayValue="box.confirmed"
@@ -80,8 +85,9 @@
                         :select="true"
                         :optionTable="booleanTable"
                       ></display-input-field>
-
-                      <label>Type:</label>
+                      </div>
+                      <div class="form-group">
+                      <label><strong>Type:</strong></label>
                       <display-input-field
                         :bool="!box.briefType"
                         :displayValue="box.briefType"
@@ -90,8 +96,10 @@
                         :select="true"
                         :optionTable="typeTable"
                       ></display-input-field>
+                      </div>
 
-                      <label>For:</label>
+                      <div class="form-group">
+                      <label><strong>For:</strong></label>
                       <display-input-field
                         :bool="!box.whoFor"
                         :displayValue="box.whoFor"
@@ -99,8 +107,10 @@
                         :property="'whoFor'"
                         :input="true"
                       ></display-input-field>
+                      </div>
 
-                      <label>Who is the meeting with:</label>
+                      <div class="form-group">
+                      <label><strong>Who is the meeting with:</strong></label>
                       <display-input-field
                         :bool="!box.whoWith"
                         :displayValue="box.whoWith"
@@ -108,8 +118,10 @@
                         :property="'whoWith'"
                         :input="true"
                       ></display-input-field>
+                      </div>
 
-                      <label>Meeting date:</label>
+                      <div class="form-group">
+                      <label><strong>Meeting date:</strong></label>
                       <display-input-field
                         :bool="!box.meetDate"
                         :displayValue="box.meetDate"
@@ -118,12 +130,14 @@
                         :input="true"
                         :inputType="'date'"
                       ></display-input-field>
+                      </div>
                     </div>
                   </div>
 
                   <div id="col-two" class="col-sm">
                     <div class="card-body">
-                      <label>Start:</label>
+                      <div class="form-group">
+                      <label><strong>Start:</strong></label>
                       <display-input-field
                         :bool="!box.startDate"
                         :displayValue="box.startDate"
@@ -132,8 +146,10 @@
                         :input="true"
                         :inputType="'date'"
                       ></display-input-field>
+                      </div>
 
-                      <label>Delivery Date:</label>
+                      <div class="form-group">
+                      <label><strong>Delivery Date:</strong></label>
                       <display-input-field
                         :bool="!box.delivery"
                         :displayValue="box.delivery"
@@ -142,8 +158,10 @@
                         :input="true"
                         :inputType="'date'"
                       ></display-input-field>
+                      </div>
 
-                      <label>OpCo deadline:</label>
+                      <div class="form-group">
+                      <label><strong>OpCo deadline:</strong></label>
                       <display-input-field
                         :bool="!box.deadline"
                         :displayValue="box.deadline"
@@ -152,24 +170,38 @@
                         :input="true"
                         :inputType="'date'"
                       ></display-input-field>
+                      </div>
 
-                      <label>Reminder 1:</label>
+                      <div class="form-group">  
+                      <label><strong>Reminder 1:</strong></label>
                       <display-input-field
-                        :bool="false"
-                        :displayValue="box.confirmed"
+                        :bool="!box.deadline"
+                        :displayValue="box.reminder1"
+                        :id="box.id"
+                        :property="'reminder1'"
+                        :input="true"
+                        :inputType="'date'"
                       ></display-input-field>
+                      </div>
 
-                      <label>Reminder 2:</label>
+                      <div class="form-group">
+                      <label><strong>Reminder 2:</strong></label>
                       <display-input-field
-                        :bool="false"
-                        :displayValue="box.confirmed"
+                        :bool="!box.reminder2"
+                        :displayValue="box.reminder2"
+                        :id="box.id"
+                        :property="'reminder2'"
+                        :input="true"
+                        :inputType="'date'"
                       ></display-input-field>
+                      </div>
                     </div>
                   </div>
 
                   <div id="col-three" class="col-sm">
                     <div class="card-body">
-                      <label>Mercer Client:</label>
+                      <div class="form-group">
+                      <label><strong>Mercer Client:</strong></label>
                       <display-input-field
                         :bool="!box.mercerClient"
                         :id="box.id"
@@ -180,7 +212,10 @@
                         :updateProgress="true"
                       >
                       </display-input-field>
-                      <label>Marsh Client:</label>
+                      </div>
+
+                      <div class="form-group">
+                      <label><strong>Marsh Client:</strong></label>
                       <display-input-field
                         :bool="!box.marshClient"
                         :id="box.id"
@@ -190,8 +225,10 @@
                         :optionTable="stateTable"
                         :updateProgress="true"
                       ></display-input-field>
+                      </div>
 
-                      <label>OW Client:</label>
+                      <div class="form-group">
+                      <label><strong>OW Client:</strong></label>
                       <display-input-field
                         :bool="!box.owClient"
                         :id="box.id"
@@ -201,8 +238,10 @@
                         :optionTable="stateTable"
                         :updateProgress="true"
                       ></display-input-field>
+                      </div>
 
-                      <label>GC Client:</label>
+                      <div class="form-group">
+                      <label><strong>GC Client:</strong></label>
                       <display-input-field
                         :bool="!box.gcClient"
                         :id="box.id"
@@ -212,12 +251,14 @@
                         :optionTable="stateTable"
                         :updateProgress="true"
                       ></display-input-field>
+                      </div>
                     </div>
                   </div>
 
                   <div id="col-four" class="col-sm">
                     <div class="card-body">
-                      <label>MMB (Jeffrey):</label>
+                      <div class="form-group">
+                      <label><strong>MMB:</strong></label>
                       <display-input-field
                         :bool="!box.mmb"
                         :id="box.id"
@@ -227,8 +268,10 @@
                         :optionTable="stateTable"
                         :updateProgress="true"
                       ></display-input-field>
+                      </div>
 
-                      <label>Marsh Carrier:</label>
+                      <div class="form-group">
+                      <label><strong>Marsh Carrier:</strong></label>
                       <display-input-field
                         :bool="!box.marshCarrier"
                         :id="box.id"
@@ -238,8 +281,10 @@
                         :optionTable="stateTable"
                         :updateProgress="true"
                       ></display-input-field>
+                      </div>
 
-                      <label>OW Carrier:</label>
+                      <div class="form-group">
+                      <label><strong>OW Carrier:</strong></label>
                       <display-input-field
                         :bool="!box.owCarrier"
                         :id="box.id"
@@ -249,8 +294,10 @@
                         :optionTable="stateTable"
                         :updateProgress="true"
                       ></display-input-field>
+                      </div>
 
-                      <label>GC Carrier:</label>
+                      <div class="form-group">    
+                      <label><strong>GC Carrier:</strong></label>
                       <display-input-field
                         :bool="!box.gcCarrier"
                         :id="box.id"
@@ -260,12 +307,14 @@
                         :optionTable="stateTable"
                         :updateProgress="true"
                       ></display-input-field>
+                      </div>
                     </div>
                   </div>
 
                   <div id="col-five" class="col-sm">
                     <div class="card-body">
-                      <label>Wealth (Lindsey):</label>
+                      <div class="form-group">
+                      <label><strong>Wealth:</strong></label>
                       <display-input-field
                         :bool="!box.wealth"
                         :id="box.id"
@@ -275,8 +324,10 @@
                         :optionTable="stateTable"
                         :updateProgress="true"
                       ></display-input-field>
+                      </div>
 
-                      <label>B2B:</label>
+                      <div class="form-group">  
+                      <label><strong>B2B:</strong></label>
                       <display-input-field
                         :bool="!box.b2b"
                         :id="box.id"
@@ -286,8 +337,10 @@
                         :optionTable="stateTable"
                         :updateProgress="true"
                       ></display-input-field>
+                      </div>
 
-                      <label>MMC:</label>
+                      <div class="form-group">
+                      <label><strong>MMC:</strong></label>
                       <display-input-field
                         :bool="!box.mmc"
                         :id="box.id"
@@ -297,8 +350,10 @@
                         :optionTable="stateTable"
                         :updateProgress="true"
                       ></display-input-field>
+                      </div>
 
-                      <label>Other (if necessary):</label>
+                      <div class="form-group">
+                      <label><strong>Other (if necessary):</strong></label>
                       <display-input-field
                         :bool="!box.other"
                         :id="box.id"
@@ -308,6 +363,7 @@
                         :optionTable="stateTable"
                         :updateProgress="true"
                       ></display-input-field>
+                      </div>
                     </div>
                   </div>
                 </div>

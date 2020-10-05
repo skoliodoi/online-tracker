@@ -1,6 +1,9 @@
 <template>
   <div>
-    <div class="box-field" v-if="!isEditable" @click="makeEditable">
+    <div 
+    v-if="!isEditable" 
+    @click="makeEditable"
+    style="cursor: pointer">
       <slot> {{ display }}</slot>
     </div>
     <div v-else>
