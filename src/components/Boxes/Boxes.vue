@@ -1,9 +1,13 @@
 <template>
   <div :class="{ redBod: redBackground }">
     <app-navbar></app-navbar>
-    <app-box 
-    :boxes="filterBoxes" 
+    <transition-group name="slide" mode="out-in">
+    <app-box
+    v-for="box in filterBoxes" 
+    :box="box"
+    :key="box.id" 
     @boxRemoved="removeBox"></app-box>
+     </transition-group>
   </div>
 </template>
 
@@ -60,4 +64,56 @@ export default {
 .redBod {
   background: #f25f5c;
 }
+
+.slide-enter {
+}
+.slide-enter-active {
+  animation: slide-in 0.7s ease-out forwards;
+}
+.slide-leave {
+}
+.slide-leave-active {
+  animation: slide-out 0.7s ease-out forwards;
+  position: absolute;
+}
+
+.slide-move {
+  transition: transform 1s;
+}
+
+@keyframes slide-in {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slide-out {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes arrow-in {
+  from {
+    border: 1px solid black;
+    border-left: transparent;
+    border-top: transparent;
+    height: 15px;
+    width: 15px;
+  }
+  to {
+    border: 5px solid black;
+    border-left: transparent;
+    border-top: transparent;
+    height: 20px;
+    width: 20px;
+  }
+}
+
 </style>

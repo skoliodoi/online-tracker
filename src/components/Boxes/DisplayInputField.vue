@@ -3,7 +3,8 @@
     <div 
     v-if="!isEditable" 
     @click="makeEditable"
-    style="cursor: pointer">
+    class="box-field p-2"
+>
       <slot> {{ display }}</slot>
     </div>
     <div v-else>
@@ -114,8 +115,8 @@ export default {
   cursor: pointer;
 }
 .box-field:hover {
-  background: crimson;
   cursor: pointer;
+;
 }
 .visible {
   border: 1px solid red;

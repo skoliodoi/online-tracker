@@ -288,7 +288,7 @@ export default {
       this.deadline = "";
       this.delivery = "";
       this.inputEntry = "";
-      this.reminder1 = "";
+      this.reminder1 ="";
       this.reminder2 = "";
     },
   },
