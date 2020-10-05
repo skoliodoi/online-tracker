@@ -375,7 +375,7 @@
                 </div>
               </div>
               <div class="card-body">
-                <label>Comments</label>
+                <label><strong>Comments</strong></label>
                 <display-input-field
                   :textarea="true"
                   :bool="!box.comments"

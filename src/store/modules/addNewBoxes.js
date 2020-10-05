@@ -20,8 +20,8 @@ const mutations = {
       progress: {},
       progressBar: 0,
       progressDisplay: "",
-      reminder1: payload.reminder1,
-      reminder2: payload.reminder2,
+      reminder1: payload.reminder1.toLocaleString(DateTime.DATE_HUGE),
+      reminder2: payload.reminder2.toLocaleString(DateTime.DATE_HUGE),
       tillDelivery: payload.tillDelivery
       });
     } 

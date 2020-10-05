@@ -34,17 +34,15 @@
                     </label>
                   <input v-model="whoWith" class="form-control" type="text" />
                 </div>
-              </div>
-              <div class="col">
                 <div class="form-group row">
-                  <label class="col-5 my-auto">
+                  <label class="col-4 my-auto">
                     <strong>Confirmed?</strong>
                   </label>
                   <div>
                     <select
                       v-model="confirmed"
                       class="custom-select"
-                      style="width: 200px"
+                      style="width: 250px"
                     >
                       <option v-for="each in booleanTable">
                         {{ each }}
@@ -54,14 +52,14 @@
                 </div>
 
                 <div class="form-group row">
-                  <label class="col-5 my-auto">
+                  <label class="col-4 my-auto">
                     <strong>Brief Type:</strong>
                   </label>
                   <div>
                     <select
                       v-model="briefType"
                       class="custom-select"
-                      style="width: 200px"
+                      style="width: 250px"
                     >
                       <option v-for="each in briefTable">
                         {{ each }}
@@ -71,14 +69,14 @@
                 </div>
 
                 <div class="form-group row">
-                  <label class="col-5 my-auto">
+                  <label class="col-4 my-auto">
                     <strong>Set status:</strong>
                   </label>
                   <div>
                     <select
                       v-model="setStatus"
                       class="custom-select"
-                      style="width: 200px"
+                      style="width: 250px"
                     >
                       <option v-for="each in statusTable">
                         {{ each }}
@@ -86,6 +84,9 @@
                     </select>
                   </div>
                 </div>
+              </div>
+              <div class="col">
+                
                 <div class="form-group row">
                   <label class="col-5 my-auto">
                     <strong>Meeting date:</strong>
@@ -136,10 +137,31 @@
                     name="deadline"
                   />
                 </div>
-              </div>
-            </div>
-          </fieldset>
-          <div class="d-flex justify-content-center">
+                <div class="form-group row">
+                  <label class="col-5 my-auto">
+                    <strong>Reminder 1:</strong>
+                  </label>
+                  <input
+                    v-model="reminder1"
+                    class="custom-select col-6"
+                    id="reminder1"
+                    type="date"
+                    name="reminder1"
+                  />
+                </div>
+                <div class="form-group row">
+                  <label class="col-5 my-auto">
+                    <strong>Reminder 2:</strong>
+                  </label>
+                  <input
+                    v-model="reminder2"
+                    class="custom-select col-6"
+                    id="reminder2"
+                    type="date"
+                    name="reminder2"
+                  />
+                </div>
+                          <div class="d-flex justify-content-center">
             <button
               class="btn btn-outline-success"
               @click.prevent="addNewInput"
@@ -147,6 +169,9 @@
               Add
             </button>
           </div>
+              </div>
+            </div>
+          </fieldset>
         </div>
       </form>
     </div>
@@ -263,6 +288,8 @@ export default {
       this.deadline = "";
       this.delivery = "";
       this.inputEntry = "";
+      this.reminder1 = "";
+      this.reminder2 = "";
     },
   },
 };
