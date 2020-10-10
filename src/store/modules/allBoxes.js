@@ -122,6 +122,35 @@ const getters = {
 }
 
 const mutations = {
+  addContents: state => {
+    fetch('https://online-tracker-test.firebaseio.com/boxes.json')
+      .then(res => {
+        return res.json()
+      })
+      .then(data => {
+        for (const id in data) {
+          state.allBoxContents.unshift({
+            id: id,
+            clientName: data[id].clientName,
+            confirmed: data[id].confirmed,
+            briefType: data[id].briefType,
+            status: data[id].setStatus,
+            whoFor: data[id].whoFor,
+            whoWith: data[id].whoWith,
+            startDate: data[id].startDate.toLocaleString(DateTime.DATE_HUGE),
+            meetDate: data[id].meetDate.toLocaleString(DateTime.DATE_HUGE),
+            deadline: data[id].deadline.toLocaleString(DateTime.DATE_HUGE),
+            delivery: data[id].delivery.toLocaleString(DateTime.DATE_HUGE),
+            progress: {},
+            progressBar: 0,
+            progressDisplay: "",
+            reminder1: data[id].reminder1.toLocaleString(DateTime.DATE_HUGE),
+            reminder2: data[id].reminder2.toLocaleString(DateTime.DATE_HUGE),
+            tillDelivery: data[id].tillDelivery
+            });
+        }
+      })
+  },
   updateContents: (state, payload) => {
     for (var i = 0; i<state.allBoxContents.length; i++) {
       if (state.allBoxContents[i].id == payload.id) {

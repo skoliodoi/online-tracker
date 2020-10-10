@@ -164,7 +164,7 @@
                           <div class="d-flex justify-content-center">
             <button
               class="btn btn-outline-success"
-              @click.prevent="addNewInput"
+              @click.prevent="addNewBox"
             >
               Add
             </button>
@@ -205,42 +205,42 @@ export default {
   computed: {
     startDateProper() {
       if (!this.startDate == "") {
-        return DateTime.fromISO(this.startDate);
+        return DateTime.fromISO(this.startDate).toLocaleString(DateTime.DATE_HUGE);
       } else {
         return "No date provided";
       }
     },
     meetDateProper() {
       if (!this.meetDate == "") {
-        return DateTime.fromISO(this.meetDate);
+        return DateTime.fromISO(this.meetDate).toLocaleString(DateTime.DATE_HUGE);
       } else {
         return "No date provided";
       }
     },
     deadlineProper() {
       if (!this.deadline == "") {
-        return DateTime.fromISO(this.deadline);
+        return DateTime.fromISO(this.deadline).toLocaleString(DateTime.DATE_HUGE);
       } else {
         return "No date provided";
       }
     },
     deliveryProper() {
       if (!this.delivery == "") {
-        return DateTime.fromISO(this.delivery);
+        return DateTime.fromISO(this.delivery).toLocaleString(DateTime.DATE_HUGE);
       } else {
         return "No date provided";
       }
     },
     reminder1Proper() {
       if (!this.reminder1 == "") {
-        return DateTime.fromISO(this.reminder1);
+        return DateTime.fromISO(this.reminder1).toLocaleString(DateTime.DATE_HUGE);
       } else {
         return "No date provided";
       }
     },
     reminder2Proper() {
       if (!this.reminder2 == "") {
-        return DateTime.fromISO(this.reminder2);
+        return DateTime.fromISO(this.reminder2).toLocaleString(DateTime.DATE_HUGE);
       } else {
         return "No date provided";
       }
@@ -255,22 +255,49 @@ export default {
   },
   methods: {
     ...mapActions(["addInput"]),
-    addNewInput() {
-      this.addInput({
-        clientName: this.clientName,
-        confirmed: this.confirmed,
-        briefType: this.briefType,
-        setStatus: this.setStatus,
-        whoFor: this.whoFor,
-        whoWith: this.whoWith,
-        startDate: this.startDateProper,
-        meetDate: this.meetDateProper,
-        deadline: this.deadlineProper,
-        delivery: this.deliveryProper,
-        reminder1: this.reminder1Proper,
-        reminder2: this.reminder2Proper,
-        tillDelivery: this.deliveryDeadline,
-      });
+    addNewBox() {
+      fetch('https://online-tracker-test.firebaseio.com/boxes.json', {
+        method: 'POST',
+        headers: {
+          'Content-Type':'application/json'
+        },
+        body: JSON.stringify({
+          clientName: this.clientName,
+          confirmed: this.confirmed,
+          briefType: this.briefType,
+          setStatus: this.setStatus,
+          whoFor: this.whoFor,
+          whoWith: this.whoWith,
+          startDate: this.startDateProper,
+          meetDate: this.meetDateProper,
+          deadline: this.deadlineProper,
+          delivery: this.deliveryProper,
+          reminder1: this.reminder1Proper,
+          reminder2: this.reminder2Proper,
+          tillDelivery: this.deliveryDeadline,
+          progress: {},
+          progressBar: 0,
+          progressDisplay: ""
+        })
+      })
+      // this.addInput({
+      //   clientName: this.clientName,
+      //   confirmed: this.confirmed,
+      //   briefType: this.briefType,
+      //   setStatus: this.setStatus,
+      //   whoFor: this.whoFor,
+      //   whoWith: this.whoWith,
+      //   startDate: this.startDateProper,
+      //   meetDate: this.meetDateProper,
+      //   deadline: this.deadlineProper,
+      //   delivery: this.deliveryProper,
+      //   reminder1: this.reminder1Proper,
+      //   reminder2: this.reminder2Proper,
+      //   tillDelivery: this.deliveryDeadline,
+      //   progress: {},
+      //   progressBar: 0,
+      //   progressDisplay: ""
+      // });
       this.restart();
     },
     cancelBox() {
