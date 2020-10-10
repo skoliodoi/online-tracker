@@ -11,6 +11,11 @@
               Add New Box
             </button>
           </li>
+          <li class="nav-item">
+            <button class="btn btn-info" @click="getBoxes">
+              Get Boxes
+            </button>
+          </li>
         </ul>
         <ul class="nav nav-pills">
           <li class="nav-item" @click="changeLink('In Progress')">

@@ -256,21 +256,45 @@ export default {
   methods: {
     ...mapActions(["addInput"]),
     addNewInput() {
-      this.addInput({
-        clientName: this.clientName,
-        confirmed: this.confirmed,
-        briefType: this.briefType,
-        setStatus: this.setStatus,
-        whoFor: this.whoFor,
-        whoWith: this.whoWith,
-        startDate: this.startDateProper,
-        meetDate: this.meetDateProper,
-        deadline: this.deadlineProper,
-        delivery: this.deliveryProper,
-        reminder1: this.reminder1Proper,
-        reminder2: this.reminder2Proper,
-        tillDelivery: this.deliveryDeadline,
-      });
+      fetch('https://online-tracker-test.firebaseio.com/boxes.json', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          clientName: this.clientName,
+          confirmed: this.confirmed,
+          briefType: this.briefType,
+          setStatus: this.setStatus,
+          whoFor: this.whoFor,
+          whoWith: this.whoWith,
+          startDate: this.startDateProper,
+          meetDate: this.meetDateProper,
+          deadline: this.deadlineProper,
+          delivery: this.deliveryProper,
+          reminder1: this.reminder1Proper,
+          reminder2: this.reminder2Proper,
+          tillDelivery: this.deliveryDeadline,
+          progress: {},
+          progressBar: 0,
+          progressDisplay: "",
+        })
+      })
+      // this.addInput({
+      //   clientName: this.clientName,
+      //   confirmed: this.confirmed,
+      //   briefType: this.briefType,
+      //   setStatus: this.setStatus,
+      //   whoFor: this.whoFor,
+      //   whoWith: this.whoWith,
+      //   startDate: this.startDateProper,
+      //   meetDate: this.meetDateProper,
+      //   deadline: this.deadlineProper,
+      //   delivery: this.deliveryProper,
+      //   reminder1: this.reminder1Proper,
+      //   reminder2: this.reminder2Proper,
+      //   tillDelivery: this.deliveryDeadline,
+      // });
       this.restart();
     },
     cancelBox() {
