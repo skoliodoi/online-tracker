@@ -255,25 +255,54 @@ export default {
   },
   methods: {
     ...mapActions(["addInput"]),
+    sendData() {
+        fetch('https://online-tracker-test.firebaseio.com/boxes.json',{
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          id: 0,
+          clientName: this.clientName,
+          confirmed: this.confirmed,
+          briefType: this.briefType,
+          setStatus: this.setStatus,
+          whoFor: this.whoFor,
+          whoWith: this.whoWith,
+          startDate: this.startDateProper,
+          meetDate: this.meetDateProper,
+          deadline: this.deadlineProper,
+          delivery: this.deliveryProper,
+          reminder1: this.reminder1Proper,
+          reminder2: this.reminder2Proper,
+          tillDelivery: this.deliveryDeadline,
+          progress: {},
+          progressBar: 0,
+          progressDisplay: ""
+        })
+      })
+    },
     addNewBox() {
-      this.addInput({
-        clientName: this.clientName,
-        confirmed: this.confirmed,
-        briefType: this.briefType,
-        setStatus: this.setStatus,
-        whoFor: this.whoFor,
-        whoWith: this.whoWith,
-        startDate: this.startDateProper,
-        meetDate: this.meetDateProper,
-        deadline: this.deadlineProper,
-        delivery: this.deliveryProper,
-        reminder1: this.reminder1Proper,
-        reminder2: this.reminder2Proper,
-        tillDelivery: this.deliveryDeadline,
-        progress: {},
-        progressBar: 0,
-        progressDisplay: ""
-      });
+      this.sendData()
+      this.$store.commit('getData')
+      // this.addInput({
+      //   clientName: this.clientName,
+      //   confirmed: this.confirmed,
+      //   briefType: this.briefType,
+      //   setStatus: this.setStatus,
+      //   whoFor: this.whoFor,
+      //   whoWith: this.whoWith,
+      //   startDate: this.startDateProper,
+      //   meetDate: this.meetDateProper,
+      //   deadline: this.deadlineProper,
+      //   delivery: this.deliveryProper,
+      //   reminder1: this.reminder1Proper,
+      //   reminder2: this.reminder2Proper,
+      //   tillDelivery: this.deliveryDeadline,
+      //   progress: {},
+      //   progressBar: 0,
+      //   progressDisplay: ""
+      // });
       this.restart();
     },
     cancelBox() {

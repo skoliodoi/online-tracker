@@ -122,6 +122,20 @@ const getters = {
 }
 
 const mutations = {
+  getData: state => {
+    fetch('https://online-tracker-test.firebaseio.com/boxes.json')
+      .then(res => {
+        return res.json()
+      })
+      .then(data => {
+        const boxes = [];
+        for (const id in data) {
+          data[id].id = id
+          boxes.unshift(data[id])
+        }
+        state.allBoxContents = boxes;
+      })
+  },
   updateContents: (state, payload) => {
     for (var i = 0; i<state.allBoxContents.length; i++) {
       if (state.allBoxContents[i].id == payload.id) {
