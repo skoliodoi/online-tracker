@@ -36,9 +36,6 @@ export default {
     appBox: Box,
     appNavbar: Navbar,
   },
-  mounted(){
-    this.$store.commit('addContents')
-  },
   methods: {
     removeBox(idNumber) {
       const deleteBox = this.allBoxContents
