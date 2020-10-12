@@ -409,9 +409,8 @@ export default {
   },
   computed: {},
   methods: {
-    async removeBox(idNumber) {
-      await this.$store.dispatch('removeContents', idNumber)
-      await this.$store.dispatch('fetchData')
+    removeBox(idNumber) {
+      this.$emit("boxRemoved", idNumber);
     },
   },
   components: {
