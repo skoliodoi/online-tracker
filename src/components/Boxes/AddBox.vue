@@ -28,10 +28,8 @@
                 </div>
                 <div class="form-group">
                   <label>
-                    <strong>
-                    Who is the meeting with:
-                    </strong>
-                    </label>
+                    <strong> Who is the meeting with: </strong>
+                  </label>
                   <input v-model="whoWith" class="form-control" type="text" />
                 </div>
                 <div class="form-group row">
@@ -86,7 +84,6 @@
                 </div>
               </div>
               <div class="col">
-                
                 <div class="form-group row">
                   <label class="col-5 my-auto">
                     <strong>Meeting date:</strong>
@@ -161,14 +158,24 @@
                     name="reminder2"
                   />
                 </div>
-                          <div class="d-flex justify-content-center">
-            <button
-              class="btn btn-outline-success"
-              @click.prevent="addNewBox"
-            >
-              Add
-            </button>
-          </div>
+                <div class="d-flex justify-content-center">
+                  <button v-if="!loadingState"
+                    class="btn btn-outline-success"
+                    @click.prevent="addNewBox"
+                  >
+                    Add
+                  </button>
+                  <button
+                  v-else 
+                  class="btn btn-success" type="button" disabled>
+                    <span
+                      class="spinner-border spinner-border-sm"
+                      role="status"
+                      aria-hidden="true"
+                    ></span>
+                    Adding...
+                  </button>
+                </div>
               </div>
             </div>
           </fieldset>
@@ -203,44 +210,59 @@ export default {
     };
   },
   computed: {
+    loadingState() {
+      return this.$store.getters.loading;
+    },
     startDateProper() {
       if (!this.startDate == "") {
-        return DateTime.fromISO(this.startDate).toLocaleString(DateTime.DATE_HUGE);
+        return DateTime.fromISO(this.startDate).toLocaleString(
+          DateTime.DATE_HUGE
+        );
       } else {
         return "No date provided";
       }
     },
     meetDateProper() {
       if (!this.meetDate == "") {
-        return DateTime.fromISO(this.meetDate).toLocaleString(DateTime.DATE_HUGE);
+        return DateTime.fromISO(this.meetDate).toLocaleString(
+          DateTime.DATE_HUGE
+        );
       } else {
         return "No date provided";
       }
     },
     deadlineProper() {
       if (!this.deadline == "") {
-        return DateTime.fromISO(this.deadline).toLocaleString(DateTime.DATE_HUGE);
+        return DateTime.fromISO(this.deadline).toLocaleString(
+          DateTime.DATE_HUGE
+        );
       } else {
         return "No date provided";
       }
     },
     deliveryProper() {
       if (!this.delivery == "") {
-        return DateTime.fromISO(this.delivery).toLocaleString(DateTime.DATE_HUGE);
+        return DateTime.fromISO(this.delivery).toLocaleString(
+          DateTime.DATE_HUGE
+        );
       } else {
         return "No date provided";
       }
     },
     reminder1Proper() {
       if (!this.reminder1 == "") {
-        return DateTime.fromISO(this.reminder1).toLocaleString(DateTime.DATE_HUGE);
+        return DateTime.fromISO(this.reminder1).toLocaleString(
+          DateTime.DATE_HUGE
+        );
       } else {
         return "No date provided";
       }
     },
     reminder2Proper() {
       if (!this.reminder2 == "") {
-        return DateTime.fromISO(this.reminder2).toLocaleString(DateTime.DATE_HUGE);
+        return DateTime.fromISO(this.reminder2).toLocaleString(
+          DateTime.DATE_HUGE
+        );
       } else {
         return "No date provided";
       }
@@ -256,10 +278,10 @@ export default {
   methods: {
     ...mapActions(["addInput"]),
     async sendData() {
-        await fetch('https://online-tracker-test.firebaseio.com/boxes.json',{
-        method: 'POST',
+      await fetch("https://online-tracker-test.firebaseio.com/boxes.json", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json'
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({
           clientName: this.clientName,
@@ -276,34 +298,16 @@ export default {
           reminder2: this.reminder2Proper,
           tillDelivery: this.deliveryDeadline,
           progress: {
-            mercerClient: ''
+            mercerClient: "",
           },
           progressBar: 0,
-          progressDisplay: ""
-        })
-      })
+          progressDisplay: "",
+        }),
+      });
     },
     async addNewBox() {
-      await this.sendData()
-      await this.$store.dispatch('fetchData')
-      // this.addInput({
-      //   clientName: this.clientName,
-      //   confirmed: this.confirmed,
-      //   briefType: this.briefType,
-      //   setStatus: this.setStatus,
-      //   whoFor: this.whoFor,
-      //   whoWith: this.whoWith,
-      //   startDate: this.startDateProper,
-      //   meetDate: this.meetDateProper,
-      //   deadline: this.deadlineProper,
-      //   delivery: this.deliveryProper,
-      //   reminder1: this.reminder1Proper,
-      //   reminder2: this.reminder2Proper,
-      //   tillDelivery: this.deliveryDeadline,
-      //   progress: {},
-      //   progressBar: 0,
-      //   progressDisplay: ""
-      // });
+      await this.sendData();
+      await this.$store.dispatch("fetchData");
       this.restart();
     },
     cancelBox() {
@@ -321,7 +325,7 @@ export default {
       this.deadline = "";
       this.delivery = "";
       this.inputEntry = "";
-      this.reminder1 ="";
+      this.reminder1 = "";
       this.reminder2 = "";
     },
   },

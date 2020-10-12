@@ -407,7 +407,8 @@ export default {
       maxProgress: 12,
     };
   },
-  computed: {},
+  computed: {
+  },
   methods: {
     removeBox(idNumber) {
       this.$emit("boxRemoved", idNumber);

@@ -2,102 +2,15 @@ import { DateTime } from "luxon";
 
 const state = {
   linkName: '',
-  allBoxContents: [
-    // {
-    //   clientName: "Godzilla",
-    //   id: 111,
-    //   status: "In Progress",
-    //   mercerClient: '',
-    //   progress: {},
-    //   tillDelivery: "",
-    //   progressBar: 0,
-    //   progressDisplay: "",
-    // },
-    // {
-    //   clientName: "Ghidora",
-    //   id: 112,
-    //   status: "Pending",
-    //   progress: {},
-    //   tillDelivery: "",
-    //   progressBar: 0
-    // },
-    // {
-    //   clientName: "Mothra",
-    //   id: 113,
-    //   status: "Pending",
-    //   progress: {},
-    //   tillDelivery: "",
-    //   progressBar: 0
-    // },
-    // {
-    //   clientName: "Rodan",
-    //   id: 114,
-    //   status: "In Progress",
-    //   progress: {},
-    //   tillDelivery: "",
-    //   progressBar: 0
-    // },
-    // {
-    //   clientName: "Gundam",
-    //   id: 115,
-    //   status: "Pending",
-    //   progress: {},
-    //   tillDelivery: "",
-    //   progressBar: 0
-    // },
-    // {
-    //   clientName: "EVA-01",
-    //   id: 116,
-    //   status: "In Progress",
-    //   progress: {},
-    //   tillDelivery: "",
-    //   progressBar: 0
-    // },
-    // {
-    //   clientName: "Totoro",
-    //   id: 117,
-    //   status: "In Progress",
-    //   progress: {},
-    //   tillDelivery: "",
-    //   progressBar: 0
-    // },
-    // {
-    //   clientName: "Mechagodzilla",
-    //   id: 118,
-    //   status: "In Progress",
-    //   progress: {},
-    //   tillDelivery: "",
-    //   progressBar: 0
-    // },
-    // {
-    //   clientName: "Akira",
-    //   id: 119,
-    //   status: "In Progress",
-    //   progress: {},
-    //   tillDelivery: "",
-    //   progressBar: 0
-    // },
-    // {
-    //   clientName: "Tetsuo",
-    //   id: 120,
-    //   status: "In Progress",
-    //   progress: {},
-    //   tillDelivery: "",
-    //   progressBar: 0
-    // },
-    // {
-    //   clientName: "Mononoke",
-    //   id: 121,
-    //   status: "Pending",
-    //   progress: {},
-    //   tillDelivery: "",
-    //   progressBar: 0
-    // },
-  ],
+  isLoading: false,
+  allBoxContents: [],
 }
 const getters = {
   allBoxContents: state => {
     return state.allBoxContents;
+  },
+  loading: state => {
+    return state.isLoading;
   },
   link: state => {
     return state.linkName;
@@ -191,8 +104,10 @@ const actions = {
     commit('changeLink', payload)
   },
   async fetchData({commit}) {
+    state.isLoading = true
     const serverData = await fetch('https://online-tracker-test.firebaseio.com/boxes.json')
     const jsonData = await serverData.json()
+    state.isLoading = false
     commit('setData', jsonData)
   },
   async removeContents({commit}, payload) {
