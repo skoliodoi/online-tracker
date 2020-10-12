@@ -297,6 +297,7 @@ export default {
           reminder1: this.reminder1Proper,
           reminder2: this.reminder2Proper,
           tillDelivery: this.deliveryDeadline,
+          isDeleted: false,
           progress: {
             mercerClient: "",
           },

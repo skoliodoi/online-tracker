@@ -3,6 +3,7 @@ import { DateTime } from "luxon";
 const state = {
   linkName: '',
   isLoading: false,
+  isDeleted: false,
   allBoxContents: [],
 }
 const getters = {
@@ -11,6 +12,9 @@ const getters = {
   },
   loading: state => {
     return state.isLoading;
+  },
+  deleting: state => {
+    return state.isDeleted;
   },
   link: state => {
     return state.linkName;
@@ -111,9 +115,15 @@ const actions = {
     commit('setData', jsonData)
   },
   async removeContents({commit}, payload) {
-    await fetch('https://online-tracker-test.firebaseio.com/boxes/' + payload +'.json' , {
-      method: "DELETE"
-    })
+    for (const i in state.allBoxContents) {
+      if (state.allBoxContents[i].id == payload ){
+        state.allBoxContents[i].isDeleted = true
+        await fetch('https://online-tracker-test.firebaseio.com/boxes/' + payload +'.json' , {
+          method: "DELETE"
+        })
+        state.isDeleted = false
+      }
+    }
   },
 }
 

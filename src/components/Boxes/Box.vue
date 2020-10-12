@@ -62,11 +62,19 @@
                   </div>
                 </div>
               </div>
+              <div v-if="box.isDeleted"
+              class="col">
+                <div class="spinner-border text-danger" role="status">
+                </div>
+              </div>
+              <div v-else
+              class="col">
               <button
-                class="btn btn-danger text-right ml-5"
+                class="btn btn-danger"
                 @click="removeBox(box.id)"
                 v-html="'<strong>X</strong>'"
               ></button>
+              </div>
             </div>
           </div>
 
@@ -408,6 +416,9 @@ export default {
     };
   },
   computed: {
+    isDeleted() {
+      return this.$store.getters.deleting
+    }
   },
   methods: {
     removeBox(idNumber) {
