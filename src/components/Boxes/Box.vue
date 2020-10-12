@@ -223,6 +223,7 @@
                         :select="true"
                         :optionTable="stateTable"
                         :updateProgress="true"
+                        :changeClass="true"
                       >
                       </display-input-field>
                     </div>

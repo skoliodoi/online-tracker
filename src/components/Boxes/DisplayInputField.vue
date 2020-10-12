@@ -3,8 +3,8 @@
     <div 
     v-if="!isEditable" 
     @click="makeEditable"
-    class="box-field p-2"
->
+    class="btn container"
+    :class="changeClasses">
       <slot> {{ display }}</slot>
     </div>
     <div v-else>
@@ -58,6 +58,11 @@ import { mapActions } from "vuex";
 export default {
   data() {
     return {
+      classes: {
+        progressMade: false,
+        fya: true,
+        noChange: false
+      },
       isEditable: false,
       display: "",
       newDisplay: "",
@@ -67,6 +72,25 @@ export default {
   computed: {
     update() {
       return this.progress
+    },
+    changeClasses() {
+      if (this.display == "Ok"){
+        return {
+          'btn-success': true
+        }
+      } else if (this.display == "NR"||this.display == "N/A"){
+        return {
+          'btn-secondary': true
+        }
+      } else if (this.display == "FYA SP"||this.display == "FYA Mail"){
+        return {
+          'btn-warning': true
+        }
+      } else {
+        return {
+          'btn-light': true
+        }
+      }
     }
   },
   props: [
@@ -79,7 +103,8 @@ export default {
     "select",
     "textarea",
     "optionTable",
-    "updateProgress"
+    "updateProgress",
+    "changeClass"
   ],
   mounted() {
     this.isEditable = this.bool;
