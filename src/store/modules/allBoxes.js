@@ -194,7 +194,12 @@ const actions = {
     const serverData = await fetch('https://online-tracker-test.firebaseio.com/boxes.json')
     const jsonData = await serverData.json()
     commit('setData', jsonData)
-  }
+  },
+  async removeContents({commit}, payload) {
+    await fetch('https://online-tracker-test.firebaseio.com/boxes/' + payload +'.json' , {
+      method: "DELETE"
+    })
+  },
 }
 
 export default {
