@@ -255,14 +255,13 @@ export default {
   },
   methods: {
     ...mapActions(["addInput"]),
-    sendData() {
-        fetch('https://online-tracker-test.firebaseio.com/boxes.json',{
+    async sendData() {
+        await fetch('https://online-tracker-test.firebaseio.com/boxes.json',{
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          id: 0,
           clientName: this.clientName,
           confirmed: this.confirmed,
           briefType: this.briefType,
@@ -284,9 +283,9 @@ export default {
         })
       })
     },
-    addNewBox() {
-      this.sendData()
-      this.$store.dispatch('getNewData')
+    async addNewBox() {
+      await this.sendData()
+      await this.$store.dispatch('fetchData')
       // this.addInput({
       //   clientName: this.clientName,
       //   confirmed: this.confirmed,
@@ -306,7 +305,6 @@ export default {
       //   progressDisplay: ""
       // });
       this.restart();
-      this.$store.dispatch('getData')
     },
     cancelBox() {
       this.$store.dispatch("addBoxDisplay");

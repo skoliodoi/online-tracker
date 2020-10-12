@@ -122,19 +122,14 @@ const getters = {
 }
 
 const mutations = {
-  getData: state => {
-    fetch('https://online-tracker-test.firebaseio.com/boxes.json')
-      .then(res => {
-        return res.json()
-      })
-      .then(data => {
+  setData: (state, data) => {
         const boxes = [];
         for (const id in data) {
+          console.log(id)
           data[id].id = id
           boxes.unshift(data[id])
         }
         state.allBoxContents = boxes;
-      })
   },
   updateContents: (state, payload) => {
     for (var i = 0; i<state.allBoxContents.length; i++) {
@@ -178,7 +173,16 @@ const mutations = {
 
 const actions = {
   updateContents: ({commit}, payload) => {
-    commit('updateContents', payload)
+    commit('updateContents', payload);
+    fetch('https://online-tracker-test.firebaseio.com/boxes.json',{
+      method: "PATCH",
+      headers: {
+        "Content-Type":"application/json"
+      },
+      body: JSON.stringify({
+        [payload.id]: state.allBoxContents.find(it => it.id == payload.id)
+      })
+    })
   },
   updateProgressBar: ({commit}, payload) => {
     commit('updateProgressBar', payload)
@@ -186,12 +190,10 @@ const actions = {
   changeLink: ({commit}, payload) => {
     commit('changeLink', payload)
   },
-  getData: ({commit}) => {
-    commit('getData')
-  },
-  async ['getNewData']({commit}) {
+  async fetchData({commit}) {
     const serverData = await fetch('https://online-tracker-test.firebaseio.com/boxes.json')
-    commit('getData', serverData)
+    const jsonData = await serverData.json()
+    commit('setData', jsonData)
   }
 }
 

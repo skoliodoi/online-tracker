@@ -37,7 +37,7 @@ export default {
     appNavbar: Navbar,
   },
   mounted() {
-    this.$store.dispatch('getData')
+    this.$store.dispatch('fetchData')
   },
   methods: {
     removeBox(idNumber) {
