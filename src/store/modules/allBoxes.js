@@ -3,96 +3,96 @@ import { DateTime } from "luxon";
 const state = {
   linkName: '',
   allBoxContents: [
-    {
-      clientName: "Godzilla",
-      id: 111,
-      status: "In Progress",
-      mercerClient: '',
-      progress: {},
-      tillDelivery: "",
-      progressBar: 0,
-      progressDisplay: "",
-    },
-    {
-      clientName: "Ghidora",
-      id: 112,
-      status: "Pending",
-      progress: {},
-      tillDelivery: "",
-      progressBar: 0
-    },
-    {
-      clientName: "Mothra",
-      id: 113,
-      status: "Pending",
-      progress: {},
-      tillDelivery: "",
-      progressBar: 0
-    },
-    {
-      clientName: "Rodan",
-      id: 114,
-      status: "In Progress",
-      progress: {},
-      tillDelivery: "",
-      progressBar: 0
-    },
-    {
-      clientName: "Gundam",
-      id: 115,
-      status: "Pending",
-      progress: {},
-      tillDelivery: "",
-      progressBar: 0
-    },
-    {
-      clientName: "EVA-01",
-      id: 116,
-      status: "In Progress",
-      progress: {},
-      tillDelivery: "",
-      progressBar: 0
-    },
-    {
-      clientName: "Totoro",
-      id: 117,
-      status: "In Progress",
-      progress: {},
-      tillDelivery: "",
-      progressBar: 0
-    },
-    {
-      clientName: "Mechagodzilla",
-      id: 118,
-      status: "In Progress",
-      progress: {},
-      tillDelivery: "",
-      progressBar: 0
-    },
-    {
-      clientName: "Akira",
-      id: 119,
-      status: "In Progress",
-      progress: {},
-      tillDelivery: "",
-      progressBar: 0
-    },
-    {
-      clientName: "Tetsuo",
-      id: 120,
-      status: "In Progress",
-      progress: {},
-      tillDelivery: "",
-      progressBar: 0
-    },
-    {
-      clientName: "Mononoke",
-      id: 121,
-      status: "Pending",
-      progress: {},
-      tillDelivery: "",
-      progressBar: 0
-    },
+    // {
+    //   clientName: "Godzilla",
+    //   id: 111,
+    //   status: "In Progress",
+    //   mercerClient: '',
+    //   progress: {},
+    //   tillDelivery: "",
+    //   progressBar: 0,
+    //   progressDisplay: "",
+    // },
+    // {
+    //   clientName: "Ghidora",
+    //   id: 112,
+    //   status: "Pending",
+    //   progress: {},
+    //   tillDelivery: "",
+    //   progressBar: 0
+    // },
+    // {
+    //   clientName: "Mothra",
+    //   id: 113,
+    //   status: "Pending",
+    //   progress: {},
+    //   tillDelivery: "",
+    //   progressBar: 0
+    // },
+    // {
+    //   clientName: "Rodan",
+    //   id: 114,
+    //   status: "In Progress",
+    //   progress: {},
+    //   tillDelivery: "",
+    //   progressBar: 0
+    // },
+    // {
+    //   clientName: "Gundam",
+    //   id: 115,
+    //   status: "Pending",
+    //   progress: {},
+    //   tillDelivery: "",
+    //   progressBar: 0
+    // },
+    // {
+    //   clientName: "EVA-01",
+    //   id: 116,
+    //   status: "In Progress",
+    //   progress: {},
+    //   tillDelivery: "",
+    //   progressBar: 0
+    // },
+    // {
+    //   clientName: "Totoro",
+    //   id: 117,
+    //   status: "In Progress",
+    //   progress: {},
+    //   tillDelivery: "",
+    //   progressBar: 0
+    // },
+    // {
+    //   clientName: "Mechagodzilla",
+    //   id: 118,
+    //   status: "In Progress",
+    //   progress: {},
+    //   tillDelivery: "",
+    //   progressBar: 0
+    // },
+    // {
+    //   clientName: "Akira",
+    //   id: 119,
+    //   status: "In Progress",
+    //   progress: {},
+    //   tillDelivery: "",
+    //   progressBar: 0
+    // },
+    // {
+    //   clientName: "Tetsuo",
+    //   id: 120,
+    //   status: "In Progress",
+    //   progress: {},
+    //   tillDelivery: "",
+    //   progressBar: 0
+    // },
+    // {
+    //   clientName: "Mononoke",
+    //   id: 121,
+    //   status: "Pending",
+    //   progress: {},
+    //   tillDelivery: "",
+    //   progressBar: 0
+    // },
   ],
 }
 const getters = {
@@ -185,6 +185,13 @@ const actions = {
   },
   changeLink: ({commit}, payload) => {
     commit('changeLink', payload)
+  },
+  getData: ({commit}) => {
+    commit('getData')
+  },
+  async ['getNewData']({commit}) {
+    const serverData = await fetch('https://online-tracker-test.firebaseio.com/boxes.json')
+    commit('getData', serverData)
   }
 }
 

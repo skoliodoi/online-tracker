@@ -54,6 +54,13 @@
           >
             Clear
           </button>
+          <button
+            class="btn btn-info my-2 my-sm-0"
+            type="submit"
+            @click.prevent="$store.dispatch('getData')"
+          >
+            Get
+          </button>
         </form>
         <router-link tag="button" to="/" class="btn btn-danger"
           >Log out</router-link

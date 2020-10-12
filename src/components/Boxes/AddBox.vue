@@ -266,7 +266,7 @@ export default {
           clientName: this.clientName,
           confirmed: this.confirmed,
           briefType: this.briefType,
-          setStatus: this.setStatus,
+          status: this.setStatus,
           whoFor: this.whoFor,
           whoWith: this.whoWith,
           startDate: this.startDateProper,
@@ -276,7 +276,9 @@ export default {
           reminder1: this.reminder1Proper,
           reminder2: this.reminder2Proper,
           tillDelivery: this.deliveryDeadline,
-          progress: {},
+          progress: {
+            mercerClient: ''
+          },
           progressBar: 0,
           progressDisplay: ""
         })
@@ -284,7 +286,7 @@ export default {
     },
     addNewBox() {
       this.sendData()
-      this.$store.commit('getData')
+      this.$store.dispatch('getNewData')
       // this.addInput({
       //   clientName: this.clientName,
       //   confirmed: this.confirmed,
@@ -304,6 +306,7 @@ export default {
       //   progressDisplay: ""
       // });
       this.restart();
+      this.$store.dispatch('getData')
     },
     cancelBox() {
       this.$store.dispatch("addBoxDisplay");
