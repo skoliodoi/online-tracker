@@ -58,11 +58,7 @@ import { mapActions } from "vuex";
 export default {
   data() {
     return {
-      classes: {
-        progressMade: false,
-        fya: true,
-        noChange: false
-      },
+      classes: "",
       isEditable: false,
       display: "",
       newDisplay: "",
@@ -86,9 +82,14 @@ export default {
         return {
           'btn-info': true
         }
+      } else if (this.classes) {
+          return {
+          'btn-success': true,
+          visible: true
+        }
       } else {
         return {
-          'btn-light': true
+          'btn-outline-dark': true,
         }
       }
     }
@@ -104,12 +105,14 @@ export default {
     "textarea",
     "optionTable",
     "updateProgress",
-    "changeClass"
+    "changeClass",
+    "headerClass"
   ],
   mounted() {
     this.isEditable = this.bool;
     this.display = this.displayValue;
     this.progress = this.updateProgress;
+    this.classes = this.headerClass
   },
   methods: {
     ...mapActions(['updateProgressBar']),
@@ -144,7 +147,7 @@ export default {
 ;
 }
 .visible {
-  border: 1px solid red;
+  border: 1px solid whitesmoke;
 }
 .small {
   width: 75%;

@@ -21,9 +21,10 @@
               </div>
               <display-input-field
                 class="my-auto container text-left col-xs-2"
-                style=""
                 :displayValue="box.clientName"
                 :id="box.id"
+                :key="box.componentKey"
+                :headerClass="box.boolVal"
                 :input="true"
                 :property="'clientName'"
               ></display-input-field>
@@ -31,11 +32,12 @@
                 class="container text-left col-2 my-auto"
                 style="display: flex"
               >
-                <p class="mr-1 my-auto">Status:</p>
+                <p class="mr-1 my-auto"><strong>Status:</strong></p>
                 <display-input-field
                   :select="true"
                   :displayValue="box.status"
                   :key="box.componentKey"
+                  :headerClass="box.boolVal"
                   :id="box.id"
                   :optionTable="statusTable"
                   :property="'status'"
@@ -44,16 +46,18 @@
               </div>
               <div class="container text-left col-2 my-auto">
                 <p class="my-auto">
-                  Delivery: <strong>{{ box.tillDelivery }}</strong>
+                  <strong>Delivery: {{ timeDisplay }}</strong>
                 </p>
               </div>
-              <p class="my-auto">Progress:</p>
+              <p class="my-auto"><strong>Progress:</strong></p>
               <div class="container text-left my-auto col-3">
                 <div class="progress">
                   <div
                     class="progress-bar bg-success"
                     role="progressbar"
                     :style="{
+                      border: '1px solid white',
+                      'border-radius': '5px',
                       width: (box.progressBar / maxProgress) * 100 + '%',
                     }"
                     aria-valuemin="0"
@@ -395,6 +399,7 @@
               </display-input-field>
             </div>
             <div class="tiny">{{ box.id }}</div>
+            <div class="tiny">{{ box.componentKey }}</div>
           </div>
         </div>
       </div>
@@ -421,6 +426,16 @@ export default {
     isDeleted() {
       return this.$store.getters.deleting
     },
+    timeDisplay() {
+      const status = this.box.status
+      const time = this.box.timeVal 
+      const today = DateTime.local().toISODate()
+      if (time == today){
+        return "Today!"
+      } else {
+        return this.box.tillDelivery
+      }
+    },
     timeChange() {
       const status = this.box.status
       const time = this.box.timeVal 
@@ -429,11 +444,17 @@ export default {
       console.log(time > today)
       if (time <= today && status != "Done"){
         return {
-          'bg-danger': true
+          'bg-danger': true,
+          visible: true
         }
       } else if (time <= inThreeDays && status != "Done") {
         return {
-          'bg-warning': true
+          'bg-warning': true,
+        }
+      } else if (status == "Done"){
+        return {
+          'bg-success': true,
+          visible: true
         }
       }
     }
@@ -475,6 +496,7 @@ export default {
 }
 .visible {
   border: 1px solid red;
+  color:whitesmoke
 }
 .tiny {
   text-align: center;

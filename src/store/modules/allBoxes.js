@@ -54,18 +54,23 @@ const mutations = {
           state.allBoxContents[i].timeVal = payload.value
           state.allBoxContents[i][payload.property] = DateTime.fromISO(payload.value).toLocaleString(DateTime.DATE_HUGE);
           state.allBoxContents[i].tillDelivery = DateTime.fromISO(payload.value).toRelative();
-          // console.log(payload.value)
-          // console.log(payload.value==time.plus({days: 4}).toISODate())
         } else if (payload.input == "date"){
           state.allBoxContents[i][payload.property] = DateTime.fromISO(payload.value).toLocaleString(DateTime.DATE_HUGE);
         } else{
           state.allBoxContents[i][payload.property] = payload.value;
         }
+        if (payload.property == "status" && payload.value == "Done") {
+          state.allBoxContents[i].boolVal = true
+          state.allBoxContents[i].componentKey += 1;
+        } else {
+          state.allBoxContents[i].boolVal = false
+          state.allBoxContents[i].componentKey += 1;
+        }
       }
     }
   },
   updateProgressBar: (state, payload) => {
-    for (var i = 0; i<state.allBoxContents.length; i++) {
+    for (let i = 0; i<state.allBoxContents.length; i++) {
       if (state.allBoxContents[i].id == payload.id) {
         if (payload.updateProgress){
           if (payload.value == "Ok"||payload.value=="N/A"){
