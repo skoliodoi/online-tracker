@@ -42,8 +42,6 @@ const mutations = {
   setData: (state, data) => {
         const boxes = [];
         for (const id in data) {
-          console.log(id)
-          data[id].progress = {}
           data[id].id = id
           boxes.unshift(data[id])
         }
@@ -73,8 +71,9 @@ const mutations = {
             delete state.allBoxContents[i].progress[payload.property]
           }
           state.allBoxContents[i].progressBar = Object.keys(state.allBoxContents[i].progress).length
-          state.allBoxContents[i].progressDisplay = Math.round((state.allBoxContents[i].progressBar/12) * 100) + '%'
-          if (state.allBoxContents[i].progressBar == 12) {
+          console.log(state.allBoxContents[i].progressBar)
+          state.allBoxContents[i].progressDisplay = Math.round((state.allBoxContents[i].progressBar/13) * 100) + '%'
+          if (state.allBoxContents[i].progressBar == 13) {
             if(confirm("The status of this request will be changed to 'Done' and moved to appropriate subpage. Would you wish to continue?")){
               state.allBoxContents[i].status = "Done"
               state.allBoxContents[i].componentKey += 1;
