@@ -399,7 +399,6 @@
               </display-input-field>
             </div>
             <div class="tiny">{{ box.id }}</div>
-            <div class="tiny">{{ box.componentKey }}</div>
           </div>
         </div>
       </div>
@@ -441,7 +440,6 @@ export default {
       const time = this.box.timeVal 
       const today = DateTime.local().toISODate()
       const inThreeDays = DateTime.local().plus({days: 3}).toISODate()
-      console.log(time > today)
       if (time <= today && status != "Done"){
         return {
           'bg-danger': true,

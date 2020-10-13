@@ -59,7 +59,9 @@ const mutations = {
         } else{
           state.allBoxContents[i][payload.property] = payload.value;
         }
-        if (payload.property == "status" && payload.value == "Done") {
+        const time = state.allBoxContents[i].timeVal 
+        const today = DateTime.local().toISODate()
+        if ((payload.property == "status" && payload.value == "Done") || (time <= today && state.allBoxContents[i].status != "Done")) {
           state.allBoxContents[i].boolVal = true
           state.allBoxContents[i].componentKey += 1;
         } else {

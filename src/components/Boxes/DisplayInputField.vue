@@ -84,7 +84,7 @@ export default {
         }
       } else if (this.classes) {
           return {
-          'btn-success': true,
+          'btn-outline-light': true,
           visible: true
         }
       } else {
