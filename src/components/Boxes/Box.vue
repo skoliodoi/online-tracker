@@ -399,6 +399,7 @@
               </display-input-field>
             </div>
             <div class="tiny">{{ box.id }}</div>
+            <div class="tiny">{{ box.something }}</div>
           </div>
         </div>
       </div>

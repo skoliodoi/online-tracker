@@ -68,6 +68,16 @@ const mutations = {
           state.allBoxContents[i].boolVal = false
           state.allBoxContents[i].componentKey += 1;
         }
+        if (state.allBoxContents[i].progressBar == 12) {
+          state.allBoxContents[i].status = "Done"
+          state.allBoxContents[i].boolVal = true
+          state.allBoxContents[i].componentKey += 1; 
+
+      } else {
+        state.allBoxContents[i].status = "In Progress"
+        state.allBoxContents[i].boolVal = false
+        state.allBoxContents[i].componentKey += 1;
+      }
       }
     }
   },
@@ -84,13 +94,15 @@ const mutations = {
           state.allBoxContents[i].progressBar = Object.keys(state.allBoxContents[i].progress).length
           console.log(state.allBoxContents[i].progressBar)
           state.allBoxContents[i].progressDisplay = Math.round((state.allBoxContents[i].progressBar/12) * 100) + '%'
-          if (state.allBoxContents[i].progressBar == 12) {
-            if(confirm("This request can be now found in the 'Done' section.")){
-              state.allBoxContents[i].boolVal = true
-              state.allBoxContents[i].status = "Done"
-              state.allBoxContents[i].componentKey += 1;
-            }  
-          }
+          // if (state.allBoxContents[i].progressBar == 2) {
+          //     state.allBoxContents[i].status = "Done"
+          //     state.allBoxContents[i].boolVal = true
+          //     state.allBoxContents[i].componentKey += 1; 
+
+          // } else {
+          //   state.allBoxContents[i].boolVal = false
+          //   state.allBoxContents[i].componentKey += 1;
+          // }
         }
       }
     }
