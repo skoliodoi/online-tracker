@@ -1,6 +1,7 @@
 import { DateTime } from "luxon";
 
 const state = {
+  today: DateTime.local(),
   linkName: '',
   isLoading: false,
   isDeleted: false,
@@ -48,11 +49,15 @@ const mutations = {
         state.allBoxContents = boxes;
   },
   updateContents: (state, payload) => {
-    for (var i = 0; i<state.allBoxContents.length; i++) {
+    for (let i = 0; i<state.allBoxContents.length; i++) {
+      let time = state.today
       if (state.allBoxContents[i].id == payload.id) {
         if (payload.input == "date" && payload.property == "delivery") {
+          state.allBoxContents[i].timeVal = payload.value
           state.allBoxContents[i][payload.property] = DateTime.fromISO(payload.value).toLocaleString(DateTime.DATE_HUGE);
           state.allBoxContents[i].tillDelivery = DateTime.fromISO(payload.value).toRelative();
+          console.log(payload.value)
+          console.log(payload.value==time.plus({days: 4}).toISODate())
         } else if (payload.input == "date"){
           state.allBoxContents[i][payload.property] = DateTime.fromISO(payload.value).toLocaleString(DateTime.DATE_HUGE);
         } else{
@@ -74,7 +79,7 @@ const mutations = {
           console.log(state.allBoxContents[i].progressBar)
           state.allBoxContents[i].progressDisplay = Math.round((state.allBoxContents[i].progressBar/13) * 100) + '%'
           if (state.allBoxContents[i].progressBar == 13) {
-            if(confirm("The status of this request will be changed to 'Done' and moved to appropriate subpage. Would you wish to continue?")){
+            if(confirm("This request can be now found in the 'Done' section.")){
               state.allBoxContents[i].status = "Done"
               state.allBoxContents[i].componentKey += 1;
             }  

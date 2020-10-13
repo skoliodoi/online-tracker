@@ -78,13 +78,13 @@ export default {
         return {
           'btn-success': true
         }
-      } else if (this.display == "NR"||this.display == "N/A"){
+      } else if (this.display == "N/A"){
         return {
           'btn-secondary': true
         }
-      } else if (this.display == "FYA SP"||this.display == "FYA Mail"){
+      } else if (this.display == "NR"||this.display == "FYA SP"||this.display == "FYA Mail"){
         return {
-          'btn-warning': true
+          'btn-info': true
         }
       } else {
         return {

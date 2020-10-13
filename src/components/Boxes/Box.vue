@@ -393,7 +393,8 @@
               >
               </display-input-field>
             </div>
-            <div class="tiny">#{{ box.id }}</div>
+            <div class="tiny">{{ box.id }}</div>
+            <div class="tiny">{{ timeChange }}</div>
           </div>
         </div>
       </div>
@@ -419,6 +420,11 @@ export default {
   computed: {
     isDeleted() {
       return this.$store.getters.deleting
+    },
+    timeChange() {
+      let time = this.box.timeVal 
+      let today = DateTime.local().toISODate()
+      return time == today
     }
   },
   methods: {
@@ -462,6 +468,22 @@ export default {
 .tiny {
   text-align: center;
   font-size: smaller;
+}
+@keyframes arrow-in {
+  from {
+    border: 1px solid black;
+    border-left: transparent;
+    border-top: transparent;
+    height: 15px;
+    width: 15px;
+  }
+  to {
+    border: 5px solid black;
+    border-left: transparent;
+    border-top: transparent;
+    height: 20px;
+    width: 20px;
+  }
 }
 @keyframes arrow-out {
   from {
