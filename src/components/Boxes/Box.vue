@@ -5,6 +5,7 @@
         <div class="card">
           <div
             class="card-header"
+            :class="timeChange"
             style="display: inline-block; background: #f6f7f8"
             :id="'heading' + box.id"
           >
@@ -394,7 +395,6 @@
               </display-input-field>
             </div>
             <div class="tiny">{{ box.id }}</div>
-            <div class="tiny">{{ timeChange }}</div>
           </div>
         </div>
       </div>
@@ -422,9 +422,20 @@ export default {
       return this.$store.getters.deleting
     },
     timeChange() {
-      let time = this.box.timeVal 
-      let today = DateTime.local().toISODate()
-      return time == today
+      const status = this.box.status
+      const time = this.box.timeVal 
+      const today = DateTime.local().toISODate()
+      const inThreeDays = DateTime.local().plus({days: 3}).toISODate()
+      console.log(time > today)
+      if (time <= today && status != "Done"){
+        return {
+          'bg-danger': true
+        }
+      } else if (time <= inThreeDays && status != "Done") {
+        return {
+          'bg-warning': true
+        }
+      }
     }
   },
   methods: {

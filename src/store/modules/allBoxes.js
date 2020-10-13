@@ -1,7 +1,6 @@
 import { DateTime } from "luxon";
 
 const state = {
-  today: DateTime.local(),
   linkName: '',
   isLoading: false,
   isDeleted: false,
@@ -50,14 +49,13 @@ const mutations = {
   },
   updateContents: (state, payload) => {
     for (let i = 0; i<state.allBoxContents.length; i++) {
-      let time = state.today
       if (state.allBoxContents[i].id == payload.id) {
         if (payload.input == "date" && payload.property == "delivery") {
           state.allBoxContents[i].timeVal = payload.value
           state.allBoxContents[i][payload.property] = DateTime.fromISO(payload.value).toLocaleString(DateTime.DATE_HUGE);
           state.allBoxContents[i].tillDelivery = DateTime.fromISO(payload.value).toRelative();
-          console.log(payload.value)
-          console.log(payload.value==time.plus({days: 4}).toISODate())
+          // console.log(payload.value)
+          // console.log(payload.value==time.plus({days: 4}).toISODate())
         } else if (payload.input == "date"){
           state.allBoxContents[i][payload.property] = DateTime.fromISO(payload.value).toLocaleString(DateTime.DATE_HUGE);
         } else{

@@ -48,7 +48,7 @@
             v-model="filterBoxes"
           />
           <button
-            class="btn btn-outline-danger my-2 my-sm-0"
+            class="btn btn-danger my-2 my-sm-0"
             type="submit"
             @click.prevent="clearSearch"
           >
