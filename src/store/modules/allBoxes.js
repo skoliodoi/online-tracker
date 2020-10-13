@@ -43,6 +43,7 @@ const mutations = {
         const boxes = [];
         for (const id in data) {
           console.log(id)
+          data[id].progress = {}
           data[id].id = id
           boxes.unshift(data[id])
         }
