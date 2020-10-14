@@ -94,15 +94,6 @@ const mutations = {
           state.allBoxContents[i].progressBar = Object.keys(state.allBoxContents[i].progress).length
           console.log(state.allBoxContents[i].progressBar)
           state.allBoxContents[i].progressDisplay = Math.round((state.allBoxContents[i].progressBar/12) * 100) + '%'
-          // if (state.allBoxContents[i].progressBar == 2) {
-          //     state.allBoxContents[i].status = "Done"
-          //     state.allBoxContents[i].boolVal = true
-          //     state.allBoxContents[i].componentKey += 1; 
-
-          // } else {
-          //   state.allBoxContents[i].boolVal = false
-          //   state.allBoxContents[i].componentKey += 1;
-          // }
         }
       }
     }

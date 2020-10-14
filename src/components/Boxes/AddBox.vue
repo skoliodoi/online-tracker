@@ -313,7 +313,13 @@ export default {
           timeVal: this.delivery,
           boolVal: this.timeChange
         }),
-      });
+      }).then(response => {
+        if (!response.ok) {
+          throw new Error('Error number: ' + response.status + '! Please let Szymon know and try again later!')
+        }
+      }).catch((error) => {
+        alert(error.message)
+      })
     },
     async addNewBox() {
       await this.sendData();

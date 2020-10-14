@@ -419,7 +419,7 @@ export default {
       booleanTable: ["Yes", "No"],
       statusTable: ["In Progress", "Pending", "Done"],
       typeTable: ["Client", "Carrier"],
-      stateTable: ["Ok", "FYA SP", "FYA Mail", "NR", "N/A", "Escalated"],
+      stateTable: ["Ok", "FYA SP", "FYA Mail", "NR", "N/A", "Waiting for additional info", "Escalated"],
       maxProgress: 12,
     };
   },
