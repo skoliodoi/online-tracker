@@ -303,6 +303,7 @@ export default {
           },
           progressBar: 0,
           progressDisplay: "",
+          timeVal: this.delivery
         }),
       });
     },

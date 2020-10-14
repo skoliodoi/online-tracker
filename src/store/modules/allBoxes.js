@@ -59,25 +59,21 @@ const mutations = {
         } else{
           state.allBoxContents[i][payload.property] = payload.value;
         }
-        const time = state.allBoxContents[i].timeVal 
-        const today = DateTime.local().toISODate()
-        if ((payload.property == "status" && payload.value == "Done") || (time <= today && state.allBoxContents[i].status != "Done")) {
-          state.allBoxContents[i].boolVal = true
-          state.allBoxContents[i].componentKey += 1;
-        } else {
-          state.allBoxContents[i].boolVal = false
-          state.allBoxContents[i].componentKey += 1;
-        }
-        if (state.allBoxContents[i].progressBar == 12) {
-          state.allBoxContents[i].status = "Done"
-          state.allBoxContents[i].boolVal = true
-          state.allBoxContents[i].componentKey += 1; 
+      //   const time = state.allBoxContents[i].timeVal 
+      //   const today = DateTime.local().toISODate()
+      //   if ((payload.property == "status" && payload.value == "Done") || (time <= today && state.allBoxContents[i].status != "Done")) {
+      //     state.allBoxContents[i].boolVal = true
+      //     state.allBoxContents[i].componentKey += 1;
+      //   } else {
+      //     state.allBoxContents[i].boolVal = false
+      //     state.allBoxContents[i].componentKey += 1;
+      //   }
+      //   if (state.allBoxContents[i].progressBar == 12) {
+      //     state.allBoxContents[i].status = "Done"
+      //     state.allBoxContents[i].boolVal = true
+      //     state.allBoxContents[i].componentKey += 1; 
 
-      } else {
-        state.allBoxContents[i].status = "In Progress"
-        state.allBoxContents[i].boolVal = false
-        state.allBoxContents[i].componentKey += 1;
-      }
+      // } 
       }
     }
   },

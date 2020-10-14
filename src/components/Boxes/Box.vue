@@ -436,7 +436,7 @@ export default {
         return this.box.tillDelivery
       }
     },
-    timeChange() {
+   timeChange() {
       const status = this.box.status
       const time = this.box.timeVal 
       const today = DateTime.local().toISODate()
