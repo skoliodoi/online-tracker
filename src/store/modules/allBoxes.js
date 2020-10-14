@@ -61,7 +61,11 @@ const mutations = {
         }
         const time = state.allBoxContents[i].timeVal 
         const today = DateTime.local().toISODate()
-        if ((payload.property == "status" && payload.value == "Done") || (time <= today && state.allBoxContents[i].status != "Done")) {
+        if (payload.property == "status" && payload.value == "Done") {
+          alert('This client can now be found in the "Completed" section.')
+          state.allBoxContents[i].boolVal = true
+          state.allBoxContents[i].componentKey += 1;
+        } else if (time <= today && state.allBoxContents[i].status != "Done") {
           state.allBoxContents[i].boolVal = true
           state.allBoxContents[i].componentKey += 1;
         } else {
@@ -69,6 +73,7 @@ const mutations = {
           state.allBoxContents[i].componentKey += 1;
         }
         if (state.allBoxContents[i].progressBar == 12) {
+          alert('This client can now be found in the "Completed" section.')
           state.allBoxContents[i].status = "Done"
           state.allBoxContents[i].boolVal = true
           state.allBoxContents[i].componentKey += 1; 
