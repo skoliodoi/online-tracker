@@ -34,6 +34,7 @@
               >
                 <p class="mr-1 my-auto"><strong>Status:</strong></p>
                 <display-input-field
+                  class="container"
                   :select="true"
                   :displayValue="box.status"
                   :key="box.componentKey"
@@ -455,7 +456,7 @@ export default {
           'bg-success': true,
           visible: true
         }
-      }
+      } 
     }
   },
   methods: {

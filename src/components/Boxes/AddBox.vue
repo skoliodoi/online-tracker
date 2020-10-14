@@ -213,6 +213,13 @@ export default {
     loadingState() {
       return this.$store.getters.loading;
     },
+    timeChange() {
+      if (this.delivery > DateTime.local().toISODate()) {
+        return false
+      } else {
+        return true
+      }
+    },
     startDateProper() {
       if (!this.startDate == "") {
         return DateTime.fromISO(this.startDate).toLocaleString(
@@ -303,7 +310,8 @@ export default {
           },
           progressBar: 0,
           progressDisplay: "",
-          timeVal: this.delivery
+          timeVal: this.delivery,
+          boolVal: this.timeChange
         }),
       });
     },
