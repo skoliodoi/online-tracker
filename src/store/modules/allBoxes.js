@@ -10,9 +10,6 @@ const getters = {
   allBoxContents: state => {
     return state.allBoxContents;
   },
-  loading: state => {
-    return state.isLoading;
-  },
   deleting: state => {
     return state.isDeleted;
   },
@@ -123,10 +120,8 @@ const actions = {
     commit('changeLink', payload)
   },
   async fetchData({commit}) {
-    state.isLoading = true
     const serverData = await fetch('https://online-tracker-test.firebaseio.com/boxes.json')
     const jsonData = await serverData.json()
-    state.isLoading = false
     commit('setData', jsonData)
   },
   async removeContents({commit}, payload) {

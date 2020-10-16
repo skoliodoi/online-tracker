@@ -159,7 +159,7 @@
                   />
                 </div>
                 <div class="d-flex justify-content-center">
-                  <button v-if="!loadingState"
+                  <button v-if="!isLoading"
                     class="btn btn-outline-success"
                     @click.prevent="addNewBox"
                   >
@@ -207,6 +207,7 @@ export default {
       booleanTable: ["Yes", "No"],
       briefTable: ["Client", "Carrier"],
       statusTable: ["In Progress", "Pending"],
+      isLoading: false
     };
   },
   computed: {
@@ -285,6 +286,7 @@ export default {
   methods: {
     ...mapActions(["addInput"]),
     async sendData() {
+      this.isLoading = true
       await fetch("https://online-tracker-test.firebaseio.com/boxes.json", {
         method: "POST",
         headers: {
@@ -320,6 +322,7 @@ export default {
       }).catch((error) => {
         alert(error.message)
       })
+      this.isLoading = false;
     },
     async addNewBox() {
       await this.sendData();

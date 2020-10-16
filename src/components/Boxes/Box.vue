@@ -70,7 +70,8 @@
               </div>
               <div v-if="box.isDeleted"
               class="col">
-                <div class="spinner-border text-danger" role="status">
+                <div class="spinner-border"
+                role="status">
                 </div>
               </div>
               <div v-else
