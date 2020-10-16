@@ -38,6 +38,7 @@ export default {
   },
   mounted() {
     this.$store.dispatch('fetchData')
+    // this.timer = setInterval(this.$store.dispatch('fetchData'), 500)
   },
   methods: {
     async removeBox(idNumber) {
