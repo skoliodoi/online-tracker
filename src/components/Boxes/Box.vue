@@ -46,6 +46,11 @@
                 </display-input-field>
               </div>
               <div class="container text-left col-2 my-auto">
+                <display-input-field
+                :displayValue="timeDisplay"
+                :key="refreshKey">
+                  
+                </display-input-field>
                 <p class="my-auto">
                   <strong>Delivery: {{ timeDisplay }}</strong>
                 </p>
@@ -401,7 +406,7 @@
               </display-input-field>
             </div>
             <div class="tiny">{{ box.id }}</div>
-            <div class="tiny">{{ box.something }}</div>
+            <div class="tiny">{{ refreshKey }}</div>
           </div>
         </div>
       </div>
@@ -422,6 +427,7 @@ export default {
       typeTable: ["Client", "Carrier"],
       stateTable: ["Ok", "FYA SP", "FYA Mail", "NR", "N/A", "Waiting for additional info", "Escalated"],
       maxProgress: 12,
+      refreshKey: 0
     };
   },
   computed: {
@@ -459,6 +465,11 @@ export default {
         }
       } 
     }
+  },
+  mounted() {
+    setInterval(()=>{
+      this.refreshKey +=1;
+    },60000)
   },
   methods: {
     removeBox(idNumber) {
