@@ -46,11 +46,6 @@
                 </display-input-field>
               </div>
               <div class="container text-left col-2 my-auto">
-                <display-input-field
-                :displayValue="timeDisplay"
-                :key="refreshKey">
-                  
-                </display-input-field>
                 <p class="my-auto">
                   <strong>Delivery: {{ timeDisplay }}</strong>
                 </p>
@@ -427,23 +422,24 @@ export default {
       typeTable: ["Client", "Carrier"],
       stateTable: ["Ok", "FYA SP", "FYA Mail", "NR", "N/A", "Waiting for additional info", "Escalated"],
       maxProgress: 12,
-      refreshKey: 0
+      refreshKey: 0,
+      timeDisplay: ""
     };
   },
   computed: {
     isDeleted() {
       return this.$store.getters.deleting
     },
-    timeDisplay() {
-      const status = this.box.status
-      const time = this.box.timeVal 
-      const today = DateTime.local().toISODate()
-      if (time == today){
-        return "Today!"
-      } else {
-        return this.box.tillDelivery
-      }
-    },
+    // timeDisplay() {
+    //   const status = this.box.status
+    //   const time = this.box.timeVal 
+    //   const today = DateTime.local().toISODate()
+    //   if (time == today){
+    //     return "Today!"
+    //   } else {
+    //     return this.box.tillDelivery
+    //   }
+    // },
    timeChange() {
       const status = this.box.status
       const time = this.box.timeVal 
@@ -467,9 +463,10 @@ export default {
     }
   },
   mounted() {
+    this.timeDisplay = this.box.tillDelivery
     setInterval(()=>{
-      this.refreshKey +=1;
-    },60000)
+      this.timeDisplay = this.box.tillDelivery
+    },1000)
   },
   methods: {
     removeBox(idNumber) {
