@@ -47,7 +47,7 @@
               </div>
               <div class="container text-left col-2 my-auto">
                 <p class="my-auto">
-                  <strong>Delivery: {{ timeDisplay }}</strong>
+                  <strong>Delivery: {{ showTime }}</strong>
                 </p>
               </div>
               <p class="my-auto"><strong>Progress:</strong></p>
@@ -430,16 +430,20 @@ export default {
     isDeleted() {
       return this.$store.getters.deleting
     },
-    // timeDisplay() {
-    //   const status = this.box.status
-    //   const time = this.box.timeVal 
-    //   const today = DateTime.local().toISODate()
-    //   if (time == today){
-    //     return "Today!"
-    //   } else {
-    //     return this.box.tillDelivery
-    //   }
-    // },
+    showTime() {
+      const status = this.box.status
+      const timeTillDelivery = this.box.timeVal
+      const today = DateTime.local().toISODate()
+      setInterval(()=>{
+        const time = this.box.timeVal
+        this.timeDisplay = DateTime.fromISO(time).toRelative();
+      },1000)
+      if (timeTillDelivery == today){
+        return "Today!"
+      } else {
+        return this.timeDisplay
+      }
+    },
    timeChange() {
       const status = this.box.status
       const time = this.box.timeVal 
@@ -462,11 +466,7 @@ export default {
       } 
     }
   },
-  mounted() {
-    this.timeDisplay = this.box.tillDelivery
-    setInterval(()=>{
-      this.timeDisplay = this.box.tillDelivery
-    },1000)
+  mounted() {  
   },
   methods: {
     removeBox(idNumber) {
