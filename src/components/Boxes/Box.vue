@@ -466,8 +466,6 @@ export default {
       } 
     }
   },
-  mounted() {  
-  },
   methods: {
     removeBox(idNumber) {
       this.$emit("boxRemoved", idNumber);

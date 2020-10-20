@@ -57,10 +57,6 @@ export default {
 </script>
 
 <style scoped>
-.greenBod {
-  background: #6a8d73;
-}
-
 .redBod {
   background: #f25f5c;
 }

@@ -1,7 +1,7 @@
 <template>
   <div style="padding-top: 75px">
     <nav
-      style="height: 75px; background: #003865"
+      style="height: 75px; background: #003865; z-index: 10"
       class="navbar fixed-top navbar-expand-lg navbar-dark"
     >
       <div class="collapse navbar-collapse" id="navbarSupportedContent">

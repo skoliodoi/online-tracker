@@ -359,7 +359,7 @@ export default {
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 2;
+  z-index: 99;
   opacity: 0.75;
 }
 
@@ -370,7 +370,7 @@ export default {
   position: fixed;
   top: 50%;
   left: 50%;
-  z-index: 3;
+  z-index: 100;
   opacity: 1;
   margin-top: -16em;
   margin-left: -25em;
