@@ -43,6 +43,9 @@
             <button type="submit" 
             class="btn btn-primary"
             @click.prevent="logIn">Login</button>
+            <router-link tag="button" to="/tracker" 
+            class="btn btn-primary"
+            @click.prevent="logIn">Go to tracker</router-link>
           </div>
           <p v-if="!formIsValid">Please enter a valid email and password!</p>
         </form>

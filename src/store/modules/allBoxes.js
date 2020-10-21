@@ -1,4 +1,5 @@
 import { DateTime } from "luxon";
+import auth from './auth.js'
 
 const state = {
   linkName: '',
@@ -101,9 +102,10 @@ const mutations = {
 }
 
 const actions = {
-  updateContents: ({commit}, payload) => {
-    commit('updateContents', payload);
-    fetch('https://online-tracker-test.firebaseio.com/boxes.json',{
+  updateContents: (context, payload) => {
+    context.commit('updateContents', payload);
+    const token = auth.state.token;
+    fetch('https://online-tracker-test.firebaseio.com/boxes.json?auth=' + token,{
       method: "PATCH",
       headers: {
         "Content-Type":"application/json"
@@ -120,7 +122,8 @@ const actions = {
     commit('changeLink', payload)
   },
   async fetchData({commit}) {
-    const serverData = await fetch('https://online-tracker-test.firebaseio.com/boxes.json')
+    const token = auth.state.token;
+    const serverData = await fetch('https://online-tracker-test.firebaseio.com/boxes.json?auth=' + token)
     const jsonData = await serverData.json()
     commit('setData', jsonData)
   },

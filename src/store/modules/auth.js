@@ -6,8 +6,11 @@ const state = {
 }
 
 const getters = {
-  userID(state) {
+  userId(state) {
     return state.userId;
+  },
+  token(state) {
+    return state.token
   }
 }
 
@@ -67,8 +70,8 @@ const actions = {
       token: responseData.idToken,
       userId: responseData.localId,
       tokenExpiration: responseData.expiresIn
-
     })
+    console.log(state.token)
   }
 }
 
