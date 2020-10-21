@@ -11,28 +11,32 @@
     >
       <div class="jumbotron">
         <h1 class="display-4" style="text-align: center">MMC Advantage</h1>
-        <form>
+        <form @submit.prevent="submitForm">
           <div class="form-group">
-            <label for="exampleInputEmail1">Email:</label>
+            <label for="email">Email:</label>
             <input
               type="email"
               class="form-control"
               id="email"
               placeholder="Enter email"
+              v-model.trim="email"
             />
           </div>
           <div class="form-group">
-            <label for="exampleInputPassword1">Password</label>
+            <label for="password">Password</label>
             <input
               type="password"
               class="form-control"
-              id="exampleInputPassword1"
+              id="password"
               placeholder="Password"
+              v-model.trim="password"
             />
           </div>
           <div class="d-flex justify-content-center">
-          <button type="submit" class="btn btn-primary ">Login</button>
+            <button type="submit" class="btn btn-primary">Signup</button>
+            <button type="submit" class="btn btn-primary">Login</button>
           </div>
+          <p v-if="!formIsValid">Please enter a valid email and password!</p>
         </form>
         <!-- <hr class="my-4" />
 
@@ -62,7 +66,28 @@
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      email: "",
+      password: "",
+      formIsValid: true,
+    };
+  },
+  methods: {
+    submitForm() {
+      this.formIsValid = true;
+      if (
+        this.email === "" ||
+        !this.email.includes("@") ||
+        this.email.length < 6
+      ) {
+        this.formIsValid = false;
+        return;
+      }
+    },
+  },
+};
 </script>
 
 <style scoped>
