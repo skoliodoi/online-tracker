@@ -11,7 +11,7 @@
     >
       <div class="jumbotron">
         <h1 class="display-4" style="text-align: center">MMC Advantage</h1>
-        <form @submit.prevent="submitForm">
+        <form>
           <div class="form-group">
             <label for="email">Email:</label>
             <input
@@ -33,8 +33,16 @@
             />
           </div>
           <div class="d-flex justify-content-center">
-            <button type="submit" class="btn btn-primary">Signup</button>
-            <button type="submit" class="btn btn-primary">Login</button>
+            <button
+              type="submit"
+              class="btn btn-primary"
+              @click.prevent="signUp"
+            >
+              Signup
+            </button>
+            <button type="submit" 
+            class="btn btn-primary"
+            @click.prevent="logIn">Login</button>
           </div>
           <p v-if="!formIsValid">Please enter a valid email and password!</p>
         </form>
@@ -72,10 +80,20 @@ export default {
       email: "",
       password: "",
       formIsValid: true,
+      isLoading: false,
+      error: null,
     };
   },
+  computed: {
+    displayError() {
+      return alert(this.error)
+    },
+    displayLoading() {
+      return this.isLoading
+    }
+  },
   methods: {
-    submitForm() {
+    async signUp() {
       this.formIsValid = true;
       if (
         this.email === "" ||
@@ -85,6 +103,39 @@ export default {
         this.formIsValid = false;
         return;
       }
+      this.isLoading = true;
+      try {
+        await this.$store.dispatch("signup", {
+          email: this.email,
+          password: this.password,
+        });
+      } catch (err) {
+        this.error = err.message || "Failed to authenticate. Try again later.";
+      }
+      this.isLoading = false;
+      console.log(this.isLoading)
+    },
+    async logIn() {
+      this.formIsValid = true;
+      if (
+        this.email === "" ||
+        !this.email.includes("@") ||
+        this.email.length < 6
+      ) {
+        this.formIsValid = false;
+        return;
+      }
+      this.isLoading = true;
+      try {
+        await this.$store.dispatch("login", {
+          email: this.email,
+          password: this.password,
+        });
+      } catch (err) {
+        this.error = err.message || "Failed to authenticate. Try again later.";
+      }
+      this.isLoading = false;
+      console.log(this.isLoading)
     },
   },
 };
@@ -94,5 +145,17 @@ export default {
 .homeBackground {
   background-color: linear-gradient(45deg, #009ddf, #00ac42);
   border: 1px solid transparent;
+}
+.add-box {
+  height: 32em;
+  width: 50em;
+  background-color: white;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  z-index: 100;
+  opacity: 1;
+  margin-top: -16em;
+  margin-left: -25em;
 }
 </style>
