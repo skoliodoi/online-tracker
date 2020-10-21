@@ -124,7 +124,7 @@ const actions = {
     const jsonData = await serverData.json()
     commit('setData', jsonData)
   },
-  async removeContents({commit}, payload) {
+  async removeContents(_, payload) {
     for (const i in state.allBoxContents) {
       if (state.allBoxContents[i].id == payload ){
         state.allBoxContents[i].isDeleted = true
