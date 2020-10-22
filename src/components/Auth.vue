@@ -86,7 +86,6 @@ export default {
         this.error = err.message || "Failed to authenticate. Try again later.";
       }
       this.isLoading = false;
-      console.log(this.isLoading)
     },
   },
 };

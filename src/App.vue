@@ -21,7 +21,7 @@
   },
   created(){
     this.$store.dispatch('autoLogin')
-    console.log(this.isAuthenticated)
+    console.log('From App: ' + this.$store.getters.isAuthenticated)
   },
     components: {
       AddBox: AddBox

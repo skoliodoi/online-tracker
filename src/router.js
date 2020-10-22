@@ -19,12 +19,13 @@ const router = new VueRouter({
   mode: 'history' 
 })
 
-// router.beforeEach((to, from, next)=>{
-//   if (to.meta.requiresAuth && !store.getters.isAuthenticated){
-//     next('/')
-//   } else {
-//     next()
-//   }
-// })
+router.beforeEach((to, from, next)=>{
+  console.log('From router: ' + store.getters.isAuthenticated)
+  if (to.meta.requiresAuth && !store.getters.isAuthenticated){
+    next('/auth')
+  } else {
+    next()
+  }
+})
 
 export default router;
