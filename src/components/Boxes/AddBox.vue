@@ -287,7 +287,8 @@ export default {
     ...mapActions(["addInput"]),
     async sendData() {
       this.isLoading = true
-      await fetch("https://online-tracker-test.firebaseio.com/boxes.json", {
+      const token = this.$store.getters.token
+      await fetch("https://online-tracker-test.firebaseio.com/boxes.json?auth=" + token, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

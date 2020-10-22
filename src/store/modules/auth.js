@@ -1,5 +1,4 @@
 const state = {
-  userId: "",
   token: null,
   userId: null,
   tokenExpiration: null
@@ -11,6 +10,9 @@ const getters = {
   },
   token(state) {
     return state.token
+  },
+  isAuthenticated(state) {
+    return !!state.token
   }
 }
 
@@ -72,6 +74,14 @@ const actions = {
       tokenExpiration: responseData.expiresIn
     })
     console.log(state.token)
+  },
+  logout(context) {
+    context.commit('setUser', {
+      token: null,
+      userId: null,
+      tokenExpiration: null
+    })
+    console.log('smth')
   }
 }
 

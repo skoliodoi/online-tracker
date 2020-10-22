@@ -55,9 +55,8 @@
             Clear
           </button>
         </form>
-        <router-link tag="button" to="/" class="btn btn-danger"
-          >Log out</router-link
-        >
+        <button class="btn btn-danger" @click="logout"
+          >Log out</button>
       </div>
     </nav>
     <div></div>
@@ -81,7 +80,7 @@ export default {
     },
   },
   methods: {
-    ...mapActions(["addBoxDisplay", "changeLink", "clearSearch"]),
+    ...mapActions(["addBoxDisplay", "changeLink", "clearSearch", "logout"]),
   },
 };
 </script>

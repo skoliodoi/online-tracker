@@ -131,7 +131,8 @@ const actions = {
     for (const i in state.allBoxContents) {
       if (state.allBoxContents[i].id == payload ){
         state.allBoxContents[i].isDeleted = true
-        await fetch('https://online-tracker-test.firebaseio.com/boxes/' + payload +'.json' , {
+        const token = auth.state.token;
+        await fetch('https://online-tracker-test.firebaseio.com/boxes/' + payload +'.json?auth=' + token, {
           method: "DELETE"
         })
         state.isDeleted = false

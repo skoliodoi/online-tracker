@@ -1,5 +1,7 @@
 <template>
-  <div :class="{ redBod: redBackground }">
+<div>
+  <div :class="{ redBod: redBackground }"
+  v-if="isAuthenticated">
     <app-navbar></app-navbar>
     <transition-group name="slide" mode="out-in">
     <app-box
@@ -9,6 +11,10 @@
     @boxRemoved="removeBox"></app-box>
      </transition-group>
   </div>
+  <div v-else>
+    <p>You don't have the clearance to see the tracker!</p>
+  </div>
+</div>
 </template>
 
 <script>
@@ -25,7 +31,7 @@ export default {
     };
   },
   computed: {
-    ...mapGetters(["allBoxContents", "filteredList", "searchbar"]),
+    ...mapGetters(["allBoxContents", "filteredList", "searchbar", "isAuthenticated"]),
     filterBoxes() {
       return this.filteredList.filter((element) => {
         return element.clientName.match(this.searchbar);
