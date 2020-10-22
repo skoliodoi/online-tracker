@@ -55,7 +55,7 @@
             Clear
           </button>
         </form>
-        <button class="btn btn-danger" @click="logout"
+        <button class="btn btn-danger" @click="logOut"
           >Log out</button>
       </div>
     </nav>
@@ -81,7 +81,11 @@ export default {
   },
   methods: {
     ...mapActions(["addBoxDisplay", "changeLink", "clearSearch", "logout"]),
-  },
+    logOut() {
+      this.logout();
+      this.$router.replace('/')
+    }
+  }
 };
 </script>
 

@@ -10,8 +10,7 @@
       "
     >
       <div class="jumbotron">
-        <h2 class="display-4" style="text-align: center">Welcome to MMC Advantage Homepage</h2>
-        <p>Login using your credentials:</p>
+        <h1 class="display-4" style="text-align: center">MMC Advantage</h1>
         <form>
           <div class="form-group">
             <label for="email">Email:</label>
@@ -44,6 +43,8 @@
             <button type="submit" 
             class="btn btn-primary"
             @click.prevent="logIn">Login</button>
+            <router-link tag="button" to="/tracker" 
+            class="btn btn-primary">Go to tracker</router-link>
           </div>
           <p v-if="!formIsValid">Please enter a valid email and password!</p>
         </form>
@@ -132,11 +133,11 @@ export default {
           email: this.email,
           password: this.password,
         });
-        this.$router.replace('/tracker')
       } catch (err) {
         this.error = err.message || "Failed to authenticate. Try again later.";
       }
       this.isLoading = false;
+      console.log(this.isLoading)
     },
   },
 };

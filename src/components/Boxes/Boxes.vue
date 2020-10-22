@@ -11,9 +11,6 @@
     @boxRemoved="removeBox"></app-box>
      </transition-group>
   </div>
-  <div v-else>
-    <p>You don't have the clearance to see the tracker!</p>
-  </div>
 </div>
 </template>
 
@@ -21,6 +18,7 @@
 import { mapGetters } from "vuex";
 import Box from "./Box.vue";
 import Navbar from "./Navbar.vue";
+import Auth from '../Auth.vue'
 export default {
   data() {
     return {
@@ -41,6 +39,7 @@ export default {
   components: {
     appBox: Box,
     appNavbar: Navbar,
+    appAuth: Auth
   },
   mounted() {
     this.$store.dispatch('fetchData')
