@@ -23,7 +23,7 @@
           </li>
           <li class="nav-item" @click="changeLink('Done')">
             <a class="nav-link" data-toggle="tab"
-            style="color: whitesmoke">Done</a>
+            style="color: whitesmoke">Completed</a>
           </li>
           <li class="nav-item" @click="changeLink('All')">
             <a class="nav-link active" data-toggle="tab"
@@ -55,8 +55,9 @@
             Clear
           </button>
         </form>
-        <router-link tag="button" to="/" class="btn btn-warning"
-          >Back</router-link>
+        <div class="col-2 my-auto" style="color:white">
+          <strong>Welcome, {{username}}!</strong>
+        </div>
         <button class="btn btn-danger" @click="logOut"
           >Log out</button>
       </div>
@@ -71,6 +72,9 @@ export default {
   computed: {
     boxes() {
       return this.$store.getters.filteredList;
+    },
+    username() {
+      return this.$store.getters.displayName;
     },
     filterBoxes: {
       get() {

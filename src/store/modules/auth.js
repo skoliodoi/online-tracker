@@ -1,7 +1,13 @@
 const state = {
   token: null,
   userId: null,
-  tokenExpiration: null
+  tokenExpiration: null,
+  users: [{
+    email: 'guest@mail.com',
+    name: 'Guest'
+  },
+  ],
+  username: ""
 }
 
 const getters = {
@@ -13,6 +19,9 @@ const getters = {
   },
   isAuthenticated(state) {
     return !!state.token
+  },
+  displayName(state) {
+    return state.username
   }
 }
 
@@ -21,11 +30,16 @@ const mutations = {
     state.token = payload.token;
     state.payloadId = payload.userId;
     state.tokenExpiration = payload.tokenExpiration
+    for (let user in state.users) {
+      if (state.users[user].email == payload.email) {
+        state.username = state.users[user].name
+      }
+    }
   }
 }
 
 const actions = {
-  async auth(context, payload) {
+  async login(context, payload) {
     const response = await fetch('https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyCqtOsjFcZddKUYCd4pUJtzdWaYAB_0WBc', {
       method: 'POST',
       body: JSON.stringify({
@@ -40,30 +54,29 @@ const actions = {
       const error = new Error(responseData.message || "Failed to authenticate!")
       throw error
     }
-
+    
     localStorage.setItem('token', responseData.idToken);
-    localStorage.setItem('userId', responseData.localId)
+    localStorage.setItem('userId', responseData.localId);
+    localStorage.setItem('email', responseData.email);
 
     context.commit('setUser', {
       token: responseData.idToken,
       userId: responseData.localId,
-      tokenExpiration: responseData.expiresIn
-    })
-  },
-  async login(context, payload) {
-    return context.dispatch('auth', {
-      ...payload
+      tokenExpiration: responseData.expiresIn,
+      email: responseData.email
     })
   },
   autoLogin(context) {
     const token = localStorage.getItem('token');
     const userId = localStorage.getItem('userId')
+    const email = localStorage.getItem('email')
 
     if(token && userId) {
       context.commit('setUser', {
         token: token,
         userId: userId,
-        tokenExpiration: null
+        tokenExpiration: null,
+        email: email
       })
     }
   },
