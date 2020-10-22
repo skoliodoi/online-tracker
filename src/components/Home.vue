@@ -80,10 +80,6 @@ export default {
       error: null,
     };
   },
-    created(){
-    this.$store.dispatch('autoLogin')
-    console.log('From Home: ' + this.$store.getters.isAuthenticated)
-  },
   computed: {
     displayError() {
       return alert(this.error)

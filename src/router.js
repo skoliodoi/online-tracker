@@ -12,7 +12,7 @@ const routes = [
   { path: '/', component: Home, name:'home' },
   { path: '/tracker', component: Boxes, name:'tracker', meta: {requiresAuth: true} },
   { path: '/auth', component: Auth, name:'auth'},
-  { path: '*', redirect: '/auth' }
+  { path: '*', redirect: '/tracker' }
 ];
 
 const router = new VueRouter({
@@ -20,7 +20,8 @@ const router = new VueRouter({
   mode: 'history' 
 })
 
-router.beforeEach((to, from, next)=>{
+router.beforeEach((to, _, next)=>{
+  store.dispatch('autoLogin')
   console.log('From router: ' + store.getters.isAuthenticated)
   if (to.meta.requiresAuth && !store.getters.isAuthenticated){
     next('/auth')
