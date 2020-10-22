@@ -8,10 +8,10 @@ import store from './store/index.js'
 Vue.use(VueRouter);
 
 const routes = [
-  { path: '/', component: Home, name:'home', meta: {requiresAuth: false} },
+  { path: '/', component: Home, name:'home' },
   { path: '/tracker', component: Boxes, name:'tracker', meta: {requiresAuth: true} },
   { path: '/auth', component: Auth, name:'auth'},
-  { path: '*', redirect: '/' }
+  { path: '*', redirect: '/auth' }
 ];
 
 const router = new VueRouter({
@@ -19,12 +19,12 @@ const router = new VueRouter({
   mode: 'history' 
 })
 
-router.beforeEach((to, _, next)=>{
-  if (to.meta.requiresAuth && !store.getters.isAuthenticated){
-    next('/')
-  } else {
-    next()
-  }
-})
+// router.beforeEach((to, from, next)=>{
+//   if (to.meta.requiresAuth && !store.getters.isAuthenticated){
+//     next('/')
+//   } else {
+//     next()
+//   }
+// })
 
 export default router;

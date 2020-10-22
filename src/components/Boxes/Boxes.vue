@@ -11,6 +11,9 @@
     @boxRemoved="removeBox"></app-box>
      </transition-group>
   </div>
+  <div v-else>
+    <app-auth></app-auth>
+  </div>
 </div>
 </template>
 
@@ -41,6 +44,7 @@ export default {
     appNavbar: Navbar,
     appAuth: Auth
   },
+
   mounted() {
     this.$store.dispatch('fetchData')
   },

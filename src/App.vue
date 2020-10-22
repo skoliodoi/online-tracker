@@ -15,8 +15,13 @@
   export default {
     computed: {
     ...mapGetters([
-      'boxesVisible'
+      'boxesVisible',
+      "isAuthenticated"
     ]),
+  },
+  created(){
+    this.$store.dispatch('autoLogin')
+    console.log(this.isAuthenticated)
   },
     components: {
       AddBox: AddBox

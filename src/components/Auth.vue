@@ -10,7 +10,8 @@
       "
     >
       <div class="jumbotron">
-        <h1 class="display-4" style="text-align: center">MMC Advantage</h1>
+        <h1 class="display-3" style="text-align: center">Oops! </h1>
+        <p>You might be lost. You need to be logged in to see this!</p>
         <form>
           <div class="form-group">
             <label for="email">Email:</label>
@@ -33,43 +34,12 @@
             />
           </div>
           <div class="d-flex justify-content-center">
-            <button
-              type="submit"
-              class="btn btn-primary"
-              @click.prevent="signUp"
-            >
-              Signup
-            </button>
             <button type="submit" 
             class="btn btn-primary"
             @click.prevent="logIn">Login</button>
-            <router-link tag="button" to="/tracker" 
-            class="btn btn-primary">Go to tracker</router-link>
           </div>
           <p v-if="!formIsValid">Please enter a valid email and password!</p>
         </form>
-        <!-- <hr class="my-4" />
-
-        <div style="display: flex; justify-content: space-around">
-          <router-link
-            to="/tracker"
-            class="btn btn-outline-primary btn-lg"
-            role="button"
-            >MoC Tracker</router-link
-          >
-          <router-link
-            to="/"
-            class="btn btn-outline-primary btn-lg"
-            role="button"
-            >Team Bios</router-link
-          >
-          <router-link
-            to="/"
-            class="btn btn-outline-primary btn-lg"
-            role="button"
-            >Executive briefs</router-link
-          >
-        </div> -->
       </div>
     </div>
   </div>
@@ -95,28 +65,6 @@ export default {
     }
   },
   methods: {
-    async signUp() {
-      this.formIsValid = true;
-      if (
-        this.email === "" ||
-        !this.email.includes("@") ||
-        this.email.length < 6
-      ) {
-        this.formIsValid = false;
-        return;
-      }
-      this.isLoading = true;
-      try {
-        await this.$store.dispatch("signup", {
-          email: this.email,
-          password: this.password,
-        });
-      } catch (err) {
-        this.error = err.message || "Failed to authenticate. Try again later.";
-      }
-      this.isLoading = false;
-      console.log(this.isLoading)
-    },
     async logIn() {
       this.formIsValid = true;
       if (
@@ -133,6 +81,7 @@ export default {
           email: this.email,
           password: this.password,
         });
+        this.$router.replace('/tracker')
       } catch (err) {
         this.error = err.message || "Failed to authenticate. Try again later.";
       }

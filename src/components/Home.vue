@@ -10,7 +10,7 @@
       "
     >
       <div class="jumbotron">
-        <h2 class="display-4" style="text-align: center">Welcome to MMC Advantage Homepage</h2>
+        <h2 class="display-5" style="text-align: center">Welcome to the MMC Advantage Homepage</h2>
         <p>Login using your credentials:</p>
         <form>
           <div class="form-group">
@@ -34,13 +34,13 @@
             />
           </div>
           <div class="d-flex justify-content-center">
-            <button
+            <!-- <button
               type="submit"
               class="btn btn-primary"
               @click.prevent="signUp"
             >
               Signup
-            </button>
+            </button> -->
             <button type="submit" 
             class="btn btn-primary"
             @click.prevent="logIn">Login</button>
@@ -114,7 +114,6 @@ export default {
         this.error = err.message || "Failed to authenticate. Try again later.";
       }
       this.isLoading = false;
-      console.log(this.isLoading)
     },
     async logIn() {
       this.formIsValid = true;
