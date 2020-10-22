@@ -55,6 +55,8 @@
             Clear
           </button>
         </form>
+        <router-link tag="button" to="/" class="btn btn-warning"
+          >Back</router-link>
         <button class="btn btn-danger" @click="logOut"
           >Log out</button>
       </div>

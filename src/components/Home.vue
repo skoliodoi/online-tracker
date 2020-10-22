@@ -34,13 +34,8 @@
             />
           </div>
           <div class="d-flex justify-content-center">
-            <!-- <button
-              type="submit"
-              class="btn btn-primary"
-              @click.prevent="signUp"
-            >
-              Signup
-            </button> -->
+          <router-link tag="button" to="/tracker" class="btn btn-warning"
+          >Go to trakcer</router-link>
             <button type="submit" 
             class="btn btn-primary"
             @click.prevent="logIn">Login</button>
@@ -84,6 +79,10 @@ export default {
       isLoading: false,
       error: null,
     };
+  },
+    created(){
+    this.$store.dispatch('autoLogin')
+    console.log('From Home: ' + this.$store.getters.isAuthenticated)
   },
   computed: {
     displayError() {

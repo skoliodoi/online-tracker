@@ -5,6 +5,7 @@ import Home from './components/Home.vue'
 import Auth from './components/Auth.vue'
 import store from './store/index.js'
 
+
 Vue.use(VueRouter);
 
 const routes = [
