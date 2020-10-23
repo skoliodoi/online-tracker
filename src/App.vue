@@ -1,6 +1,6 @@
 <template>
 <div>
-  <div class="col-xs-12">
+  <div>
     <router-view></router-view>
   </div>
   <add-box 

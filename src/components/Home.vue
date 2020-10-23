@@ -34,8 +34,6 @@
             />
           </div>
           <div class="d-flex justify-content-center">
-          <router-link tag="button" to="/tracker" class="btn btn-warning"
-          >Go to trakcer</router-link>
             <button type="submit" 
             class="btn btn-primary"
             @click.prevent="logIn">Login</button>
