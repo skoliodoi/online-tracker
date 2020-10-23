@@ -83,6 +83,7 @@ const actions = {
   logout(context) {
     localStorage.removeItem('token');
     localStorage.removeItem('userId');
+    localStorage.removeItem('email');
 
     context.commit('setUser', {
       token: null,
