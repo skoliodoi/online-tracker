@@ -1,10 +1,11 @@
 <template>
   <div>
-    <div 
-    v-if="!isEditable" 
-    @click="makeEditable"
-    class="btn container"
-    :class="changeClasses">
+    <div
+      v-if="!isEditable"
+      @click="makeEditable"
+      class="btn container"
+      :class="changeClasses"
+    >
       <slot> {{ display }}</slot>
     </div>
     <div v-else>
@@ -28,11 +29,9 @@
           updateProgress: update});
           "
         >
-          <option value selected disabled hidden>
-            Choose:
-          </option>
+          <option value selected disabled hidden>Choose:</option>
           <option v-for="each in optionTable">
-            {{each}}
+            {{ each }}
           </option>
         </select>
       </div>
@@ -49,11 +48,33 @@
         </button>
       </div>
     </div>
+    <div
+    v-if="showCheckbox" 
+    class="form-check form-check-inline d-flex justify-content-between">
+      <div>
+        <input
+          class="form-check-input"
+          type="checkbox"
+          id="inlineCheckbox1"
+          value="option1"
+        />
+        <label class="form-check-label" for="inlineCheckbox1">Reminder 1</label>
+      </div>
+      <div>
+        <input
+          class="form-check-input"
+          type="checkbox"
+          id="inlineCheckbox1"
+          value="option1"
+        />
+        <label class="form-check-label" for="inlineCheckbox1">Reminder 2</label>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-import { DateTime } from 'luxon';
+import { DateTime } from "luxon";
 import { mapActions } from "vuex";
 export default {
   data() {
@@ -62,37 +83,46 @@ export default {
       isEditable: false,
       display: "",
       newDisplay: "",
-      progress: this.updateProgress
+      progress: this.updateProgress,
     };
   },
   computed: {
+    showCheckbox() {
+      if (this.display == "No input") {
+        return true
+      }
+    },
     update() {
-      return this.progress
+      return this.progress;
     },
     changeClasses() {
-      if (this.display == "Ok"){
+      if (this.display == "Ok") {
         return {
-          'btn-success': true
-        }
-      } else if (this.display == "N/A"){
+          "btn-success": true,
+        };
+      } else if (this.display == "N/A") {
         return {
-          'btn-secondary': true
-        }
-      } else if (this.display == "NR"||this.display == "FYA SP"||this.display == "FYA Mail"){
+          "btn-secondary": true,
+        };
+      } else if (
+        this.display == "NR" ||
+        this.display == "FYA SP" ||
+        this.display == "FYA Mail"
+      ) {
         return {
-          'btn-info': true
-        }
+          "btn-info": true,
+        };
       } else if (this.classes) {
-          return {
-          'btn-outline-light': true,
-          visible: true
-        }
+        return {
+          "btn-outline-light": true,
+          visible: true,
+        };
       } else {
         return {
-          'btn-outline-dark': true,
-        }
+          "btn-outline-dark": true,
+        };
       }
-    }
+    },
   },
   props: [
     "bool",
@@ -106,16 +136,16 @@ export default {
     "optionTable",
     "updateProgress",
     "changeClass",
-    "headerClass"
+    "headerClass",
   ],
   mounted() {
     this.isEditable = this.bool;
     this.display = this.displayValue;
     this.progress = this.updateProgress;
-    this.classes = this.headerClass
+    this.classes = this.headerClass;
   },
   methods: {
-    ...mapActions(['updateProgressBar']),
+    ...mapActions(["updateProgressBar"]),
     makeEditable() {
       this.isEditable = !this.isEditable;
       this.newDisplay = this.display;
@@ -123,7 +153,9 @@ export default {
     changeDisplay() {
       this.isEditable = !this.isEditable;
       if (this.inputType == "date") {
-      this.display = DateTime.fromISO(this.newDisplay).toLocaleString(DateTime.DATE_HUGE);
+        this.display = DateTime.fromISO(this.newDisplay).toLocaleString(
+          DateTime.DATE_HUGE
+        );
       } else {
         this.display = this.newDisplay;
       }
